@@ -1,8 +1,9 @@
 package dao;
 
-
-
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.Column;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -11,7 +12,7 @@ import org.hibernate.cfg.Configuration;
 
 import base.Login;
 import base.SHA512;
-public class LoginDAO{
+public class LoginDao {
 	
 
 		
@@ -44,7 +45,7 @@ public class LoginDAO{
 		return result;
 	}
 	
-	void createNewUser(String userName, String wachtwoord, boolean isAdmin) throws Exception
+	public void createNewUser(String userName, String wachtwoord, boolean isAdmin, String email) throws Exception
 	{
 		
 		SessionFactory sessionfactory= new Configuration().configure().addAnnotatedClass(Login.class).buildSessionFactory();
@@ -55,7 +56,7 @@ public class LoginDAO{
 		SHA512 hasher = new SHA512();
 		String password=hasher.hashString(wachtwoord);
 		
-		Login newLogin= new Login(userName,password,isAdmin);
+		Login newLogin= new Login(userName,password,isAdmin,email);
 		
 		session.save(newLogin);
 		
@@ -68,7 +69,7 @@ public class LoginDAO{
 		
 	}
 	
-	void login(String userName, String passWord) throws Exception
+	public boolean login(String userName, String passWord) throws Exception
 	{
 		
 		System.out.println("Login' in----------------");
@@ -81,10 +82,10 @@ public class LoginDAO{
 		
 		if(result== true)
 		{
-			System.out.println("Logged in");
+			return true;
 		}
 		else {
-			System.out.println("fail");
+			return false;
 		}
 		
 		
@@ -177,13 +178,10 @@ public List<Login> getALL() {
 		return users;
 	}
 
-public static void main(String[] args) {
-	Login login= new Login();
-	List<Login> loging= login.getALL();
-	for(int i= 0; i<loging.size();i++)
-	{
-		System.out.println(loging.get(i).toString());
-	}
+public static void main(String[] args) throws Exception {
+	Login login= new Login("seppe123","bilal123");
+	login.createNewUser("seppe", "seppe1234", true,"seppe@student.ehb.be");
+	
 	
 }
 

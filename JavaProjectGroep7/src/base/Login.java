@@ -1,16 +1,15 @@
 package base;
 
-import dao.LoginDAO;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import dao.LoginDao;
 @Entity
 @Table(name="LOGIN")
 
-public class Login extends LoginDAO {
+public class Login extends LoginDao {
 
 	@Id
 	@Column(name="UserID")
@@ -25,22 +24,51 @@ public class Login extends LoginDAO {
 	@Column(name="admin")
 	private boolean Admin;
 	
+	@Column(name="email")
+	private String email;
+	
 	
 	public Login()
 	{
 		
 	}
 	
-	public Login(String username, String password, boolean admin) {
-		super();
-		this.username = username;
-		this.password = password;
-		Admin = admin;
-	}
+	
 
 
 
 	
+	public Login(String username, String password, boolean admin, String email) {
+		super();
+		this.username = username;
+		this.password = password;
+		Admin = admin;
+		this.email = email;
+	}
+
+
+
+
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+
+
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+
+
+
+
 	public int getUser_ID() {
 		return user_ID;
 	}
