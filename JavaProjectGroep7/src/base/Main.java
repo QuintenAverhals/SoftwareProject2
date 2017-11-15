@@ -1,4 +1,4 @@
-package SoftwareProject;
+package base;
 
 
 import java.util.Date;
@@ -39,15 +39,6 @@ public class Main {
 			
 		}
 		*/
-		Location location= new Location();
-		List <Location> locations =  location.getAll();
-		
-		for(int i=0;i<locations.size();i++ )
-		{
-			System.out.println(locations.get(i).toString());
-			
-			
-		}
 		
 		
 		

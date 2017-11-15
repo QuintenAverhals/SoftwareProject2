@@ -1,4 +1,4 @@
-package SoftwareProject;
+package base;
 
 import java.sql.Time;
 import java.util.Calendar;
@@ -8,6 +8,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import dao.TrainingDAO;
 
 @Entity 
 @Table(name="TRAINING")

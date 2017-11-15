@@ -1,4 +1,4 @@
-package SoftwareProject;
+package base;
 
 public enum Status {
 	ONGOING,
