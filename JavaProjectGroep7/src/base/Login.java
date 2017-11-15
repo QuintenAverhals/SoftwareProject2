@@ -5,11 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import dao.LoginDao;
+import dao.LoginDAO;
 @Entity
 @Table(name="LOGIN")
 
-public class Login extends LoginDao {
+public class Login extends LoginDAO {
 
 	@Id
 	@Column(name="UserID")
