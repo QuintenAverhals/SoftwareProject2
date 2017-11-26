@@ -21,8 +21,8 @@
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
          <children>
-            <JFXButton fx:id="TrainingBtn" layoutY="108.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Training" textFill="WHITE" />
-            <Text fx:id="helloMSG" fill="WHITE" layoutX="48.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Good morning Bilal" wrappingWidth="137.13671875" />
+            <JFXButton fx:id="TrainingBtn" onAction="#training" layoutY="108.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Training" textFill="WHITE" />
+            <Text fx:id="helloMSG" fill="WHITE" layoutX="48.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="137.13671875" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">

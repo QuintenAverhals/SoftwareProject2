@@ -27,6 +27,9 @@ public class Login extends LoginDao {
 	@Column(name="email")
 	private String email;
 	
+	@Column(name="Visibility")
+	private int visibility;
+	
 	
 	public Login()
 	{
@@ -44,7 +47,24 @@ public class Login extends LoginDao {
 		this.password = password;
 		Admin = admin;
 		this.email = email;
+		this.visibility=1;
 	}
+
+
+
+
+
+
+	public int isVisibility() {
+		return visibility;
+	}
+
+
+
+
+
+
+	
 
 
 
@@ -69,9 +89,6 @@ public class Login extends LoginDao {
 
 
 
-	public int getUser_ID() {
-		return user_ID;
-	}
 
 
 
@@ -82,9 +99,30 @@ public class Login extends LoginDao {
 		this.password = password;
 	}
 
+
+
+
+	
+
+
+
+
+
+
+	public int getUser_ID() {
+		return user_ID;
+	}
+
+
+
+
+
+
 	public void setUser_ID(int user_ID) {
 		this.user_ID = user_ID;
 	}
+
+
 
 
 
@@ -133,5 +171,31 @@ public class Login extends LoginDao {
 		return "Login [user_ID=" + user_ID + ", username=" + username + ", password=" + password + ", Admin=" + Admin
 				+ "]";
 	}
+
+
+
+
+
+
+	public int getVisibility() {
+		return visibility;
+	}
+
+
+
+
+
+
+	public void setVisibility(int i) {
+		this.visibility= i;
+		
+	}
+
+
+
+
+
+
+	
 	
 }

@@ -34,7 +34,7 @@ public class addUserController {
 	}
 	public void goBack(ActionEvent event) throws Exception
 	{
-		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("mainMenu.fxml"));
+		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("UserMenu.fxml"));
 		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
 		
 		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();

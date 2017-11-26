@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2d3440;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="base.userMenuController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2d3440;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="base.mainMenuController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -23,14 +23,20 @@
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
          <children>
-            <JFXButton fx:id="userOverview" layoutY="108.0" onAction="#userOverviewMenu" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="User overview" textFill="WHITE" />
+            <JFXButton fx:id="TrainingBtn" layoutY="108.0" onAction="#training" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Training" textFill="WHITE" />
+            <Text fx:id="helloMSG" fill="WHITE" layoutX="48.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="137.13671875" />
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <children>
+            <JFXButton fx:id="optionBtn" layoutY="-6.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Options" textFill="WHITE" />
+         </children>
+      </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
-            <JFXButton fx:id="addUser" layoutY="14.0" onAction="#addUserMenu" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Add user" textFill="WHITE" />
-            <JFXButton fx:id="goBack" layoutY="54.0" onAction="#goBack" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Go back" textFill="WHITE" />
+            <JFXButton fx:id="bookBtn" layoutY="14.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Book" textFill="WHITE" />
+            <JFXButton fx:id="employeeBtn" layoutY="54.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Employees" textFill="WHITE" />
+            <JFXButton fx:id="StatisticsBTN" layoutX="-1.0" layoutY="90.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Statistics" textFill="WHITE" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">

@@ -35,6 +35,7 @@ public class LoginDao {
 			}
 			
 		}
+		System.out.println(result);
 		
 		
 		session.getTransaction().commit();
@@ -123,7 +124,7 @@ public class LoginDao {
 		sessionfactory.close();
 		
 	}
-	void updateUserName(int id, String userName)
+	public void updateUserName(int id, String userName)
 	{
 		
 		
@@ -131,18 +132,56 @@ public class LoginDao {
 		Session session = sessionfactory.openSession();
 		session.beginTransaction();
 		
-		
 		Login myLogin= (Login) session.get(Login.class, id);
 		myLogin.setUsername(userName);
 		
-	
-			
+		
 		session.getTransaction().commit();
 		session.close();
 		sessionfactory.close();
+	
 		
 	}
-	void isAdmin(int id, Boolean admin)
+	public void updateIsAdmin(int id, boolean isAdmin)
+	{
+		
+		
+		SessionFactory sessionfactory= new Configuration().configure().addAnnotatedClass(Login.class).buildSessionFactory();
+		Session session = sessionfactory.openSession();
+		session.beginTransaction();
+		
+		Login myLogin= (Login) session.get(Login.class, id);
+		myLogin.setAdmin(isAdmin);
+		
+		
+		session.getTransaction().commit();
+		session.close();
+		sessionfactory.close();
+	
+		
+	}
+	public void updateAll(int id,String email, String username, String password, boolean isAdmin )
+	{
+		
+		
+		SessionFactory sessionfactory= new Configuration().configure().addAnnotatedClass(Login.class).buildSessionFactory();
+		Session session = sessionfactory.openSession();
+		session.beginTransaction();
+		
+		Login myLogin= (Login) session.get(Login.class, id);
+		myLogin.setAdmin(isAdmin);
+		myLogin.setEmail(email);
+		myLogin.setUsername(username);
+		myLogin.setPassword(password);
+		
+		
+		session.getTransaction().commit();
+		session.close();
+		sessionfactory.close();
+	
+		
+	}
+	public void isAdmin(int id, boolean admin)
 	{
 		
 		
@@ -161,6 +200,25 @@ public class LoginDao {
 		sessionfactory.close();
 		
 	}
+	public static void deleteLogin(int id)
+	{
+		
+		
+		SessionFactory sessionfactory= new Configuration().configure().addAnnotatedClass(Login.class).buildSessionFactory();
+		Session session = sessionfactory.openSession();
+		session.beginTransaction();
+		
+		
+		Login myLogin= (Login) session.get(Login.class, id);
+		myLogin.setVisibility(0);
+		session.update(myLogin);
+	
+			
+		session.getTransaction().commit();
+		session.close();
+		sessionfactory.close();
+		
+	}
 public List<Login> getALL() {
 		
 		
@@ -168,7 +226,7 @@ public List<Login> getALL() {
 		Session session = sessionfactory.openSession();
 		session.beginTransaction();
 		
-		Query query= session.createQuery("from Login");
+		Query query= session.createQuery("from Login where Visibility=1");
 		List<Login> users= query.list();
 		
 		session.getTransaction().commit();
@@ -177,11 +235,67 @@ public List<Login> getALL() {
 		 
 		return users;
 	}
+public List<Login> getUsersByName(String name) {
+	
+	
+	SessionFactory sessionfactory= new Configuration().configure().addAnnotatedClass(Login.class).buildSessionFactory();
+	Session session = sessionfactory.openSession();
+	session.beginTransaction();
+	
+	Query query= session.createQuery("from Login where Username='" + name+"'");
+	List<Login> users= query.list();
+	
+	for(int i=0; i<users.size();i++)
+	{
+		
+		System.out.println(users.get(i).toString());
+	}
+	
+	session.getTransaction().commit();
+	session.close();
+	sessionfactory.close();
+	 
+	return users;
+}
+public Login getUsersByID(String id) {
+	
+	
+	SessionFactory sessionfactory= new Configuration().configure().addAnnotatedClass(Login.class).buildSessionFactory();
+	Session session = sessionfactory.openSession();
+	session.beginTransaction();
+	
+	Query query= session.createQuery("from Login where UserID='" + id+"'");
+	//List<Login> users= query.list();
+	Login user =  (Login) query.uniqueResult();
+	
+	
+	session.getTransaction().commit();
+	session.close();
+	sessionfactory.close();
+	 
+	return user;
+}
+public List<Login> getUsersByNameAndEmail(String name, String email) {
+	
+	
+	SessionFactory sessionfactory= new Configuration().configure().addAnnotatedClass(Login.class).buildSessionFactory();
+	Session session = sessionfactory.openSession();
+	session.beginTransaction();
+	
+	Query query= session.createQuery("from Login where Username='" + name+"'and email='"+email+"'");
+	List<Login> users= query.list();
+	
+	session.getTransaction().commit();
+	session.close();
+	sessionfactory.close();
+	 
+	return users;
+}
 
 public static void main(String[] args) throws Exception {
-	Login login= new Login("seppe123","bilal123");
-	login.createNewUser("seppe", "seppe1234", true,"seppe@student.ehb.be");
-	
+	Login login= new Login("seppe","seppe123");
+	login.createNewUser("jonas","jonas123", false, "jonas@gmail.com");
+
 	
 }
 
