@@ -1,4 +1,5 @@
-package SoftwareProject;
+package dao;
+import base.Training;
 
 import java.util.Date;
 import java.util.List;
@@ -7,6 +8,8 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+
+import SoftwareProject.Training;
 
 public class TrainingDAO {
 

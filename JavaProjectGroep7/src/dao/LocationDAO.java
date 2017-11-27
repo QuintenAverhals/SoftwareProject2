@@ -1,6 +1,7 @@
-package SoftwareProject;
-
+package dao;
+import base.Location;
 import java.util.List;
+
 
 import org.hibernate.Query;
 import org.hibernate.Session;

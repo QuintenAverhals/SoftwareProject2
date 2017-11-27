@@ -1,5 +1,5 @@
-package SoftwareProject;
-
+package base;
+import dao.LocationDAO;
 import org.hibernate.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
