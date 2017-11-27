@@ -125,10 +125,9 @@ public class UserOverviewController {
 		
 		viewList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 		String selected = (String) viewList.getSelectionModel().getSelectedItem();
-		selected = selected.replaceAll("[a-zA-Z]", "");
-		selected = selected.replaceAll(":", "");
-		selected = selected.replaceAll(" ", "");
+		selected = selected.split(":")[0];
 		int id= Integer.parseInt(selected);
+		System.out.println(id);
 		
 		Login user= new Login();
 		

@@ -18,6 +18,7 @@ public class LoginDaoTest {
 	private boolean check= false;
 	private List<Login> checkUserList= null;
 	private Login checkUser= null;
+	
 	@Before
 	public void setUp() throws Exception {
 		users = new ArrayList<Login>();
@@ -98,7 +99,7 @@ public class LoginDaoTest {
 	public void testUpdateUserName() {
 		getUser= new Login();
 		int id= 1;
-		String username= "Basil2";
+		String username="seppe";
 		getUser.updateUserName(id, username);
 		checkUserList = getUser.getUsersByName(username);
 		for(int i=0;i< checkUserList.size();i++)

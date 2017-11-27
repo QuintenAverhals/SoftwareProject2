@@ -294,7 +294,7 @@ public List<Login> getUsersByNameAndEmail(String name, String email) {
 
 public static void main(String[] args) throws Exception {
 	Login login= new Login("seppe","seppe123");
-	login.createNewUser("jonas","jonas123", false, "jonas@gmail.com");
+	login.createNewUser("jonas","jonas123", true, "jonas@gmail.com");
 
 	
 }
