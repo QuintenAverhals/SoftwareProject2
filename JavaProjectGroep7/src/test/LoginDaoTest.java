@@ -82,7 +82,7 @@ public class LoginDaoTest {
 	public void testUpdatePassword() {
 		getUser= new Login();
 		int id= 1;
-		String username= "Basil2";
+		String username= "Basil";
 		getUser.updateUserName(id, username);
 		checkUserList = getUser.getUsersByName(username);
 		for(int i=0;i< checkUserList.size();i++)

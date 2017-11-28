@@ -17,6 +17,7 @@ import java.util.List;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 
@@ -24,14 +25,22 @@ public class Controller {
 	public Button loginBtn;
 	public TextField usernameLogin;
 	public PasswordField passwordLogin;
-	public Login currentUser;
+	public static Login currentUser;
+	
+	public Login getCurrentUser() {
+		return currentUser;
+	}
+
+	public void setCurrentUser(Login currentUser) {
+		this.currentUser = currentUser;
+	}
+
 	public void handleButtonClick(ActionEvent event) throws Exception
 	{
 		String usrn= usernameLogin.getText();
 		String pswd= passwordLogin.getText();
 		currentUser= new Login(usrn, pswd);
 		List<Login> users= currentUser.getUsersByName(usrn);
-		
 		boolean result= currentUser.login(usrn, pswd);
 		SHA512 hasher = new SHA512();
 		String password=hasher.hashString(pswd);
@@ -46,7 +55,7 @@ public class Controller {
 		{
 			if(currentUser.isAdmin()==true)
 			{
-			Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("mainMenu.fxml"));
+			Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/mainMenu.fxml"));
 			Scene passwordForgottenScene = new Scene(passwordForgottenParent);
 			
 			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -58,7 +67,7 @@ public class Controller {
 			
 			window.show();
 			}else {
-				Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("mainMenuNormaleUser.fxml"));
+				Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/mainMenuNormaleUser.fxml"));
 				Scene passwordForgottenScene = new Scene(passwordForgottenParent);
 				
 				Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();

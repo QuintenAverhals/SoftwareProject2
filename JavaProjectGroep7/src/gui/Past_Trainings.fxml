@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
@@ -13,7 +21,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2d3440;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="base.TrainingOverviewController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2d3440;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="base.pastTrainingsController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -36,7 +44,7 @@
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
          <children>
-            <Text fill="WHITE" layoutX="15.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Training Overview" wrappingWidth="200.0">
+            <Text fill="WHITE" layoutX="15.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Past Trainings" wrappingWidth="200.0">
                <font>
                   <Font size="22.0" />
                </font>
@@ -107,15 +115,20 @@
             <Label layoutX="24.0" layoutY="15.0" text="Location ID:" textFill="WHITE" />
             <JFXTextField fx:id="locationID" focusColor="WHITE" layoutX="93.0" layoutY="10.0" prefHeight="25.0" prefWidth="22.0" style="-fx-text-fill: white;" unFocusColor="WHITE" />
          </children></AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
+         <children>
+            <JFXTextField fx:id="email1111" focusColor="WHITE" layoutX="15.0" layoutY="8.0" prefHeight="25.0" prefWidth="22.0" style="-fx-text-fill: white;" unFocusColor="WHITE" />
+         </children>
+      </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
          <children>
-            <JFXButton fx:id="updateBtn" layoutX="-5.0" layoutY="16.0" prefHeight="25.0" prefWidth="161.0" style="-fx-background-color: grey;" text="Update" />
+            <JFXListView fx:id="viewList1" layoutX="23.0" layoutY="21.0" prefHeight="79.0" prefWidth="135.0" style="-fx-text-fill: white; -fx-background-color: #2d3440;" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
          <children>
-            <JFXButton fx:id="deleteBtn" layoutX="12.0" layoutY="14.0" prefHeight="25.0" prefWidth="161.0" style="-fx-background-color: grey;" text="Delete" />
+            <JFXButton fx:id="filterParticipants1" layoutX="6.0" layoutY="7.0"  prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: grey;" text="Upload Certificate" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="9" />
@@ -129,26 +142,18 @@
             <Text fx:id="downRighttxt" fill="WHITE" layoutX="123.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GROEP 7" />
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
+         <children>
+            <JFXTextField fx:id="filterParticipantsSearchBar" focusColor="WHITE" layoutX="35.0" layoutY="-4.0" prefHeight="25.0" prefWidth="111.0" style="-fx-text-fill: white;" unFocusColor="WHITE" />
+         </children></AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="7">
          <children>
-            <JFXTextField fx:id="filterVieww" focusColor="WHITE" layoutX="21.0" layoutY="-1.0" prefHeight="25.0" prefWidth="97.0" style="-fx-text-fill: white;" unFocusColor="WHITE" />
-            <JFXButton fx:id="filerView" layoutX="15.0" layoutY="36.0"  prefHeight="25.0" prefWidth="111.0" style="-fx-background-color: grey;" text="Filter" />
+            <JFXTextField fx:id="filterTrainingsSearchBar" focusColor="WHITE" layoutX="21.0" layoutY="-1.0" prefHeight="25.0" prefWidth="97.0" style="-fx-text-fill: white;" unFocusColor="WHITE" />
+            <JFXButton fx:id="filterTrainings" layoutX="15.0" layoutY="36.0" prefHeight="25.0" prefWidth="111.0" style="-fx-background-color: grey;" text="Filter" />
          </children></AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-text-fill: white;" GridPane.columnIndex="2" GridPane.rowIndex="6">
-         <children>
-            <JFXButton fx:id="modValues" layoutX="-91.0" layoutY="5.0" prefHeight="25.0" prefWidth="161.0" style="-fx-background-color: grey;" text="Modify Data" />
-         </children></AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="8">
-         <children>
-            <JFXButton fx:id="goBackBtn" layoutX="13.0" layoutY="8.0" onAction="#goBack" prefHeight="25.0" prefWidth="161.0" style="-fx-background-color: grey;" text="GO BACK" />
-         </children>
-      </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
-         <children>
-            <JFXButton fx:id="load_ALL" layoutX="-5.0" layoutY="8.0" prefHeight="25.0" prefWidth="161.0" style="-fx-background-color: grey;" text="Load all" />
-         </children>
-      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-text-fill: white;" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <children>
             <JFXTextField fx:id="startDay1" focusColor="WHITE" layoutX="-1.0" layoutY="8.0" prefHeight="25.0" prefWidth="22.0" promptText="H" style="-fx-text-fill: white;" unFocusColor="WHITE" />
@@ -165,7 +170,12 @@
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="9" />
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="10">
          <children>
-            <JFXButton fx:id="load_ALL11" layoutX="17.0" layoutY="-7.0" prefHeight="25.0" prefWidth="339.0" style="-fx-background-color: grey;" text="Check Location on map" />
+            <JFXButton fx:id="filterParticipants" layoutX="35.0" layoutY="6.0" prefHeight="25.0" prefWidth="111.0" style="-fx-background-color: grey;" text="Filter" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="10">
+         <children>
+            <JFXButton fx:id="goback" onAction="#goBack" layoutX="17.0" layoutY="6.0"  prefHeight="25.0" prefWidth="111.0" style="-fx-background-color: grey;" text="Go back" />
          </children>
       </AnchorPane>
    </children>

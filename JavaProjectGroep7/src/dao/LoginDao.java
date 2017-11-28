@@ -24,7 +24,7 @@ public class LoginDao {
 		Session session = sessionfactory.openSession();
 		session.beginTransaction();
 		
-		Query query= session.createQuery("from Login where Username ='"+currentUser.getUsername()+ "' and password='"+currentUser.getPassword()+"'");
+		Query query= session.createQuery("from Login where Username ='"+currentUser.getUsername()+ "' and password='"+currentUser.getPassword()+"'"+"and Visibility=1");
 		List<Login> user= query.list();
 		
 		for(Login u: user)                       
@@ -242,7 +242,7 @@ public List<Login> getUsersByName(String name) {
 	Session session = sessionfactory.openSession();
 	session.beginTransaction();
 	
-	Query query= session.createQuery("from Login where Username='" + name+"'");
+	Query query= session.createQuery("from Login where Username='" + name+"'"+"and Visibility=1");
 	List<Login> users= query.list();
 	
 	for(int i=0; i<users.size();i++)
@@ -264,7 +264,7 @@ public Login getUsersByID(String id) {
 	Session session = sessionfactory.openSession();
 	session.beginTransaction();
 	
-	Query query= session.createQuery("from Login where UserID='" + id+"'");
+	Query query= session.createQuery("from Login where UserID='" + id+"'"+"and Visibility=1");
 	//List<Login> users= query.list();
 	Login user =  (Login) query.uniqueResult();
 	
@@ -282,7 +282,7 @@ public List<Login> getUsersByNameAndEmail(String name, String email) {
 	Session session = sessionfactory.openSession();
 	session.beginTransaction();
 	
-	Query query= session.createQuery("from Login where Username='" + name+"'and email='"+email+"'");
+	Query query= session.createQuery("from Login where Username='" + name+"'and email='"+email+"'"+"and Visibility=1");
 	List<Login> users= query.list();
 	
 	session.getTransaction().commit();
@@ -294,7 +294,12 @@ public List<Login> getUsersByNameAndEmail(String name, String email) {
 
 public static void main(String[] args) throws Exception {
 	Login login= new Login("seppe","seppe123");
-	login.createNewUser("jonas","jonas123", true, "jonas@gmail.com");
+	List<Login> users= login.getALL();
+	
+	for(int i=0;i< users.size();i++)
+	{
+		System.out.println(users.get(i).toString());
+	}
 
 	
 }

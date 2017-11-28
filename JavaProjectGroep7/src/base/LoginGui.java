@@ -13,7 +13,7 @@ public class LoginGui extends Application {
 	public void start(Stage window) throws Exception {
 		
 		stage = window;
-		Parent root = FXMLLoader.load(getClass().getResource("LoginGui.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("../gui/LoginGui.fxml"));
 		
 		
 		

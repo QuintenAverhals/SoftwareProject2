@@ -70,7 +70,7 @@ public class UserOverviewController {
 	}
 	public void logoutBtn(ActionEvent event) throws Exception
 	{
-		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("loginGui.fxml"));
+		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/loginGui.fxml"));
 		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
 		
 		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -80,13 +80,29 @@ public class UserOverviewController {
 	}
 	public void goBack(ActionEvent event) throws Exception
 	{
-		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("UserMenu.fxml"));
-		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
+		Controller current= new Controller();
+		Login currentUser= current.getCurrentUser();
 		
-		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		window.setScene(passwordForgottenScene);
 		
-		window.show();
+		if(currentUser.isAdmin()==true)
+		{
+			Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/userMenu.fxml"));
+			Scene passwordForgottenScene = new Scene(passwordForgottenParent);
+			
+			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			window.setScene(passwordForgottenScene);
+			
+			window.show();
+		}else {
+			Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/userMenu.fxml"));
+			Scene passwordForgottenScene = new Scene(passwordForgottenParent);
+			
+			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			window.setScene(passwordForgottenScene);
+			
+			window.show();
+			
+		}
 	}
 	public void updateBtn(ActionEvent event) throws Exception
 	{
@@ -174,15 +190,40 @@ public class UserOverviewController {
 		Login user= new Login();
 		String searchUser= filterVieww.getText();
 		
-		users= user.getUsersByName(searchUser);
-	
-		
-		for(int i=0;i<users.size();i++)
+		if(searchUser.equals(""))
 		{
 			
-			viewList.getItems().addAll(users.get(i).getUser_ID()+": "+users.get(i).getUsername());
+			viewList.getItems().clear();
+			viewList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+			
+			
+			users= user.getALL();
 		
+			
+			for(int i=0;i<users.size();i++)
+			{
+				
+				viewList.getItems().addAll(users.get(i).getUser_ID()+": "+users.get(i).getUsername());
+			
+			}
+		}else {
+			
+
+			users= user.getUsersByName(searchUser);
+			
+			
+			for(int i=0;i<users.size();i++)
+			{
+				
+				viewList.getItems().addAll(users.get(i).getUser_ID()+": "+users.get(i).getUsername());
+			
+			
 		}
+		}
+		
+		
+		
+		
 	}
 	
 	
