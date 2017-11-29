@@ -10,6 +10,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import base.Status;
 
+import base.Status;
+import base.Training;
+
 public class TrainingDAO {
 
 	public TrainingDAO() {

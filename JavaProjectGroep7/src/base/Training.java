@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import dao.TrainingDAO;
+
 @Entity 
 @Table(name="TRAINING")
 
