@@ -19,6 +19,7 @@ public class LoginGui extends Application {
 		
 		window.setTitle("Login");
 		window.setScene(new Scene(root,700,400));
+		window.setResizable(false);
 		
 		window.show();
 		
