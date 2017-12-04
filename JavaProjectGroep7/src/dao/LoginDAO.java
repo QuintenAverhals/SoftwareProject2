@@ -12,7 +12,8 @@ import org.hibernate.cfg.Configuration;
 
 import base.Login;
 import base.SHA512;
-public class LoginDao {
+
+public class LoginDAO {
 	
 
 		
