@@ -20,11 +20,11 @@ public class Main extends Application {
     
 	@Override
 	public void start(Stage primaryStage) {
-		primaryStage.setTitle("Main Menu");
+		primaryStage.setTitle("Login");
 		
 		try {
-			FXMLLoader loader = new FXMLLoader(Main.class.getResource("../GUI/Login.fxml"));
-			loader.setController(new buttonsController());
+			FXMLLoader loader = new FXMLLoader(Main.class.getResource("loginGui.fxml"));
+			loader.setController(new Controller());
 			AnchorPane page = (AnchorPane) loader.load();
 			Scene scene = new Scene(page);
 			primaryStage.setScene(scene);
