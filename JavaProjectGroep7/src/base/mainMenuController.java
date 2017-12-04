@@ -60,6 +60,17 @@ public class mainMenuController extends Controller {
 		window.show();
 	}
 	
+	public void employee(ActionEvent event) throws Exception
+	{
+		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("employeesMenu.fxml"));
+		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
+		
+		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		window.setScene(passwordForgottenScene);
+		
+		window.show();
+	}
+	
 	public void training(ActionEvent event) throws Exception
 	{
 		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("trainingMenu.fxml"));

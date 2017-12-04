@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -23,12 +24,20 @@
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <ImageView fitHeight="77.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="mainMenuBtn" layoutX="17.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainMenu" style="-fx-background-color: transparent; -fx-text-fill: transparent; -fx-border-fill: transparent;" text="Button">
+               <graphic>
+                  <ImageView fx:id="logoIMG" fitHeight="48.0" fitWidth="116.0" focusTraversable="true" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/cisco.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
          <children>
-            <Button fx:id="LogoutBtn" onAction="#logout" style="-fx-background-color: grey;" layoutX="121.0" layoutY="14.0" mnemonicParsing="false" text="Logout" textFill="WHITE" />
+            <Button fx:id="LogoutBtn" layoutX="121.0" layoutY="14.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: grey;" text="Logout" textFill="WHITE" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
@@ -38,7 +47,7 @@
                   <Font size="20.0" />
                </font>
             </Text>
-            <Button fx:id="trainingOverviewBtn" onAction="#trainingOverviewMenu" style="-fx-background-color: grey;" layoutX="34.0" layoutY="107.0" mnemonicParsing="false" text="Training overview" textFill="WHITE" />
+            <Button fx:id="trainingOverviewBtn" layoutX="34.0" layoutY="107.0" mnemonicParsing="false" onAction="#trainingOverviewMenu" style="-fx-background-color: grey;" text="Training overview" textFill="WHITE" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
