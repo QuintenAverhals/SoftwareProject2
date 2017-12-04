@@ -49,11 +49,15 @@
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <ImageView fx:id="logoIMG" fitHeight="48.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/cisco.png" />
-               </image>
-            </ImageView>
+            <Button fx:id="mainMenuBtn" onAction="#mainMenu" layoutX="17.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-text-fill: transparent; -fx-border-fill: transparent;" text="Button">
+               <graphic>
+                  <ImageView fx:id="logoIMG" fitHeight="48.0" fitWidth="116.0" focusTraversable="true" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                       	<Image url="@../img/cisco.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
    </children>
