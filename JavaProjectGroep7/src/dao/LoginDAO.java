@@ -12,12 +12,14 @@ import org.hibernate.cfg.Configuration;
 
 import base.Login;
 import base.SHA512;
+<<<<<<< HEAD
 
 public class LoginDAO {
 	
+=======
+public class LoginDAO {
+>>>>>>> 79e4b3fcf11457597d688af4db49c319a74016e2
 
-		
-	
 	public boolean check(Login currentUser) {
 		
 		boolean result = false;

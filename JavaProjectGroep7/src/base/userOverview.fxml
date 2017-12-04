@@ -65,7 +65,7 @@
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
          <children>
-            <JFXCheckBox fx:id="checkBox2" layoutX="70.0" layoutY="17.0" text="CheckBox" textFill="#2d3440" />
+            <JFXCheckBox fx:id="checkBox2" layoutX="69.0" layoutY="11.0" text="CheckBox" textFill="#2d3440" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
