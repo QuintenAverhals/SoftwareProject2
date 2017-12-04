@@ -15,18 +15,17 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 
-public class mainMenuController extends Controller {
+public class bookMenuController extends Controller {
 
 	Button logoutBtn;
-	Button TrainingBtn;
-	Button StatisticsBTN;
-	Button optionBtn;
+	Button bookOverviewBtn;
+	Button bookSearchBtn;
+	Button addBookBtn;
 	Button ManagementBtn;
-	Button bookBtn;
-	Button employeeBtn;
-	Text helloMSG;
+	Button backBtn;
+
+	
 	
 	public void logoutBtn(ActionEvent event) throws Exception
 	{
@@ -38,9 +37,9 @@ public class mainMenuController extends Controller {
 		
 		window.show();
 	}
-	public void management(ActionEvent event) throws Exception
+	public void goBack(ActionEvent event) throws Exception
 	{
-		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("userMenu.fxml"));
+		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("mainMenu.fxml"));
 		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
 		
 		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -48,26 +47,36 @@ public class mainMenuController extends Controller {
 		
 		window.show();
 	}
+	public void addBookMenu(ActionEvent event) throws Exception
+	{
+		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("addBook.fxml"));
+		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
+		
+		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		window.setScene(passwordForgottenScene);
+		
+		window.show();
+	}
+	public void bookOverviewMenu(ActionEvent event) throws Exception
+	{
+		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("bookOverview.fxml"));
+		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
+		
+		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		window.setScene(passwordForgottenScene);
+		
+		window.show();
+	}
+	public void searchBookMenu(ActionEvent event) throws Exception
+	{
+		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("searchBook.fxml"));
+		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
+		
+		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		window.setScene(passwordForgottenScene);
+		
+		window.show();
+	}
+
 	
-	public void book(ActionEvent event) throws Exception
-	{
-		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("bookMenu.fxml"));
-		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
-		
-		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		window.setScene(passwordForgottenScene);
-		
-		window.show();
-	}
-	
-	public void training(ActionEvent event) throws Exception
-	{
-		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("trainingMenu.fxml"));
-		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
-		
-		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		window.setScene(passwordForgottenScene);
-		
-		window.show();
-	}
 }

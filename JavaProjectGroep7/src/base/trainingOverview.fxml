@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="509.0" prefWidth="745.0" style="-fx-background-color: #2d3440;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="base.trainingOverviewController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <AnchorPane prefHeight="78.0" prefWidth="53.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <children>
+            <Text fx:id="training1" fill="WHITE" layoutX="90.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="C++ Les 1" />
+            <Text fx:id="training2" fill="WHITE" layoutX="90.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="C++ Les 2" />
+            <Text fx:id="training3" fill="WHITE" layoutX="90.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="C++ Les 3" />
+            <Text fx:id="training4" fill="WHITE" layoutX="90.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="C++ Les 4" />
+            <Text fx:id="training5" fill="WHITE" layoutX="90.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="C++ Les 5" />
+         </children></AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+         <children>
+            <Text fx:id="werknemer1" fill="WHITE" layoutX="82.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Werknemer1" />
+            <Text fx:id="werknemer2" fill="WHITE" layoutX="82.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Werknemer2" />
+            <Text fx:id="werknemer3" fill="WHITE" layoutX="82.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Werknemer3" />
+            <Text fx:id="werknemer4" fill="WHITE" layoutX="82.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Werknemer4" />
+            <Text fx:id="werknemer5" fill="WHITE" layoutX="82.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Werknemer5" />
+         </children></AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+         <children>
+            <Text fx:id="startdatum1" fill="WHITE" layoutX="30.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="02/12/2017" />
+            <Text fx:id="eindatum1" fill="WHITE" layoutX="142.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="02/12/2017" />
+            <Text fx:id="startdatum2" fill="WHITE" layoutX="26.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="03/12/2017" />
+            <Text fx:id="eindatum2" fill="WHITE" layoutX="142.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="03/12/2017" />
+            <Text fx:id="startdatum3" fill="WHITE" layoutX="30.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="04/12/2017" />
+            <Text fx:id="eindatum3" fill="WHITE" layoutX="142.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="04/12/2017" />
+            <Text fx:id="startdatum4" fill="WHITE" layoutX="30.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="05/12/2017" />
+            <Text fx:id="eindatum4" fill="WHITE" layoutX="142.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="05/12/2017" />
+            <Text fx:id="startdatum5" fill="WHITE" layoutX="26.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="06/12/2017" />
+            <Text fx:id="eindatum5" fill="WHITE" layoutX="142.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="06/12/2017" />
+         </children></AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+         <children>
+            <Text fill="WHITE" layoutX="30.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Naam van training">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+         <children>
+            <Text fill="WHITE" layoutX="14.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start datum">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="133.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Eind datum">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Button fx:id="LogoutBtn" layoutX="169.0" layoutY="14.0" mnemonicParsing="false" onAction="#logoutBtn" style="-fx-background-color: grey;" text="Logout" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Text fill="WHITE" layoutX="72.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Werknemer" wrappingWidth="104.06249783933163">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+         <children>
+            <TextField fx:id="filteropnaamTxt" layoutX="31.0" layoutY="124.0" promptText="filter op naam" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <children>
+            <Button fx:id="goBackBtn" layoutX="14.0" layoutY="121.0" mnemonicParsing="false" onAction="#goBack" style="-fx-background-color: grey;" text="Back" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+   </children>
+</GridPane>

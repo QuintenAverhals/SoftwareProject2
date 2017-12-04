@@ -15,20 +15,18 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 
-public class mainMenuController extends Controller {
+public class trainingMenuController extends Controller {
 
 	Button logoutBtn;
-	Button TrainingBtn;
-	Button StatisticsBTN;
-	Button optionBtn;
-	Button ManagementBtn;
-	Button bookBtn;
-	Button employeeBtn;
-	Text helloMSG;
+	Button trainingOverviewBtn;
+	//Button trainingSearchBtn;
+	//Button addTrainingBtn;
+	Button backBtn;
+
 	
-	public void logoutBtn(ActionEvent event) throws Exception
+	
+	public void logout(ActionEvent event) throws Exception
 	{
 		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("loginGui.fxml"));
 		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
@@ -38,9 +36,9 @@ public class mainMenuController extends Controller {
 		
 		window.show();
 	}
-	public void management(ActionEvent event) throws Exception
+	public void goBack(ActionEvent event) throws Exception
 	{
-		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("userMenu.fxml"));
+		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("mainMenu.fxml"));
 		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
 		
 		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -48,10 +46,9 @@ public class mainMenuController extends Controller {
 		
 		window.show();
 	}
-	
-	public void book(ActionEvent event) throws Exception
+	public void addTrainingMenu(ActionEvent event) throws Exception
 	{
-		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("bookMenu.fxml"));
+		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("addBook.fxml"));
 		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
 		
 		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -59,10 +56,19 @@ public class mainMenuController extends Controller {
 		
 		window.show();
 	}
-	
-	public void training(ActionEvent event) throws Exception
+	public void trainingOverviewMenu(ActionEvent event) throws Exception
 	{
-		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("trainingMenu.fxml"));
+		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("trainingOverview.fxml"));
+		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
+		
+		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		window.setScene(passwordForgottenScene);
+		
+		window.show();
+	}
+	public void searchTrainingMenu(ActionEvent event) throws Exception
+	{
+		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("searchBook.fxml"));
 		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
 		
 		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
