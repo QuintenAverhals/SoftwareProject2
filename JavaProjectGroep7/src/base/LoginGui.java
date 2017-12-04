@@ -8,19 +8,27 @@ import javafx.stage.Stage;
 
 public class LoginGui extends Application {
 
-	
+	private static Stage stage;
 	@Override
 	public void start(Stage window) throws Exception {
 		
-		Parent root = FXMLLoader.load(getClass().getResource("LoginGui.fxml"));
+		stage = window;
+		Parent root = FXMLLoader.load(getClass().getResource("../gui/LoginGui.fxml"));
+		
 		
 		
 		window.setTitle("Login");
 		window.setScene(new Scene(root,700,400));
+		window.setResizable(false);
 		
 		window.show();
 		
 	}
+	/*
+	public static void setRoot(Parent root)
+	{
+		stage.getScene().setRoot(root);
+	}*/
 	
 	public static void main(String[] args) {
 		launch(args);

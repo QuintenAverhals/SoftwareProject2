@@ -1,6 +1,7 @@
 package base;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -19,18 +20,19 @@ import java.io.IOException;
 
 public class mainMenuController extends Controller {
 
-	Button logoutBtn;
-	Button TrainingBtn;
-	Button StatisticsBTN;
-	Button optionBtn;
-	Button ManagementBtn;
-	Button bookBtn;
-	Button employeeBtn;
-	Text helloMSG;
+	private Button logoutBtn;
+	private Button TrainingBtn;
+	private Button StatisticsBTN;
+	private Button optionBtn;
+	private Button ManagementBtn;
+	private Button bookBtn;
+	private Button employeeBtn;
+	private Text helloMSG;
+	
 	
 	public void logoutBtn(ActionEvent event) throws Exception
 	{
-		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("loginGui.fxml"));
+		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/loginGui.fxml"));
 		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
 		
 		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -40,7 +42,7 @@ public class mainMenuController extends Controller {
 	}
 	public void management(ActionEvent event) throws Exception
 	{
-		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("userMenu.fxml"));
+		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/userMenu.fxml"));
 		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
 		
 		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -48,4 +50,20 @@ public class mainMenuController extends Controller {
 		
 		window.show();
 	}
+	public void training(ActionEvent event) throws Exception
+	{
+		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/TrainingMenu.fxml"));
+		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
+		
+		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		window.setScene(passwordForgottenScene);
+		
+		window.show();
+	}
+
+	public void setHelloMSG(String text) {
+		helloMSG.setText(text);
+	}
+	
+	
 }

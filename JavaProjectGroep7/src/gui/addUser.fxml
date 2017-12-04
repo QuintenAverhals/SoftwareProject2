@@ -54,7 +54,7 @@
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
          <children>
-            <Label layoutX="52.0" layoutY="12.0" text="password:" textFill="WHITE">
+            <Label layoutX="52.0" layoutY="12.0" text="Password:" textFill="WHITE">
                <font>
                   <Font size="23.0" />
                </font>
