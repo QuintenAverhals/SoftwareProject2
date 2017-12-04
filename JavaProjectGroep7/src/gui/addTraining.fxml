@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
@@ -13,7 +19,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2d3440;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="base.addTrainingController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2d3440;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="base.addTrainingController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -43,7 +49,7 @@
          <children>
             <ImageView fx:id="logoIMG" fitHeight="48.0" fitWidth="116.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/cisco.png" />
+                  <Image url="@../../img/cisco.png" />
                </image>
             </ImageView>
             <Label layoutX="11.0" layoutY="88.0" text="Training name:" textFill="WHITE">
@@ -65,23 +71,6 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="startDay" focusColor="WHITE" layoutX="86.0" layoutY="3.0" prefHeight="31.0" prefWidth="27.0" promptText="DD" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </JFXTextField>
-            <Text fill="WHITE" layoutX="117.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/" />
-            <JFXTextField fx:id="startMonth" focusColor="WHITE" layoutX="122.0" layoutY="3.0" prefHeight="31.0" prefWidth="27.0" promptText="MM" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </JFXTextField>
-            <JFXTextField fx:id="startYear" focusColor="WHITE" layoutX="159.0" layoutY="3.0" prefHeight="31.0" prefWidth="27.0" promptText="YYYY" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </JFXTextField>
-            <Text fill="WHITE" layoutX="153.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/" />
             <Label layoutX="12.0" layoutY="46.0" text="Start time:" textFill="WHITE">
                <font>
                   <Font size="15.0" />
@@ -98,32 +87,16 @@
                </font>
             </JFXTextField>
             <Text fill="WHITE" layoutX="114.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
+            <DatePicker fx:id="startDate" layoutX="86.0" layoutY="2.0" prefHeight="25.0" prefWidth="113.0" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
-            <Label layoutX="3.0" layoutY="3.0" text="End date:" textFill="WHITE">
+            <Label layoutX="7.0" layoutY="3.0" text="End date:" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="endDay" focusColor="WHITE" layoutX="70.0" layoutY="5.0" prefHeight="31.0" prefWidth="27.0" promptText="DD" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </JFXTextField>
-            <JFXTextField fx:id="endMonth" focusColor="WHITE" layoutX="107.0" layoutY="5.0" prefHeight="31.0" prefWidth="27.0" promptText="MM" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </JFXTextField>
-            <JFXTextField fx:id="endYear" focusColor="WHITE" layoutX="144.0" layoutY="5.0" prefHeight="31.0" prefWidth="27.0" promptText="YYYY" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" unFocusColor="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </JFXTextField>
-            <Text fill="WHITE" layoutX="101.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/" />
-            <Text fill="WHITE" layoutX="140.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/" />
             <Label layoutX="3.0" layoutY="46.0" text="End time:" textFill="WHITE">
                <font>
                   <Font size="15.0" />
@@ -140,6 +113,7 @@
                   <Font size="15.0" />
                </font>
             </JFXTextField>
+            <DatePicker fx:id="endDate" layoutX="78.0" layoutY="3.0" prefHeight="25.0" prefWidth="113.0" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">

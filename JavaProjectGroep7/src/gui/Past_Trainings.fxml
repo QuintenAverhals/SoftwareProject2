@@ -60,7 +60,7 @@
          <children>
             <ImageView fx:id="logoIMG" fitHeight="48.0" fitWidth="116.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/cisco.png" />
+                  <Image url="@../../img/cisco.png" />
                </image>
             </ImageView>
          </children>
@@ -70,7 +70,7 @@
          <children>
             <JFXListView fx:id="viewList" layoutX="14.0" layoutY="14.0" prefHeight="170.0" prefWidth="108.0" style="-fx-text-fill: white; -fx-background-color: #2d3440;" />
             <Label layoutX="128.0" layoutY="56.0" text="Training ID:" textFill="WHITE" />
-            <Label layoutX="124.0" layoutY="98.0" text="Start Date:" textFill="WHITE" />
+            <Label layoutX="123.0" layoutY="91.0" text="Start Date:" textFill="WHITE" />
             <Label layoutX="133.0" layoutY="153.0" text="Status: " textFill="WHITE" />
             <Label layoutX="125.0" layoutY="125.0" text="Start Time:" textFill="WHITE" />
             <Label fx:id="startDate" layoutX="198.0" layoutY="97.0" textFill="WHITE" />
@@ -93,20 +93,18 @@
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <children>
-            <Label layoutX="149.0" layoutY="23.0" text="End Date" textFill="WHITE" />
-            <Text fill="WHITE" layoutX="19.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/" />
-            <Text fill="WHITE" layoutX="50.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/" />
+            <Label layoutX="149.0" layoutY="23.0" text="End Date:" textFill="WHITE" />
             <Label fx:id="startMaand" layoutX="29.0" layoutY="26.0" textFill="WHITE" />
             <Label fx:id="startYear" layoutX="62.0" layoutY="26.0" textFill="WHITE" />
+            <DatePicker fx:id="startDate" editable="false" layoutX="-15.0" layoutY="26.0" prefHeight="25.0" prefWidth="111.0" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
          <children>
-            <Text fill="WHITE" layoutX="35.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/" />
-            <Text fill="WHITE" layoutX="71.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/" />
             <Label fx:id="endDate" layoutX="15.0" layoutY="19.0" textFill="WHITE" />
             <Label fx:id="endMaand" layoutX="47.0" layoutY="19.0" textFill="WHITE" />
             <Label fx:id="endYear" layoutX="82.0" layoutY="19.0" textFill="WHITE" />
+            <DatePicker fx:id="endDate" editable="false" layoutX="12.0" layoutY="28.0" prefHeight="25.0" prefWidth="111.0" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
