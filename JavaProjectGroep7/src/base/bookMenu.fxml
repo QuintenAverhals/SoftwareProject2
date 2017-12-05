@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2d3440;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="base.userMenuController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2d3440;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="base.bookMenuController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -23,29 +23,26 @@
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
          <children>
-            <JFXButton fx:id="userOverview" layoutY="108.0" onAction="#userOverviewMenu" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="User overview" textFill="WHITE" />
+            <Button fx:id="bookOverviewBtn" layoutX="-6.0" layoutY="100.0" mnemonicParsing="false" onAction="#bookOverviewMenu" prefHeight="31.0" prefWidth="215.0" style="-fx-background-color: grey;" text="Book overview" textFill="WHITE" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
-            <JFXButton fx:id="addUser" layoutY="14.0" onAction="#addUserMenu" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Add user" textFill="WHITE" />
-            <JFXButton fx:id="goBack" layoutY="54.0" onAction="#goBack" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Go back" textFill="WHITE" />
+            <Button fx:id="searchBookBtn" layoutX="-7.0" mnemonicParsing="false" onAction="#searchBookMenu" prefHeight="31.0" prefWidth="215.0" style="-fx-background-color: grey;" text="Search book by title/author" textFill="WHITE" />
+            <Button fx:id="goBackBtn" layoutX="-4.0" layoutY="88.0" mnemonicParsing="false" onAction="#goBack" prefHeight="31.0" prefWidth="215.0" style="-fx-background-color: grey;" text="Back" textFill="WHITE" />
+            <Button fx:id="addBookBtn" layoutX="-7.0" layoutY="36.0" mnemonicParsing="false" onAction="#addBookMenu" prefHeight="31.0" prefWidth="215.0" style="-fx-background-color: grey;" text="Add book" textFill="WHITE" />
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
-         <children>
-            <JFXButton fx:id="logoutBtn" layoutX="107.0" layoutY="8.0" onAction="#logoutBtn" prefHeight="25.0" prefWidth="87.0" text="LOGOUT" textFill="#757575" />
-         </children>
-      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" />
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
          <children>
-            <Text fx:id="downLEFTmsgtext" fill="WHITE" layoutX="7.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Software Project 2" wrappingWidth="116.13671875" />
+            <Text fill="WHITE" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Software Project 2" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
          <children>
-            <Text fx:id="downRighttxt" fill="WHITE" layoutX="142.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GROEP 7" wrappingWidth="116.13671875" />
+            <Text fill="WHITE" layoutX="138.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Groep 7" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
@@ -54,7 +51,7 @@
                <graphic>
                   <ImageView fx:id="logoIMG" fitHeight="48.0" fitWidth="116.0" focusTraversable="true" pickOnBounds="true" preserveRatio="true">
                      <image>
-                       	<Image url="@../img/cisco.png" />
+                        <Image url="@../img/cisco.png" />
                      </image>
                   </ImageView>
                </graphic>

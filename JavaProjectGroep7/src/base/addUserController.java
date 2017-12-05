@@ -21,6 +21,18 @@ public class addUserController {
 	public PasswordField CreatepasswordComfirmTxt;
 	public TextField CreateemailTxt;
 	public CheckBox CreateAdminRights;
+	public Button mainMenuBtn;
+	
+	public void mainMenu(ActionEvent event) throws Exception
+	{
+		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("mainMenu.fxml"));
+		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
+		
+		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		window.setScene(passwordForgottenScene);
+		
+		window.show();
+	}
 	
 	public void logoutBtn(ActionEvent event) throws Exception
 	{

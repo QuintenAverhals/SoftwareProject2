@@ -20,6 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class UserOverviewController {
+<<<<<<< HEAD
 	public ListView viewList;
 	public TextField userID;
 	public TextField userName;
@@ -36,6 +37,19 @@ public class UserOverviewController {
 		Login user= new Login();
 		
 		users= user.getALL();
+=======
+
+	public void mainMenu(ActionEvent event) throws Exception
+	{
+		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("mainMenu.fxml"));
+		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
+		
+		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		window.setScene(passwordForgottenScene);
+		
+		window.show();
+	}
+>>>>>>> dev_Tom
 	
 		
 		for(int i=0;i<users.size();i++)
