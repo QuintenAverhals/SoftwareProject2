@@ -60,7 +60,7 @@
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
          <children>
-            <JFXListView fx:id="viewList" layoutX="14.0" layoutY="14.0" prefHeight="170.0" prefWidth="108.0" style="-fx-text-fill: white; -fx-background-color: #2d3440;" />
+            <JFXListView fx:id="viewList" onMouseClicked="#fillBlanks" layoutX="14.0" layoutY="14.0" prefHeight="170.0" prefWidth="108.0" style="-fx-text-fill: white; -fx-background-color: #2d3440;" />
             <JFXTextField fx:id="userID" focusColor="WHITE" layoutX="197.0" layoutY="42.0" style="-fx-text-fill: white;" unFocusColor="#fdfbfb" />
             <Label layoutX="138.0" layoutY="46.0" text="User ID" textFill="WHITE" />
             <Label layoutX="133.0" layoutY="98.0" text="Password" textFill="WHITE" />
@@ -91,7 +91,6 @@
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <children>
-            <JFXButton fx:id="modValues" layoutX="-7.0" layoutY="18.0" onAction="#fillBlanks" prefHeight="25.0" prefWidth="161.0" style="-fx-background-color: grey;" text="Modify Data" />
          </children></AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
          <children>
@@ -121,7 +120,7 @@
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="6">
          <children>
-            <JFXTextField fx:id="filterVieww" focusColor="WHITE" layoutX="22.0" layoutY="-1.0" prefHeight="25.0" prefWidth="97.0" style="-fx-text-fill: white;" unFocusColor="WHITE" />
+            <JFXTextField fx:id="filterVieww" onAction="#filterView" focusColor="WHITE" layoutX="22.0" layoutY="-1.0" prefHeight="25.0" prefWidth="97.0" style="-fx-text-fill: white;" unFocusColor="WHITE" />
             <JFXButton fx:id="filerView" layoutX="15.0" layoutY="36.0" onAction="#filterView" prefHeight="25.0" prefWidth="111.0" style="-fx-background-color: grey;" text="Filter" />
          </children></AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-text-fill: white;" GridPane.columnIndex="2" GridPane.rowIndex="5" />

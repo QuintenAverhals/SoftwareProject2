@@ -1,45 +1,39 @@
 package base;
 
-import java.io.IOException;
-
-import base.buttonsController;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.stage.Stage;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
+public class LoginGui extends Application {
 
-public class Main extends Application {
-
-    
+	private static Stage stage;
 	@Override
-	public void start(Stage primaryStage) {
-		primaryStage.setTitle("Login");
+	public void start(Stage window) throws Exception {
 		
-		try {
-			FXMLLoader loader = new FXMLLoader(Main.class.getResource("loginGui.fxml"));
-			loader.setController(new Controller());
-			AnchorPane page = (AnchorPane) loader.load();
-			Scene scene = new Scene(page);
-			primaryStage.setScene(scene);
-			primaryStage.show();
-
-			
-		} 
-		catch (IOException e) {
-			e.printStackTrace();
-		}
+		stage = window;
+		Parent root = FXMLLoader.load(getClass().getResource("../gui/LoginGui.fxml"));
+		
+		
+		
+		window.setTitle("Login");
+		window.setScene(new Scene(root,700,400));
+		window.setResizable(false);
+		
+		window.show();
+		
 	}
+	/*
+	public static void setRoot(Parent root)
+	{
+		stage.getScene().setRoot(root);
+	}*/
 	
 	public static void main(String[] args) {
-		launch(args);	
-		
-		
+		launch(args);
 	}
+
 }
+
+

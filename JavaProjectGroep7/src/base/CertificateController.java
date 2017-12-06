@@ -7,7 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class AddUserToTrainingController {
+public class CertificateController {
 
 	public void logoutBtn(ActionEvent event) throws Exception
 	{

@@ -3,7 +3,7 @@ package base;
 import java.util.Date;
 import java.util.List;
 
-import dao.LoginDao;
+import dao.LoginDAO;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
@@ -44,7 +44,7 @@ public class TrainingOverviewController {
 	public void logoutBtn(ActionEvent event) throws Exception
 	{
 	
-		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/loginGui.fxml"));
+		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/loginMenu.fxml"));
 		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
 		
 		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -56,9 +56,9 @@ public class TrainingOverviewController {
 	
 	public void goBack(ActionEvent event) throws Exception
 	{
-		Controller current= new Controller();
+		LoginController current= new LoginController();
 		Login currentUser= current.getCurrentUser();
-		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/TrainingMenu.fxml"));
+		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/trainingMenu.fxml"));
 		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
 		
 		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -68,7 +68,7 @@ public class TrainingOverviewController {
 	}
 	public void locationOnMap(ActionEvent event) throws Exception
 	{
-		Controller current= new Controller();
+		LoginController current= new LoginController();
 		Login currentUser= current.getCurrentUser();
 		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/locationOnMap.fxml"));
 		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
