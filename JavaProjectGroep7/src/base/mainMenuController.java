@@ -50,16 +50,8 @@ public class mainMenuController extends Controller {
 		
 		window.show();
 	}
-<<<<<<< HEAD
-	public void training(ActionEvent event) throws Exception
-	{
-		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/TrainingMenu.fxml"));
-=======
-	
 	public void book(ActionEvent event) throws Exception
 	{
-		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("bookMenu.fxml"));
->>>>>>> dev_Tom
 		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
 		
 		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -67,14 +59,10 @@ public class mainMenuController extends Controller {
 		
 		window.show();
 	}
-<<<<<<< HEAD
 
 	public void setHelloMSG(String text) {
 		helloMSG.setText(text);
 	}
-	
-	
-=======
 	
 	public void employee(ActionEvent event) throws Exception
 	{
@@ -89,7 +77,7 @@ public class mainMenuController extends Controller {
 	
 	public void training(ActionEvent event) throws Exception
 	{
-		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("trainingMenu.fxml"));
+		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/TrainingMenu.fxml"));
 		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
 		
 		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -97,5 +85,4 @@ public class mainMenuController extends Controller {
 		
 		window.show();
 	}
->>>>>>> dev_Tom
 }
