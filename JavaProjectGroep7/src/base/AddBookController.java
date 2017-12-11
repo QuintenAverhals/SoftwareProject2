@@ -21,7 +21,7 @@ public class AddBookController {
 	public PasswordField CreateUitgeverTxt;
 	public TextField CreateTitleTxt;
 	public TextField CreateAuthorTxt;
-	Button mainMenuBtn;
+	public Button mainMenuBtn;
 	
 	public void mainMenu(ActionEvent event) throws Exception
 	{

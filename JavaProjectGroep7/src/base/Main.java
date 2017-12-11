@@ -2,6 +2,8 @@ package base;
 
 import java.util.List;
 
+import javax.persistence.PersistenceException;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -36,10 +38,19 @@ public class Main extends Application {
 	}*/
 	
 	public static void main(String[] args) {
-		factory = new Configuration().configure().addAnnotatedClass(Login.class).buildSessionFactory();
-		launch(args); 
+		//factory = new Configuration().configure().addAnnotatedClass(Login.class).buildSessionFactory();
+		try {
+			factory = new Configuration().configure().addAnnotatedClass(Login.class).buildSessionFactory();
+		}
+		catch (PersistenceException ex) {
+			System.out.println("Error -> Application will exit!");
+			System.exit(0);
+			
+		}
+		launch(args);
 		factory.close();
 	}
+	
 }
 
 

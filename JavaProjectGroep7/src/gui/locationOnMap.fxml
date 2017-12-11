@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2d3440;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="base.checkLocationOnMapController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2d3440;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="base.CheckLocationOnMapController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -49,7 +49,7 @@
             <AnchorPane layoutX="5.0" layoutY="-60.0" prefHeight="200.0" prefWidth="200.0">
                <children>
                   <JFXButton fx:id="goBackUserMenuBtn" layoutX="17.0" layoutY="128.0" onAction="#goBack" prefHeight="25.0" prefWidth="161.0" style="-fx-background-color: grey;" text="Go BACK" />
-                  <ImageView fitHeight="247.0" fitWidth="558.0" layoutX="-182.0" layoutY="-131.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="locationImgView" fitHeight="247.0" fitWidth="558.0" layoutX="-182.0" layoutY="-131.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </AnchorPane>
          </children></AnchorPane>
