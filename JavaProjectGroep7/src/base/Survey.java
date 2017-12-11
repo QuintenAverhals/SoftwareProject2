@@ -20,6 +20,8 @@ import org.hibernate.Session;
 @Table(name="SURVEY_QUESTIONS")
 public class Survey {
 	
+	
+	
 	@Id
 	CompoundSurvey compoundSurveyKey;
 	
@@ -65,7 +67,7 @@ public class Survey {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		
-		Query query = session.createQuery("FROM Survey ORDER BY SurveyID DESC");
+		Query query = session.createQuery("FROM Survey ORDER BY compoundSurveyKey DESC");
 		List<Survey> survey = query.list();
 		Survey laatsteVraag = survey.get(0);
 		
@@ -78,11 +80,11 @@ public class Survey {
 	}
 	
 	public static List<Survey> getQuestionsFromSurveyID(int surveyID){
-		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+		SessionFactory sessionFactory = new Configuration().configure().addAnnotatedClass(Survey.class).buildSessionFactory();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		//CHECK DIT???
-		Query query = session.createQuery("FROM Survey WHERE survey_ID = "+surveyID);
+		Query query = session.createQuery("FROM Survey WHERE survey_ID = "+ surveyID);
 		List<Survey> survey = query.list();
 		for(int i=0;i<survey.size();i++)
 		{
@@ -97,7 +99,7 @@ public class Survey {
 	}
 
 	public static List<Survey> getSpecificQuestionFromSurveyID(int surveyID, int questionID){
-		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+		SessionFactory sessionFactory = new Configuration().addAnnotatedClass(Survey.class).configure().buildSessionFactory();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 
@@ -112,8 +114,15 @@ public class Survey {
 		return survey;
 	}
 	
+	public static void main(String[] args) {
+		Survey test= new Survey();
+		
+		
+		
+	}
+	
 	public static Boolean addQuestion(int surveyID, String question) {
-		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+		SessionFactory sessionFactory = new Configuration().addAnnotatedClass(Survey.class).configure().buildSessionFactory();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		
@@ -137,7 +146,7 @@ public class Survey {
 	}
 
 	public static Boolean changeQuestion(int surveyID, int questionID, String newQuestion) {
-		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+		SessionFactory sessionFactory = new Configuration().addAnnotatedClass(Survey.class).configure().buildSessionFactory();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		
@@ -154,9 +163,7 @@ public class Survey {
 		return true;
 	}
 
-	
-	public static void main(String[] args) {
-		
+
 		//Boolean toegevoegd = addQuestion(5,"Was het eten lekker in het restaurant tijdens de avond?");
 		//List<Survey> vragen= getQuestionsFromSurveyID(5);
 		/*Boolean verander = changeQuestion(5,2,"Was het diner lekker?");
@@ -202,5 +209,8 @@ public class Survey {
 		{
 			System.out.println(surveyss.get(i).toString());
 		}*/
+	
+	
+
 	}
-}
+
