@@ -1,45 +1,57 @@
 package base;
 
-import java.io.IOException;
+import java.util.List;
 
-import base.buttonsController;
+import javax.persistence.PersistenceException;
+
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+import dao.LoginDAO;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.stage.Stage;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
-
+import javafx.stage.Stage;
 
 public class Main extends Application {
-
-    
+	
+	public static SessionFactory factory;
+	private static Stage stage;
 	@Override
-	public void start(Stage primaryStage) {
-		primaryStage.setTitle("Login");
+	public void start(Stage window) throws Exception {
 		
-		try {
-			FXMLLoader loader = new FXMLLoader(Main.class.getResource("loginGui.fxml"));
-			loader.setController(new Controller());
-			AnchorPane page = (AnchorPane) loader.load();
-			Scene scene = new Scene(page);
-			primaryStage.setScene(scene);
-			primaryStage.show();
-
-			
-		} 
-		catch (IOException e) {
-			e.printStackTrace();
-		}
+		stage = window;
+		Parent root = FXMLLoader.load(getClass().getResource("../gui/loginMenu.fxml"));
+		
+		window.setTitle("Login");
+		window.setScene(new Scene(root,700,400));
+		window.setResizable(false);
+		
+		window.show();
+		
 	}
+	/*
+	public static void setRoot(Parent root)
+	{
+		stage.getScene().setRoot(root);
+	}*/
 	
 	public static void main(String[] args) {
-		launch(args);	
-		
-		
+		//factory = new Configuration().configure().addAnnotatedClass(Login.class).buildSessionFactory();
+		try {
+			factory = new Configuration().configure().addAnnotatedClass(Login.class).buildSessionFactory();
+		}
+		catch (PersistenceException ex) {
+			System.out.println("Error -> Application will exit!");
+			System.exit(0);
+			
+		}
+		launch(args);
+		factory.close();
 	}
+	
 }
+
+
+
