@@ -34,7 +34,7 @@
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
             <JFXButton fx:id="ManagementBtn" onAction="#management" layoutY="14.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Management" textFill="WHITE" />
-            <JFXButton fx:id="bookBtn" layoutY="54.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Book" textFill="WHITE" />
+            <JFXButton fx:id="bookBtn" onAction="#book" layoutY="54.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Book" textFill="WHITE" />
             <JFXButton fx:id="employeeBtn" layoutY="94.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Employees" textFill="WHITE" />
          </children>
       </AnchorPane>

@@ -33,7 +33,7 @@ public class CheckLocationOnMapController {
 				+ "&center=" + parsedAddress
 				+ "&size=" + width + "x" + height
 				+ "&markers=color:red%7Clabel:A%7C" + parsedAddress
-				+ "&key=AIzaSyBOCvkt8LgYBWuH602oYK1cm6D4ltj54_0");
+				+ "&key=" + Credentials.API_KEY_MAPS);
 	
 		locationImgView.setImage(map);
 	}
