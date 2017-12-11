@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2d3440;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="base.pastTrainingsController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+         <children>
+            <Text fill="WHITE" layoutX="15.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Past Trainings" wrappingWidth="200.0">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+         <children>
+            <JFXButton fx:id="logoutBtn" layoutX="107.0" layoutY="8.0" onAction="#logoutBtn" prefHeight="25.0" prefWidth="87.0" text="LOGOUT" textFill="#757575" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <ImageView fx:id="logoIMG" fitHeight="48.0" fitWidth="116.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/cisco.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+         <children>
+            <JFXListView fx:id="viewList" layoutX="14.0" layoutY="14.0" prefHeight="170.0" prefWidth="108.0" style="-fx-text-fill: white; -fx-background-color: #2d3440;" />
+            <Label layoutX="128.0" layoutY="56.0" text="Training ID:" textFill="WHITE" />
+            <Label layoutX="123.0" layoutY="91.0" text="Start Date:" textFill="WHITE" />
+            <Label layoutX="133.0" layoutY="153.0" text="Status: " textFill="WHITE" />
+            <Label layoutX="125.0" layoutY="125.0" text="Start Time:" textFill="WHITE" />
+            <Label fx:id="startDate" layoutX="198.0" layoutY="97.0" textFill="WHITE" />
+            <Label fx:id="status" layoutX="172.0" layoutY="154.0" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="6" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <children>
+            <Label layoutX="146.0" layoutY="14.0" text="Training Name:" textFill="WHITE" />
+            <Label fx:id="trainingID" layoutX="-4.0" layoutY="15.0" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="isAdmin1" prefHeight="200.0" prefWidth="200.0" style="-fx-text-fill: white;" GridPane.columnIndex="2" GridPane.rowIndex="2">
+         <children>
+            <Label fx:id="trainingName" layoutX="37.0" layoutY="14.0" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+         <children>
+            <Label layoutX="149.0" layoutY="23.0" text="End Date:" textFill="WHITE" />
+            <Label fx:id="startMaand" layoutX="29.0" layoutY="26.0" textFill="WHITE" />
+            <Label fx:id="startYear" layoutX="62.0" layoutY="26.0" textFill="WHITE" />
+            <DatePicker fx:id="startDate" editable="false" layoutX="-15.0" layoutY="26.0" prefHeight="25.0" prefWidth="111.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+         <children>
+            <Label fx:id="endDate" layoutX="15.0" layoutY="19.0" textFill="WHITE" />
+            <Label fx:id="endMaand" layoutX="47.0" layoutY="19.0" textFill="WHITE" />
+            <Label fx:id="endYear" layoutX="82.0" layoutY="19.0" textFill="WHITE" />
+            <DatePicker fx:id="endDate" editable="false" layoutX="12.0" layoutY="28.0" prefHeight="25.0" prefWidth="111.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+         <children>
+            <Label fx:id="SurveyID" layoutX="185.0" layoutY="11.0" text="Survey ID:" textFill="WHITE" />
+            <Label layoutX="59.0" layoutY="11.0" text="Location ID:" textFill="WHITE" />
+            <Label fx:id="locationID" layoutX="133.0" layoutY="12.0" prefHeight="17.0" prefWidth="12.0" textFill="WHITE" />
+         </children></AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
+         <children>
+            <Label layoutX="45.0" layoutY="12.0" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+         <children>
+            <JFXListView fx:id="viewList1" layoutX="23.0" layoutY="21.0" prefHeight="79.0" prefWidth="135.0" style="-fx-text-fill: white; -fx-background-color: #2d3440;" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
+         <children>
+            <JFXButton fx:id="filterParticipants1" layoutX="6.0" layoutY="7.0" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: grey;" text="Upload Certificate" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="11">
+         <children>
+            <Text fx:id="downLEFTmsgtext" fill="WHITE" layoutX="25.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Software Project 2" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="11">
+         <children>
+            <Text fx:id="downRighttxt" fill="WHITE" layoutX="123.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GROEP 7" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
+         <children>
+            <JFXTextField fx:id="filterParticipantsSearchBar" focusColor="WHITE" layoutX="35.0" layoutY="-4.0" prefHeight="25.0" prefWidth="111.0" style="-fx-text-fill: white;" unFocusColor="WHITE" />
+         </children></AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="7">
+         <children>
+            <JFXTextField fx:id="filterTrainingsSearchBar" focusColor="WHITE" layoutX="21.0" layoutY="-1.0" prefHeight="25.0" prefWidth="97.0" style="-fx-text-fill: white;" unFocusColor="WHITE" />
+            <JFXButton fx:id="filterTrainings" layoutX="15.0" layoutY="36.0" prefHeight="25.0" prefWidth="111.0" style="-fx-background-color: grey;" text="Filter" />
+         </children></AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-text-fill: white;" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+         <children>
+            <Label layoutX="151.0" layoutY="12.0" text="End Time:" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="9">
+         <children>
+            <JFXButton fx:id="filterTrainings1" layoutX="15.0" layoutY="-4.0" prefHeight="25.0" prefWidth="111.0" style="-fx-background-color: grey;" text="Load values" />
+         </children></AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="10">
+         <children>
+            <JFXButton fx:id="filterParticipants" layoutX="35.0" layoutY="6.0" prefHeight="25.0" prefWidth="111.0" style="-fx-background-color: grey;" text="Filter" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="10">
+         <children>
+            <JFXButton fx:id="goback" layoutX="16.0" layoutY="6.0" onAction="#goBack" prefHeight="25.0" prefWidth="111.0" style="-fx-background-color: grey;" text="Go back" />
+         </children>
+      </AnchorPane>
+   </children>
+</GridPane>
