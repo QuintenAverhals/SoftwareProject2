@@ -11,21 +11,18 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import base.Login;
+import base.Main;
 import base.SHA512;
-
 public class LoginDAO {
 	
 
-		
-	
+
 	public boolean check(Login currentUser) {
 		
 		boolean result = false;
-		SessionFactory sessionfactory= new Configuration().configure().addAnnotatedClass(Login.class).buildSessionFactory();
-		Session session = sessionfactory.openSession();
-		session.beginTransaction();
-		
-		Query query= session.createQuery("from Login where Username ='"+currentUser.getUsername()+ "' and password='"+currentUser.getPassword()+"'");
+		Session session = Main.factory.getCurrentSession();
+		session.beginTransaction(); 
+		Query query= session.createQuery("from Login where Username ='"+currentUser.getUsername()+ "' and password='"+currentUser.getPassword()+"'"+"and Visibility=1");
 		List<Login> user= query.list();
 		
 		for(Login u: user)                       
@@ -38,10 +35,9 @@ public class LoginDAO {
 		}
 		
 		
+		
 		session.getTransaction().commit();
-		System.out.println("Done!"); 
-		session.close();
-		sessionfactory.close();
+		
 		 
 		return result;
 	}
@@ -49,10 +45,8 @@ public class LoginDAO {
 	public void createNewUser(String userName, String wachtwoord, boolean isAdmin, String email) throws Exception
 	{
 		
-		SessionFactory sessionfactory= new Configuration().configure().addAnnotatedClass(Login.class).buildSessionFactory();
-		Session session = sessionfactory.openSession();
-		session.beginTransaction();
-		
+		Session session = Main.factory.getCurrentSession();
+		session.beginTransaction(); 
 		//These lines will call the sha function which will encrypt the password
 		SHA512 hasher = new SHA512();
 		String password=hasher.hashString(wachtwoord);
@@ -64,8 +58,6 @@ public class LoginDAO {
 		
 		
 		session.getTransaction().commit();
-		session.close();
-		sessionfactory.close();
 		
 		
 	}
@@ -95,8 +87,8 @@ public class LoginDAO {
 	{
 		//functions asks currentPassword to check if current user is not a burgler :D
 		
-		SessionFactory sessionfactory= new Configuration().configure().addAnnotatedClass(Login.class).buildSessionFactory();
-		Session session = sessionfactory.openSession();
+		Session session = Main.factory.getCurrentSession();
+		session.beginTransaction(); 
 		session.beginTransaction();
 		
 		
@@ -120,36 +112,73 @@ public class LoginDAO {
 		}
 			
 		session.getTransaction().commit();
-		session.close();
-		sessionfactory.close();
+		
+		
 		
 	}
-	void updateUserName(int id, String userName)
+	public void updateUserName(int id, String userName)
 	{
 		
 		
-		SessionFactory sessionfactory= new Configuration().configure().addAnnotatedClass(Login.class).buildSessionFactory();
-		Session session = sessionfactory.openSession();
-		session.beginTransaction();
+		Session session = Main.factory.getCurrentSession();
+		session.beginTransaction(); 
 		
 		
 		Login myLogin= (Login) session.get(Login.class, id);
 		myLogin.setUsername(userName);
 		
-	
-			
+		
 		session.getTransaction().commit();
-		session.close();
-		sessionfactory.close();
+		
+	
+	
 		
 	}
-	void isAdmin(int id, Boolean admin)
+	public void updateIsAdmin(int id, boolean isAdmin)
 	{
 		
 		
-		SessionFactory sessionfactory= new Configuration().configure().addAnnotatedClass(Login.class).buildSessionFactory();
-		Session session = sessionfactory.openSession();
-		session.beginTransaction();
+		Session session = Main.factory.getCurrentSession();
+		session.beginTransaction(); 
+		
+		
+		Login myLogin= (Login) session.get(Login.class, id);
+		myLogin.setAdmin(isAdmin);
+		
+		
+		session.getTransaction().commit();
+		
+		
+	
+		
+	}
+	public void updateAll(int id,String email, String username, String password, boolean isAdmin )
+	{
+		
+		
+		Session session = Main.factory.getCurrentSession();
+		session.beginTransaction(); 
+		
+		
+		Login myLogin= (Login) session.get(Login.class, id);
+		myLogin.setAdmin(isAdmin);
+		myLogin.setEmail(email);
+		myLogin.setUsername(username);
+		myLogin.setPassword(password);
+		
+		
+		session.getTransaction().commit();
+		
+	
+		
+	}
+	public void isAdmin(int id, boolean admin)
+	{
+		
+		
+		Session session = Main.factory.getCurrentSession();
+		session.beginTransaction(); 
+		
 		
 		
 		Login myLogin= (Login) session.get(Login.class, id);
@@ -158,32 +187,124 @@ public class LoginDAO {
 	
 			
 		session.getTransaction().commit();
-		session.close();
-		sessionfactory.close();
+		
+		
+	}
+	public static void deleteLogin(int id)
+	{
+		
+		
+		Session session = Main.factory.getCurrentSession();
+		session.beginTransaction(); 
+		
+		
+		
+		Login myLogin= (Login) session.get(Login.class, id);
+		myLogin.setVisibility(0);
+		session.update(myLogin);
+	
+			
+		session.getTransaction().commit();
+	
+		
 		
 	}
 public List<Login> getALL() {
 		
 		
-		SessionFactory sessionfactory= new Configuration().configure().addAnnotatedClass(Login.class).buildSessionFactory();
-		Session session = sessionfactory.openSession();
-		session.beginTransaction();
+		Session session = Main.factory.getCurrentSession();
+		session.beginTransaction(); 
+	
 		
-		Query query= session.createQuery("from Login");
+		Query query= session.createQuery("from Login where Visibility=1");
 		List<Login> users= query.list();
 		
 		session.getTransaction().commit();
-		session.close();
-		sessionfactory.close();
+		
 		 
 		return users;
 	}
+public List<Login> getUsersByName(String name) {
+	
+	
+	Session session = Main.factory.getCurrentSession();
+	session.beginTransaction(); 
+	
+	
+	Query query= session.createQuery("from Login where Username='" + name+"'"+"and Visibility=1");
+	List<Login> users= query.list();
+	
+	
+	session.getTransaction().commit();
+	
 
-public static void main(String[] args) throws Exception {
-	Login login= new Login("seppe123","bilal123");
-	login.createNewUser("seppe", "seppe1234", true,"seppe@student.ehb.be");
+	 
+	return users;
+}
+public Login getUsersByID(String id) {
 	
 	
+	Session session = Main.factory.getCurrentSession();
+	session.beginTransaction(); 
+	
+	
+	Query query= session.createQuery("from Login where UserID='" + id+"'"+"and Visibility=1");
+	//List<Login> users= query.list();
+	Login user =  (Login) query.uniqueResult();
+	
+	
+	session.getTransaction().commit();
+	
+	
+	 
+	return user;	
+}
+public List<Login> getUsersByNameAndEmail(String name, String email) {
+	
+	
+	Session session = Main.factory.getCurrentSession();
+	session.beginTransaction(); 
+
+	
+	Query query= session.createQuery("from Login where Username='" + name+"'and email='"+email+"'"+"and Visibility=1");
+	List<Login> users= query.list();
+	
+	session.getTransaction().commit();
+	
+
+	 
+	return users;
+}
+ 
+public boolean checkUsernameUnique(String name) {
+	
+	boolean result= false;
+	
+	Session session = Main.factory.getCurrentSession();
+	session.beginTransaction(); 
+	
+	
+	Query query= session.createQuery("from Login where Username='" + name+"'"+"and Visibility=1");
+	List<Login> users= query.list();
+	
+	for(int i=0;i<users.size();i++)
+	{
+		if(users.get(i).getUsername().equals(name))
+		{
+			session.getTransaction().commit();
+			return true; 
+		}
+	}
+	
+	
+	
+	session.getTransaction().commit();
+	
+
+	 
+	return result;
 }
 
 }
+
+

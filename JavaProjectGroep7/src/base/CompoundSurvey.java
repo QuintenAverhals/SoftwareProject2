@@ -2,11 +2,16 @@ package base;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Table;
 
 @Embeddable
+@Table(name="SURVEY_QUESTIONS")
 public class CompoundSurvey implements Serializable{
 	
+	@Column(name="survey_ID")
 	private int survey_ID;
 	private int question_ID;
 	
@@ -20,12 +25,14 @@ public class CompoundSurvey implements Serializable{
 		this.survey_ID = survey_ID;
 		this.question_ID = question_ID;
 	}
+	@EmbeddedId
 	public int getSurvey_ID() {
 		return survey_ID;
 	}
 	public void setSurvey_ID(int survey_ID) {
 		this.survey_ID = survey_ID;
 	}
+	
 	public int getQuestion_ID() {
 		return question_ID;
 	}
