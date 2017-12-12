@@ -1,5 +1,5 @@
 package base;
-import dao.LocationDAO;
+
 import org.hibernate.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +11,11 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory; 
 import org.hibernate.cfg.Configuration;
+
+import dao.TrainingDAO;
 import dao.LocationDAO;
+
+
 
 @Entity 
 @Table(name="LOCATION")
@@ -161,12 +165,12 @@ public boolean equals(Object obj) {
 }
 @Override
 public String toString() {
-	return "Location [location_ID=" + location_ID + ", city=" + city + ", country=" + country + ", zip_code=" + zip_code
+	return "city=" + city + ", country=" + country + ", zip_code=" + zip_code
 			+ ", bus=" + bus + ", streetname=" + streetname + ", streetnumber=" + streetnumber + "]";
 }
 
 
-public static void main(String[] args) {
+public static void main(String[] args) throws Exception {
 	Location location= new Location();
 	
 	location.updateBus(9, "yo1lo");

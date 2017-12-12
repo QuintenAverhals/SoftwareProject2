@@ -23,20 +23,20 @@
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
          <children>
-            <JFXButton fx:id="TrainingBtn" layoutY="108.0" onAction="#training" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Training" textFill="WHITE" />
+            <JFXButton fx:id="TrainingBtn" layoutY="112.0" onAction="#training" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Training" textFill="WHITE" />
             <Text fx:id="helloMSG" fill="WHITE" layoutX="48.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="137.13671875" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <children>
-            <JFXButton fx:id="optionBtn" layoutY="-6.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Options" textFill="WHITE" />
+            <JFXButton fx:id="surveyBtn" layoutY="-10.0" onAction="#surveyManagement" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Survey" textFill="WHITE" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
-            <JFXButton fx:id="bookBtn" layoutY="14.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Book" textFill="WHITE" />
-            <JFXButton fx:id="employeeBtn" layoutY="54.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Employees" textFill="WHITE" />
-            <JFXButton fx:id="StatisticsBTN" layoutX="-1.0" layoutY="90.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Statistics" textFill="WHITE" />
+            <JFXButton fx:id="bookBtn" layoutY="16.0" onAction="#book" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Book" textFill="WHITE" />
+            <JFXButton fx:id="employeeBtn" layoutY="54.0" onAction="#employee" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Employees" textFill="WHITE" />
+            <JFXButton fx:id="StatisticsBTN" layoutX="-1.0" layoutY="89.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Statistics" textFill="WHITE" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
@@ -58,7 +58,7 @@
          <children>
             <ImageView fx:id="logoIMG" fitHeight="48.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@soft%20proj%20final/SoftwareProject2/JavaProjectGroep7/src/img/cisco.png" />
+                  <Image url="@../../Downloads/soft%20proj%20final/SoftwareProject2/JavaProjectGroep7/src/img/cisco.png" />
                </image>
             </ImageView>
          </children>

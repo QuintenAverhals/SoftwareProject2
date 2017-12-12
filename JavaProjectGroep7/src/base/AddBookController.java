@@ -25,17 +25,34 @@ public class AddBookController {
 	
 	public void mainMenu(ActionEvent event) throws Exception
 	{
-		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/mainMenu.fxml"));
-		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
+		LoginController current= new LoginController();
+		Login currentUser= current.getCurrentUser();
 		
-		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		window.setScene(passwordForgottenScene);
 		
-		window.show();
+		if(currentUser.isAdmin()==true)
+		{
+			Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/mainMenu.fxml"));
+			Scene passwordForgottenScene = new Scene(passwordForgottenParent);
+			
+			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			window.setScene(passwordForgottenScene);
+			
+			window.show();
+		}else {
+			Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/mainMenuNormaleUser.fxml"));
+			Scene passwordForgottenScene = new Scene(passwordForgottenParent);
+			
+			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			window.setScene(passwordForgottenScene);
+			
+			window.show();
+			
+		}
 	}
 	
 	public void logout(ActionEvent event) throws Exception
 	{
+
 		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/loginMenu.fxml"));
 		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
 		

@@ -22,7 +22,7 @@ public class Main extends Application {
 	public void start(Stage window) throws Exception {
 		
 		stage = window;
-		Parent root = FXMLLoader.load(getClass().getResource("../gui/loginMenu.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("../gui/LoginMenu.fxml"));
 		
 		window.setTitle("Login");
 		window.setScene(new Scene(root,700,400));
@@ -40,7 +40,7 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		//factory = new Configuration().configure().addAnnotatedClass(Login.class).buildSessionFactory();
 		try {
-			factory = new Configuration().configure().addAnnotatedClass(Login.class).buildSessionFactory();
+			factory = new Configuration().configure().addAnnotatedClass(TrainingWerknemer.class).addAnnotatedClass(Certificate.class).addAnnotatedClass(Logfile.class).addAnnotatedClass(Survey.class).addAnnotatedClass(Login.class).addAnnotatedClass(Location.class).addAnnotatedClass(Training.class).addAnnotatedClass(LoginWebsite.class).buildSessionFactory();
 		}
 		catch (PersistenceException ex) {
 			System.out.println("Error -> Application will exit!");

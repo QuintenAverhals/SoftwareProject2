@@ -7,7 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -15,7 +14,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.util.List;
 
-import java.awt.Color;
+import dao.LoginDAO;
+
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
@@ -45,7 +45,8 @@ public class LoginController {
 		List<Login> users= currentUser.getUsersByName(usrn);
 		boolean result= currentUser.login(usrn, pswd);
 		SHA512 hasher = new SHA512();
-		String password=hasher.hashString(pswd);
+		int salt= LoginDAO.getSaltByUserName(usrn);
+		String password=hasher.hashString(pswd+salt);
 		for(int i=0;i<users.size();i++)
 		{
 			if(users.get(i).getUsername().equals(usrn)&& users.get(i).getPassword().equals(password))
@@ -57,6 +58,12 @@ public class LoginController {
 		{
 			if(currentUser.isAdmin()==true)
 			{
+				
+				Logfile log= new Logfile();
+				LoginController currentUserr= new LoginController();
+				int current= currentUserr.getCurrentUser().getUser_ID();
+				log.addLogs(current, "User: "+currentUserr.getCurrentUser().getUsername()+" logged in.");
+				
 			Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/mainMenu.fxml"));
 			Scene passwordForgottenScene = new Scene(passwordForgottenParent);
 			
@@ -69,6 +76,11 @@ public class LoginController {
 			
 			window.show();
 			}else {
+				
+				Logfile log= new Logfile();
+				LoginController currentUserr= new LoginController();
+				int current= currentUserr.getCurrentUser().getUser_ID();
+				log.addLogs(current, "User: "+currentUserr.getCurrentUser().getUsername()+" logged in.");
 				Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/mainMenuNormaleUser.fxml"));
 				Scene passwordForgottenScene = new Scene(passwordForgottenParent);
 				
@@ -86,7 +98,7 @@ public class LoginController {
 			/*FXMLLoader f = new FXMLLoader(getClass().getResource("mainMenu.fxml"));
 			LoginGui.setRoot(f.load());
 			mainMenuController c = f.<mainMenuController>getController();
-			c.setHelloMSG("ZBEUB");*/
+			c.setHelloMSG("");*/
 			
 			
 		}else {
@@ -102,24 +114,16 @@ public class LoginController {
 		window.initModality(Modality.APPLICATION_MODAL);
 		window.setTitle(title);
 		window.setMinWidth(250);
-		
-		
-		
 		Label label= new Label();
 		
 		label.setText(msg);
-		label.setStyle("-fx-text-fill: #757575;");
 		Button closeButton= new Button("Close the window");
 		closeButton.setOnAction(e -> window.close());
-		closeButton.setStyle("-fx-background-color: grey; -fx-text-fill: WHITE;");
 		
 		VBox layout= new VBox(10);
 		layout.getChildren().add(label);
 		layout.getChildren().add(closeButton);
 		layout.setAlignment(Pos.CENTER);
-		layout.setStyle("-fx-background-color: #2d3440;");
-		
-		
 		
 		Scene scene = new Scene(layout);
 		window.setScene(scene);

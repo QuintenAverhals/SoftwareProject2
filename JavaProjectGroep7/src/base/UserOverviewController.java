@@ -57,7 +57,32 @@ public class UserOverviewController {
 		}
 	} 
 	
-	
+	public void mainMenu(ActionEvent event) throws Exception
+	{
+		LoginController current= new LoginController();
+		Login currentUser= current.getCurrentUser();
+		
+		
+		if(currentUser.isAdmin()==true)
+		{
+			Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/mainMenu.fxml"));
+			Scene passwordForgottenScene = new Scene(passwordForgottenParent);
+			
+			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			window.setScene(passwordForgottenScene);
+			
+			window.show();
+		}else {
+			Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/mainMenuNormaleUser.fxml"));
+			Scene passwordForgottenScene = new Scene(passwordForgottenParent);
+			
+			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			window.setScene(passwordForgottenScene);
+			
+			window.show();
+			
+		}
+	}
 	
 	public void fillBlanks(MouseEvent arg0) throws Exception
 	{
@@ -81,7 +106,7 @@ public class UserOverviewController {
 	}
 	public void logoutBtn(ActionEvent event) throws Exception
 	{
-		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/loginGui.fxml"));
+		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/LoginMenu.fxml"));
 		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
 		
 		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -122,7 +147,22 @@ public class UserOverviewController {
 		String username= userName.getText();
 		boolean admin = isAdmin.isSelected();
 		String idString= userID.getText();
-		int id= Integer.parseInt(idString);
+		int id=0;
+	
+		try {
+			id= Integer.parseInt(idString);
+			
+		}catch(NumberFormatException e)
+		{
+			passwordNotSame("Error", "You must select an Item before Updating!");
+			
+		}
+		if(id!=0)
+		{
+			
+		
+		
+			
 		Login check= new Login();
 		boolean checkName= check.checkUsernameUnique(username); 
 		
@@ -138,16 +178,10 @@ public class UserOverviewController {
 
 					Login nieweLogin= new Login();
 					check.updateAll(id, mail, username, password, admin);
-					passwordNotSame("SUCCESS", "User has been added successfully");
+					passwordNotSame("SUCCESS", "User has been successfully Updated");
 				}else {
 					passwordNotSame("EMAIL ERROR", "THIS IS NOT A VALID EMAIL! TRY AGAIN");
 				}
-		
-		
-		
-		
-
-		
 			}
 		}
 		viewList.getItems().clear();
@@ -164,17 +198,27 @@ public class UserOverviewController {
 		
 		}
 		
+		}else {
+			
+		}
 	}
-	public void deleteBtn(ActionEvent event) 
+	
+	public void deleteBtn(ActionEvent event) throws Exception 
 	{
 		
 		
 		
 		viewList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 		String selected = (String) viewList.getSelectionModel().getSelectedItem();
+		if(selected==null)
+		{
+			passwordNotSame("Error", "You must select An item first!");
+			
+		}else {
+			
 		selected = selected.split(":")[0];
 		int id= Integer.parseInt(selected);
-		System.out.println(id);
+		
 		
 		Login user= new Login();
 		
@@ -192,6 +236,7 @@ public class UserOverviewController {
 			
 			viewList.getItems().addAll(users.get(i).getUser_ID()+": "+users.get(i).getUsername());
 		
+		}
 		}
 	}
 	public void Load_Content(ActionEvent event) throws Exception
@@ -239,16 +284,11 @@ public class UserOverviewController {
 			}
 		}else {
 			
-
-			users= user.getUsersByName(searchUser);
-			
-			
 			for(int i=0;i<users.size();i++)
 			{
+				if(users.get(i).getUsername().contains(searchUser))
 				
-				viewList.getItems().addAll(users.get(i).getUser_ID()+": "+users.get(i).getUsername());
-			
-			
+				viewList.getItems().addAll(users.get(i).getUser_ID()+": "+users.get(i).getUsername());	
 		}
 		}
 		
