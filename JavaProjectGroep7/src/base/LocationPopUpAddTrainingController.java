@@ -12,6 +12,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -30,6 +32,7 @@ public class LocationPopUpAddTrainingController {
 	public TextField zip;
 	public TextField country;
 	public Button submit;
+	public AnchorPane color;
 
 	@FXML
 	private void clearBestaandeAdres() {
@@ -97,6 +100,10 @@ public class LocationPopUpAddTrainingController {
 		};
 		existingDrop.setCellFactory(call);
 		existingDrop.setButtonCell(call.call(null));
+		String kleure= OptionsController.getColor();
+		
+		color.setStyle("-fx-background-color: #" + kleure);
+
 
 	}
 

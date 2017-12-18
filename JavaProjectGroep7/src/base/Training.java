@@ -33,8 +33,8 @@ public class Training extends TrainingDAO {
 	private Date start_time;
 	@Column(name="end_time")
 	private Date end_time;
-	@Column(name="status")
-	private Status status;
+	@Column(name="cancel")
+	private boolean cancel;
 	@Column(name="survey_id")
 	private int SurveyID;
 	@Column(name="location_id")
@@ -81,7 +81,6 @@ public class Training extends TrainingDAO {
 		this.end_date = end_date;
 		this.start_time = start_time;
 		this.end_time = end_time;
-		this.status = Status.ONGOING;
 		SurveyID = surveyID;
 		this.locationID = locationID;
 		this.visibility = true;
@@ -91,11 +90,11 @@ public class Training extends TrainingDAO {
 
 
 
-	public Status getStatus() {
-		return status;
+	public boolean getcancel() {
+		return cancel;
 	}
-	public void setStatus(Status status) {
-		this.status = status;
+	public void setcancel(boolean cancel) {
+		this.cancel = cancel;
 	}
 
 	
@@ -165,7 +164,7 @@ public class Training extends TrainingDAO {
 
 	public String toString() {
 		return "Training [training_ID=" + training_ID + ", start_date=" + start_date + ", end_date=" + end_date
-				+ ", start_time=" + start_time + ", end_time=" + end_time + ", status=" + status + ", locationID="
+				+ ", start_time=" + start_time + ", end_time=" + end_time + ", cancel=" + cancel + ", locationID="
 				+ locationID + ", visibility=" + visibility + "]";
 	}
 	
@@ -222,7 +221,7 @@ public class Training extends TrainingDAO {
 		result = prime * result + locationID;
 		result = prime * result + ((start_date == null) ? 0 : start_date.hashCode());
 		result = prime * result + ((start_time == null) ? 0 : start_time.hashCode());
-		result = prime * result + ((status == null) ? 0 : status.hashCode());
+		
 		result = prime * result + training_ID;
 		result = prime * result + (visibility ? 1231 : 1237);
 		return result;
@@ -269,7 +268,7 @@ public class Training extends TrainingDAO {
 				return false;
 		} else if (!start_time.equals(other.start_time))
 			return false;
-		if (status != other.status)
+		if (cancel != other.cancel)
 			return false;
 		if (training_ID != other.training_ID)
 			return false;

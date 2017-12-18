@@ -11,6 +11,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -22,7 +23,17 @@ public class AddBookController {
 	public TextField CreateTitleTxt;
 	public TextField CreateAuthorTxt;
 	public Button mainMenuBtn;
+	public GridPane color;
 	
+	
+	public void initialize() {
+		
+		String kleure= OptionsController.getColor();
+		System.out.println(kleure);			
+		color.setStyle("-fx-background-color: #" + kleure);
+
+	}
+
 	public void mainMenu(ActionEvent event) throws Exception
 	{
 		LoginController current= new LoginController();

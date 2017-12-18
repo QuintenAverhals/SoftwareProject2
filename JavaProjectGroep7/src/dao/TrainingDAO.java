@@ -14,6 +14,8 @@ import org.hibernate.cfg.Configuration;
 import base.Training;
 import base.Main;
 import base.Status;
+
+///******auteur chaimae*****
 public class TrainingDAO {
 
 	public TrainingDAO() {
@@ -134,7 +136,7 @@ public class TrainingDAO {
 
 
 	
-	public Status updateStatus(int id, Status s) throws Exception {
+	public void updateCancel(int id) throws Exception {
 		//update
 		Session session = Main.factory.getCurrentSession();
 		session.beginTransaction();
@@ -143,7 +145,7 @@ public class TrainingDAO {
 		Training training= new Training();
 
 		training = (Training) session.get(Training.class, id);
-		training.setStatus(s);
+		training.setcancel(false);
 
 
 
@@ -153,9 +155,9 @@ public class TrainingDAO {
 		Logfile log= new Logfile();
 		LoginController currentUserr= new LoginController();
 		int current= currentUserr.getCurrentUser().getUser_ID();
-		log.addLogs(current, "User: "+currentUserr.getCurrentUser().getUsername()+" updated status for training "+id);
+		log.addLogs(current, "User: "+currentUserr.getCurrentUser().getUsername()+" updated cancel for training "+id);
 		
-		return s;
+		
 		}
 public void createNewTraining(Date start_date,Date end_date,Date start_time,Date end_time,int surveyID,int locationID,boolean visibility,String name) throws Exception {
 			
@@ -178,7 +180,7 @@ public void createNewTraining(Date start_date,Date end_date,Date start_time,Date
 		}
 
 	
-public void updateALLTraining(int id, Date start_date,Date end_date,Date start_time,Date end_time,Status status,int surveyID,int locationID,boolean visibility, String trainingNaam) throws Exception {
+public void updateALLTraining(int id, Date start_date,Date end_date,Date start_time,Date end_time,int surveyID,int locationID,boolean visibility, String trainingNaam,boolean cancel) throws Exception {
 	
 	Session session = Main.factory.getCurrentSession();
 	session.beginTransaction();
@@ -187,12 +189,13 @@ public void updateALLTraining(int id, Date start_date,Date end_date,Date start_t
 Training training= new Training();
 
 training = (Training) session.get(Training.class, id);
-training.setEnd_time(end_date);
+training.setEnd_time(end_time);
 training.setEnd_date(end_date);
 training.setLocationID(locationID);
 training.setStart_date(start_date);
 training.setStart_time(start_time);
-training.setStatus(status);
+training.setcancel(cancel);
+System.out.println(cancel);
 training.setSurveyID(surveyID);
 training.setTrainingNaam(trainingNaam);
 
@@ -281,10 +284,7 @@ Training st=new Training();
 			Date end=tr.setDate(9, 10,2024);
 			Date endTime= tr.setTime(19, 44, 00);
 			Date startTime=tr.setTime(18,43, 00);
-			Status ta=Status.CANCELLED;
-			tr.createNewTraining(s, end, startTime, endTime, 4, 9, true,"ELLLOsdfdsfO");
-
-			
+	
 			
 			/*Training x=new Training();
 			Date st=x.setDate(01, 05, 2015);

@@ -347,6 +347,30 @@ public boolean checkUsernameUnique(String name) {
 	return result;
 }
 
+public static boolean checkEmailUnique(String email) {
+	
+	boolean result= false;
+	
+	Session session = Main.factory.getCurrentSession();
+	session.beginTransaction(); 
+	
+	
+	Query query= session.createQuery("from Login where email='" + email+"'"+"and Visibility=1");
+	List<Login> users= query.list();
+	
+	for(int i=0;i<users.size();i++)
+	{
+		if(users.get(i).getEmail().equals(email))
+		{
+			session.getTransaction().commit();
+			return true; 
+		}
+	}
+		
+	session.getTransaction().commit(); 
+	return result;
+}
+
 
 }
 

@@ -14,6 +14,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -24,8 +25,11 @@ import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 public class PastTrainingsController{
+	
+	//auteur: chaimae
 	
 	public TextField filterTrainingsSearchBar;
 	public ListView viewList;
@@ -35,9 +39,11 @@ public class PastTrainingsController{
 	public Label trainingID;
 	public Label trainingName;
     public Label locationID;
+    public CheckBox cancel;
     public Label SurveyID;
+    public GridPane color;
   
-  public Label status;
+
  
    
   public void mainMenu(ActionEvent event) throws Exception
@@ -81,6 +87,10 @@ public class PastTrainingsController{
 			viewList.getItems().addAll(trainings.get(i).getTraining_ID()+": "+trainings.get(i).getTrainingNaam());
 			
 		}
+		String kleure= OptionsController.getColor();
+		
+		color.setStyle("-fx-background-color: #" + kleure);
+
 		
 		}
 	public void upLoadCertificate(ActionEvent event) throws Exception
@@ -134,21 +144,7 @@ public class PastTrainingsController{
 		trainingName.setText(training.getTrainingNaam());
 
 		
-		if(training.getStatus().equals(Status.ONGOING))
-		{
-			status.setText("ONGOING");
-		}
-		
-		if(training.getStatus().equals(Status.CANCELLED))
-		{
-		status.setText("CANCELLED");
-		}
-		
-		if(training.getStatus().equals(Status.COMPLETE))
-		{
-			status.setText("COMPLETE");
-		}
-		
+        
      String loc= ""+training.getLocationID();	
      locationID.setText(loc);
      

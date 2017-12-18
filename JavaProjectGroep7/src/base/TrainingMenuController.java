@@ -5,11 +5,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 
 public class TrainingMenuController {
-	
+	public GridPane color;
+	public void initialize() {
+		
+		String kleure= OptionsController.getColor();
+					
+		color.setStyle("-fx-background-color: #" + kleure);
+
+	}
+
 	
 	public void mainMenu(ActionEvent event) throws Exception
 	{
@@ -77,7 +86,7 @@ public class TrainingMenuController {
 	}
 	public void TrainingOverviewMenu(ActionEvent event) throws Exception
 	{
-		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/TrainingOverview.fxml"));
+		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/trainingOverview.fxml"));
 		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
 		
 		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();

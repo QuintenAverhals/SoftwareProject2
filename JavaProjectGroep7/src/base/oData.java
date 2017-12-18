@@ -1,7 +1,5 @@
 package base;
 
-import java.util.List;
-
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
@@ -17,19 +15,13 @@ import org.glassfish.jersey.jsonb.JsonBindingFeature;
 import com.mysql.fabric.Response;
 
 
-    
-public class Employee {
+  //auteur: chaimae
+public class oData{
 //username toevoegen
-	public Employee() {
+	public oData() {
 		
 	}
-	public static void getEverything(Client client) {
-		 client = ClientBuilder.newClient();
-		WebTarget target = client.target("http://services.odata.org/V4/TripPinService/People");
-		String s=target.request(MediaType.APPLICATION_JSON).get(String.class);
-	
-		System.out.println(s);
-	}
+
 		
 	public static String getEmail(Client client, String id) {
 		 client = ClientBuilder.newClient();
@@ -63,9 +55,14 @@ public class Employee {
 	}
 	
 	
-	private static void getEigenschappen()
+	
+	//reminder email
+	//username toevoegen aan array
+	//array van usernames om te data per employees te overlopen
+	
+	private static void UsernameArray()
 	{ 
-			
+
 	   String[] names  = new String[7];
 
 	    names[0] = "scottketchum";
@@ -75,7 +72,7 @@ public class Employee {
 	    names[4] = "willieashmore";
 	    names[5] = "vincentcalabrese";
 	    names[6]="clydeguess";
-	    names[7]= "keithpinckney";
+	    
 	 
 	    for (String element:names) {
 	    
@@ -101,14 +98,12 @@ public class Employee {
 			System.out.println(s);
 			System.out.println("================");
 		}
-	    
-	     
 	}
 	
 public  static void main(String[]args) {
 	Client client = ClientBuilder.newClient();
 	
-	String met=getLastName(client,"scottketchum");
+	/*String met=getLastName(client,"scottketchum");
 	String sub=met.substring(10);
 	sub=sub.substring(0, sub.length()-2);
 	System.out.println(sub);
@@ -118,7 +113,6 @@ public  static void main(String[]args) {
 	subs=subs.substring(0, subs.length()-2);
 	System.out.println(subs);
 	
-	/*
 	String methode=getEmail(client,"scottketchum");
 	String submethode=methode.substring(10);
 	submethode=submethode.substring(0, submethode.length()-2);
@@ -128,9 +122,9 @@ public  static void main(String[]args) {
 	String s=m.substring(10);
 	s=s.substring(0, s.length()-2);
 	System.out.println(s);*/
-
+	
+	UsernameArray();
 	
 	
 }
 }
-

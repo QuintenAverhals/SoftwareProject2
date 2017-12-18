@@ -16,7 +16,7 @@ import dao.TrainingDAO;
 import dao.LocationDAO;
 
 
-
+//********auteur: Chaimae*********
 @Entity 
 @Table(name="LOCATION")
 public class Location extends LocationDAO{

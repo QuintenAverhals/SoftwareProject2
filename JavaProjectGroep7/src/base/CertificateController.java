@@ -14,6 +14,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -23,6 +24,7 @@ public class CertificateController {
 	public ListView viewList;
 	public TextField filterView;
 	public ListView viewListInTraining;
+	public GridPane color;
 
 	public void initialize() {
 		viewList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
@@ -37,6 +39,9 @@ public class CertificateController {
 
 		}
 
+		String kleure= OptionsController.getColor();
+		
+		color.setStyle("-fx-background-color: #" + kleure);
 	}
 
 	public void mainMenu(ActionEvent event) throws Exception {
@@ -89,6 +94,8 @@ public class CertificateController {
 				passwordNotSame("","You're file has successfully been downloaded");
 			} catch (IndexOutOfBoundsException e) {
 				passwordNotSame("Error", "this user has no certificate for this Training");
+				
+			
 			}
 
 		}

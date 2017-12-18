@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane fx:id="color" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2d3440;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="base.SearchBookController">
+<GridPane fx:id="color" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2d3440;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="base.EmployeesOverviewController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -27,9 +27,10 @@
          <children>
             <TableView layoutX="14.0" layoutY="14.0" prefHeight="230.0" prefWidth="564.0">
               <columns>
-                <TableColumn prefWidth="195.00003051757812" text="ISBN" />
-                <TableColumn minWidth="0.0" prefWidth="204.99996948242188" text="Title" />
-                  <TableColumn prefWidth="163.0" text="Author" />
+                <TableColumn prefWidth="134.0" text="Employee" />
+                <TableColumn minWidth="0.0" prefWidth="186.0" text="Training" />
+                  <TableColumn prefWidth="128.0" text="Start date" />
+                  <TableColumn prefWidth="115.0" text="End date" />
               </columns>
             </TableView>
          </children>
@@ -49,13 +50,12 @@
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
          <children>
-            <Button fx:id="logoutBtn" layoutX="83.0" layoutY="14.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: grey;" text="Logout" textFill="WHITE" />
+            <Button fx:id="logoutBtn" layoutX="83.0" layoutY="14.0" mnemonicParsing="false" onAction="#logoutBtn" style="-fx-background-color: grey;" text="Logout" textFill="WHITE" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
          <children>
-            <JFXTextField fx:id="searchBookTextField" focusColor="WHITE" layoutX="14.0" layoutY="-1.0" promptText="Search book by title" style="-fx-text-fill: white;" unFocusColor="WHITE" />
-            <Button fx:id="SearchBtn" layoutX="159.0" layoutY="2.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="106.0" style="-fx-background-color: grey;" text="Search" textFill="WHITE" />
+            <JFXTextField fx:id="searchEmployee" focusColor="WHITE" layoutX="14.0" layoutY="-1.0" promptText="Search" unFocusColor="WHITE" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
@@ -64,7 +64,7 @@
          </children></AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <children>
-            <Button fx:id="goBackBtn" layoutX="41.0" layoutY="2.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="106.0" style="-fx-background-color: grey;" text="Back" textFill="WHITE" />
+            <Button fx:id="goBackBtn" layoutX="71.0" layoutY="1.0" mnemonicParsing="false" onAction="#goBack" style="-fx-background-color: grey;" text="Back" textFill="WHITE" />
          </children>
       </AnchorPane>
    </children>

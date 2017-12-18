@@ -6,13 +6,21 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class UserMenuController {
 
 	Button logoutBtn;
-	
-	
+	public GridPane color;
+	public void initialize() {
+		
+		String kleure= OptionsController.getColor();
+					
+		color.setStyle("-fx-background-color: #" + kleure);
+
+	}
+
 	public void logoutBtn(ActionEvent event) throws Exception
 	{
 		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/LoginMenu.fxml"));

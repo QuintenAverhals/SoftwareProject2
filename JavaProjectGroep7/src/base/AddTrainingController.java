@@ -1,6 +1,7 @@
 package base;
 
 import java.io.IOException;
+
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -15,6 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -22,12 +24,14 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 
+//********auteur: Chaimae********************
 public class AddTrainingController {
 
 	public TextField TrainingID;
@@ -41,11 +45,11 @@ public class AddTrainingController {
 	public TextField startMinute;
 	public TextField endHour;
 	public TextField endMinute;
-	public ComboBox statusCombo;
-	public Status status;
+	public CheckBox cancel;
 	public Button locationID;
 	public ComboBox<Integer> surveyID;
 	public Button mainMenuBtn;
+	public GridPane color;
 
 	@FXML
 	public void initialize() {
@@ -63,6 +67,9 @@ public class AddTrainingController {
 		};
 		surveyID.setCellFactory(call);
 		surveyID.setButtonCell(call.call(null));
+		String kleure= OptionsController.getColor();
+		
+		color.setStyle("-fx-background-color: #" + kleure);
 
 	}
 
@@ -133,7 +140,8 @@ public class AddTrainingController {
 			LocalDate sd;
 
 			java.util.Date sd1;
-
+			
+				
 			sd1 = java.sql.Date.valueOf(startDate.getValue());
 			LocalDate ey;
 			LocalDate em;

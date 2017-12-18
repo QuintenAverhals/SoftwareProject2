@@ -12,6 +12,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class AddUserToTrainingController {
@@ -20,6 +21,7 @@ public class AddUserToTrainingController {
 	public ListView viewListUsersNotInTraining;
 	public TextField TrainingenFilter;
 	public TextField filterInTraining;
+	public GridPane color;
 	
 	public void initialize() {
 		viewListUsersNotInTraining.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
@@ -35,6 +37,9 @@ public class AddUserToTrainingController {
 			viewList.getItems().addAll(trainings.get(i).getTraining_ID() + ": " + trainings.get(i).getTrainingNaam());
 
 		}
+		String kleure= OptionsController.getColor();
+		
+		color.setStyle("-fx-background-color: #" + kleure);
 
 	}
 

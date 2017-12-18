@@ -12,6 +12,8 @@ import base.Location;
 import base.Logfile;
 import base.Main;
 
+//auteur: chaimae
+
 public class LocationDAO {
 
 	public LocationDAO() {

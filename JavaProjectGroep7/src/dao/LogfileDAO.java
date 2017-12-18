@@ -14,7 +14,7 @@ import base.Logfile;
 public class LogfileDAO {
 
 	
-	public void addLogs(int userID, String action) throws Exception
+	public static void addLogs(int userID, String action) throws Exception
 	{
 		
 		Session session = Main.factory.getCurrentSession();

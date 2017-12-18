@@ -14,6 +14,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -24,9 +25,19 @@ public class AddUserController {
 	public PasswordField CreatepasswordComfirmTxt;
 	public TextField CreateemailTxt;
 	public CheckBox CreateAdminRights;
+	public GridPane color;
 
 	private Pattern mailChecker = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$",
 			Pattern.CASE_INSENSITIVE);
+
+	
+	public void initialize() {
+		
+		String kleure= OptionsController.getColor();
+					
+		color.setStyle("-fx-background-color: #" + kleure);
+
+	}
 
 	public void mainMenu(ActionEvent event) throws Exception {
 		LoginController current = new LoginController();

@@ -23,6 +23,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -37,6 +38,7 @@ public class UserOverviewController {
 	public TextField email;
 	public CheckBox isAdmin;
 	public List<Login> users;
+	public GridPane color;
 	
 	private Pattern mailChecker = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 	
@@ -55,6 +57,9 @@ public class UserOverviewController {
 			viewList.getItems().addAll(users.get(i).getUser_ID()+": "+users.get(i).getUsername());
 		
 		}
+		String kleure= OptionsController.getColor();
+		
+		color.setStyle("-fx-background-color: #" + kleure);
 	} 
 	
 	public void mainMenu(ActionEvent event) throws Exception
@@ -166,7 +171,7 @@ public class UserOverviewController {
 		Login check= new Login();
 		boolean checkName= check.checkUsernameUnique(username); 
 		
-		if((username.equals(""))||(password.equals(""))||(email.equals("")))
+		if((username.equals(""))||(password.equals(""))||(mail.equals("")))
 		{
 			passwordNotSame("ERROR","all fields need to be filled in");
 			

@@ -5,10 +5,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class SearchBookController {
+public GridPane color;
+	
+public void initialize() {
+		
+		String kleure= OptionsController.getColor();
+					
+		color.setStyle("-fx-background-color: #" + kleure);
 
+	}
 	public void mainMenu(ActionEvent event) throws Exception {
 		LoginController current = new LoginController();
 		Login currentUser = current.getCurrentUser();

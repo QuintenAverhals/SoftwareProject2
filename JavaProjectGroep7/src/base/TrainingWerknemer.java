@@ -19,6 +19,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 @Entity
@@ -27,7 +28,7 @@ public class TrainingWerknemer {
 	@Id
 	CompoundKeyTrainingWerknermer compound;
 	
-
+	
 	
 	
 	public CompoundKeyTrainingWerknermer getCompound() {
@@ -41,7 +42,6 @@ public class TrainingWerknemer {
 	public TrainingWerknemer() {
 		super();
 	}
-	
 
 	public void mainMenu(ActionEvent event) throws Exception
 	{

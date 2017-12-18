@@ -17,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -34,6 +35,7 @@ public class SurveyManagementController {
 	private TableColumn<Survey,Integer> QuestionID;
 	@FXML
 	private TableColumn<Survey,String> Questions;
+	public GridPane color;
 	
 	
 	/**
@@ -89,7 +91,10 @@ public class SurveyManagementController {
 		questionTable.setPlaceholder(new Label("No entry found."));
 		ObservableList<Survey> list = FXCollections.observableArrayList(Survey.getAllSurveys());
 		questionTable.setItems(list);
+		String kleure= OptionsController.getColor();
 		
+		color.setStyle("-fx-background-color: #" + kleure);
+
 	}
 	public void logoutBtn(ActionEvent event) throws Exception
 	{

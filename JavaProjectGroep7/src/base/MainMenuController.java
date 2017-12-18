@@ -3,6 +3,7 @@ package base;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,8 +11,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -28,7 +34,21 @@ public class MainMenuController extends Main {
 	private Button bookBtn;
 	private Button employeeBtn;
 	private Text helloMSG;
+	@FXML
+	public GridPane color;
 	
+
+	public void initialize() {
+		try {
+			String kleure= OptionsController.getColor();
+			System.out.println(kleure);			
+			color.setStyle("-fx-background-color: #" + kleure);
+
+		}catch(NullPointerException e)
+		{
+			System.out.println("heyhey");
+		}
+	}
 	
 	public void logoutBtn(ActionEvent event) throws Exception
 	{

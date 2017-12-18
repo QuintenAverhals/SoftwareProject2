@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -33,6 +34,7 @@ public class logsController {
 	private TableColumn<Logfile,String> action;
 	@FXML
 	private TableColumn<Logfile,String> date;
+	public GridPane color;
 	
 	
 	/**
@@ -70,6 +72,9 @@ public class logsController {
 		logTable.setPlaceholder(new Label("No entry found."));
 		ObservableList<Logfile> list = FXCollections.observableArrayList(Logfile.getALL());
 		logTable.setItems(list);
+		String kleure= OptionsController.getColor();
+		
+		color.setStyle("-fx-background-color: #" + kleure);
 		
 	}
 	

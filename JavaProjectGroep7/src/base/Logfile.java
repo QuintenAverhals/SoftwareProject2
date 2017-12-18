@@ -16,6 +16,8 @@ import dao.LogfileDAO;
 @Entity 
 @Table(name="LOGFILE")
 
+
+//auteur: chaimae*****
 public class Logfile extends LogfileDAO {
 	@Id
 	@Column(name="logId")
