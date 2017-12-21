@@ -36,6 +36,15 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <ImageView fx:id="logoIMG" fitHeight="48.0" fitWidth="116.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@soft%20proj%20final/SoftwareProject2/JavaProjectGroep7/img/cisco.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
          <children>
             <Text fill="WHITE" layoutX="15.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Training Overview" wrappingWidth="200.0">
@@ -50,22 +59,13 @@
             <JFXButton fx:id="logoutBtn" layoutX="107.0" layoutY="8.0" onAction="#logoutBtn" prefHeight="25.0" prefWidth="87.0" text="LOGOUT" textFill="#757575" />
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
-         <children>
-            <ImageView fx:id="logoIMG" fitHeight="48.0" fitWidth="116.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@soft%20proj%20final/SoftwareProject2/JavaProjectGroep7/img/cisco.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
          <children>
-            <JFXListView fx:id="viewList" layoutX="14.0" layoutY="14.0" prefHeight="170.0" prefWidth="108.0" style="-fx-text-fill: white; -fx-background-color: #2d3440;" />
+            <JFXListView fx:id="viewList" layoutX="14.0" layoutY="14.0" onMouseClicked="#fillBlanks" prefHeight="170.0" prefWidth="108.0" style="-fx-text-fill: white; -fx-background-color: #2d3440;" />
             <Label layoutX="126.0" layoutY="47.0" text="Training ID:" textFill="WHITE" />
             <Label layoutX="124.0" layoutY="93.0" text="Start Date:" textFill="WHITE" />
-            <Label layoutX="133.0" layoutY="153.0" text="surveyID" textFill="WHITE" />
+            <Label layoutX="133.0" layoutY="153.0" text="surveyID: " textFill="WHITE" />
             <Label layoutX="125.0" layoutY="125.0" text="Start Time:" textFill="WHITE" />
          </children>
       </AnchorPane>
@@ -73,7 +73,7 @@
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <children>
             <Label layoutX="146.0" layoutY="14.0" text="Training Name:" textFill="WHITE" />
-            <JFXTextField fx:id="TrainingID" editable="false" focusColor="WHITE" layoutX="-1.0" layoutY="5.0" prefHeight="25.0" prefWidth="39.0" style="-fx-text-fill: white;" unFocusColor="WHITE" />
+            <JFXTextField fx:id="trainingID" editable="false" focusColor="WHITE" layoutX="-1.0" layoutY="5.0" prefHeight="25.0" prefWidth="39.0" style="-fx-text-fill: white;" unFocusColor="WHITE" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="isAdmin1" prefHeight="200.0" prefWidth="200.0" style="-fx-text-fill: white;" GridPane.columnIndex="2" GridPane.rowIndex="2">
@@ -96,20 +96,18 @@
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
          <children>
-            <JFXTextField fx:id="surveyID" focusColor="WHITE" layoutX="-25.0" layoutY="6.0" prefHeight="25.0" prefWidth="22.0" style="-fx-text-fill: white;" unFocusColor="WHITE" />
-            <Label layoutX="147.0" layoutY="12.0" text="Status" textFill="WHITE" />
-            <Label layoutX="24.0" layoutY="15.0" text="Location ID:" textFill="WHITE" />
-            <JFXTextField fx:id="locationID" focusColor="WHITE" layoutX="93.0" layoutY="10.0" prefHeight="25.0" prefWidth="22.0" style="-fx-text-fill: white;" unFocusColor="WHITE" />
+            <ComboBox fx:id="surveyID" layoutX="-13.0" layoutY="14.0" prefHeight="25.0" prefWidth="65.0" />
+            <JFXButton fx:id="locationID" layoutX="71.0" layoutY="12.0" onAction="#newLocation" prefHeight="25.0" prefWidth="122.0" style="-fx-background-color: grey;" text="Choose Location" textFill="WHITE" />
          </children></AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
          <children>
-            <JFXButton fx:id="updateBtn" layoutX="-5.0" layoutY="16.0" prefHeight="25.0" prefWidth="161.0" style="-fx-background-color: grey;" text="Update" />
+            <JFXButton fx:id="updateBtn" layoutX="-5.0" layoutY="16.0" onAction="#updateTraining" prefHeight="25.0" prefWidth="161.0" style="-fx-background-color: grey;" text="Update" textFill="WHITE" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
          <children>
-            <JFXButton fx:id="deleteBtn" layoutX="12.0" layoutY="14.0" prefHeight="25.0" prefWidth="161.0" style="-fx-background-color: grey;" text="Delete" />
+            <JFXButton fx:id="deleteBtn" layoutX="12.0" layoutY="14.0" onAction="#deleleteBtn" prefHeight="25.0" prefWidth="161.0" style="-fx-background-color: grey;" text="Delete" textFill="WHITE" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="9" />
@@ -126,47 +124,48 @@
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="7">
          <children>
-            <JFXTextField fx:id="filterView" focusColor="WHITE" layoutX="21.0" layoutY="-1.0" prefHeight="25.0" prefWidth="97.0" style="-fx-text-fill: white;" unFocusColor="WHITE" />
-            <JFXButton fx:id="filerView" layoutX="15.0" layoutY="36.0" prefHeight="25.0" prefWidth="111.0" style="-fx-background-color: grey;" text="Filter" />
+            <JFXTextField fx:id="filterView" focusColor="WHITE" layoutX="21.0" layoutY="-1.0" onAction="#filterView" prefHeight="25.0" prefWidth="97.0" style="-fx-text-fill: white;" unFocusColor="WHITE" />
+            <JFXButton fx:id="filerView" layoutX="15.0" layoutY="36.0" prefHeight="25.0" prefWidth="111.0" style="-fx-background-color: grey;" text="Filter" textFill="WHITE" />
          </children></AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-text-fill: white;" GridPane.columnIndex="2" GridPane.rowIndex="6">
          <children>
-            <JFXButton fx:id="modValues" layoutX="-91.0" layoutY="7.0" prefHeight="25.0" prefWidth="161.0" style="-fx-background-color: grey;" text="Modify Data" />
          </children></AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="8">
          <children>
-            <JFXButton fx:id="goBackBtn" layoutX="13.0" layoutY="8.0" onAction="#goBack" prefHeight="25.0" prefWidth="161.0" style="-fx-background-color: grey;" text="GO BACK" />
+            <JFXButton fx:id="goBackBtn" layoutX="13.0" layoutY="13.0" onAction="#goBack" prefHeight="25.0" prefWidth="161.0" style="-fx-background-color: grey;" text="GO BACK" textFill="WHITE" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
          <children>
-            <JFXButton fx:id="load_ALL" layoutX="-5.0" layoutY="8.0" prefHeight="25.0" prefWidth="161.0" style="-fx-background-color: grey;" text="Load all" />
+            <JFXButton fx:id="load_ALL" layoutX="-5.0" layoutY="13.0" prefHeight="25.0" prefWidth="161.0" style="-fx-background-color: grey;" text="Load all" textFill="WHITE" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <children>
-            <JFXTextField fx:id="beginUur" focusColor="WHITE" layoutX="-1.0" layoutY="8.0" prefHeight="25.0" prefWidth="22.0" promptText="H" style="-fx-text-fill: white;" unFocusColor="WHITE" />
-            <JFXTextField fx:id="beginMinuut" focusColor="WHITE" layoutX="26.0" layoutY="8.0" prefHeight="25.0" prefWidth="22.0" promptText="M" style="-fx-text-fill: white;" unFocusColor="WHITE" />
+            <JFXTextField fx:id="bHour" focusColor="WHITE" layoutX="-1.0" layoutY="8.0" prefHeight="25.0" prefWidth="22.0" promptText="H" style="-fx-text-fill: white;" unFocusColor="WHITE" />
+            <JFXTextField fx:id="bMinute" focusColor="WHITE" layoutX="26.0" layoutY="8.0" prefHeight="25.0" prefWidth="22.0" promptText="M" style="-fx-text-fill: white;" unFocusColor="WHITE" />
             <Label layoutX="151.0" layoutY="12.0" text="End Time:" textFill="WHITE" />
             <Label layoutX="15.0" layoutY="12.0" text=":" textFill="WHITE" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
          <children>
-            <JFXTextField fx:id="eindUur" focusColor="WHITE" layoutX="10.0" layoutY="9.0" prefHeight="25.0" prefWidth="22.0" promptText="H" style="-fx-text-fill: white;" unFocusColor="WHITE" />
-            <JFXTextField fx:id="eindMinuut" focusColor="WHITE" layoutX="39.0" layoutY="9.0" prefHeight="25.0" prefWidth="22.0" promptText="M" style="-fx-text-fill: white;" unFocusColor="WHITE" />
+            <JFXTextField fx:id="eHour" focusColor="WHITE" layoutX="10.0" layoutY="9.0" prefHeight="25.0" prefWidth="22.0" promptText="H" style="-fx-text-fill: white;" unFocusColor="WHITE" />
+            <JFXTextField fx:id="eMinute" focusColor="WHITE" layoutX="39.0" layoutY="9.0" prefHeight="25.0" prefWidth="22.0" promptText="M" style="-fx-text-fill: white;" unFocusColor="WHITE" />
             <Label layoutX="30.0" layoutY="12.0" prefHeight="17.0" prefWidth="3.0" text=":" textFill="WHITE" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="9" />
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="10">
          <children>
-            <JFXButton fx:id="img" layoutX="17.0" layoutY="-7.0" onAction="#locationOnMap" prefHeight="25.0" prefWidth="339.0" style="-fx-background-color: grey;" text="Check Location on map" />
+            <JFXButton fx:id="locationOnMapBtn" onAction="#locationOnMap" layoutX="219.0" layoutY="-7.0" prefHeight="25.0" prefWidth="141.0" style="-fx-background-color: grey;" text="Check Location on map" textFill="WHITE" />
+            <JFXButton fx:id="addBooksBtn" onAction="#addBooks" layoutX="4.0" layoutY="-7.0" prefHeight="25.0" prefWidth="141.0" style="-fx-background-color: grey;" text="Add books" textFill="WHITE" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
          <children>
-            <ComboBox layoutX="-3.0" layoutY="5.0" prefHeight="25.0" prefWidth="111.0" />
+            <ComboBox fx:id="statusCombo" layoutX="62.0" layoutY="10.0" prefHeight="25.0" prefWidth="111.0" />
+            <Label layoutX="10.0" layoutY="16.0" text="Status" textFill="WHITE" />
          </children>
       </AnchorPane>
    </children>

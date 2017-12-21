@@ -15,7 +15,7 @@ public class UserMenuController {
 	
 	public void logoutBtn(ActionEvent event) throws Exception
 	{
-		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/loginMenu.fxml"));
+		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/LoginMenu.fxml"));
 		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
 		
 		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -23,9 +23,35 @@ public class UserMenuController {
 		
 		window.show();
 	}
-	public void goBack(ActionEvent event) throws Exception
+	public void mainMenu(ActionEvent event) throws Exception
 	{
 		LoginController current= new LoginController();
+		Login currentUser= current.getCurrentUser();
+		
+		
+		if(currentUser.isAdmin()==true)
+		{
+			Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/mainMenu.fxml"));
+			Scene passwordForgottenScene = new Scene(passwordForgottenParent);
+			
+			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			window.setScene(passwordForgottenScene);
+			
+			window.show();
+		}else {
+			Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/mainMenuNormaleUser.fxml"));
+			Scene passwordForgottenScene = new Scene(passwordForgottenParent);
+			
+			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			window.setScene(passwordForgottenScene);
+			
+			window.show();
+			
+		}
+	}
+	public void goBack(ActionEvent event) throws Exception
+	{
+		LoginController	 current= new LoginController();
 		Login currentUser= current.getCurrentUser();
 		
 		

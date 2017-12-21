@@ -10,6 +10,8 @@ import javax.persistence.Column;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Projections;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -62,26 +64,88 @@ public class Survey {
 	}
 	
 	//DEZE NOG CHECKEN
-	public static Survey getLastSurveyID() {
-		SessionFactory sessionFactory = new Configuration().configure().addAnnotatedClass(Survey.class).buildSessionFactory();
-		Session session = sessionFactory.openSession();
+	public static int getLastSurveyID() {
+		Session session = Main.factory.getCurrentSession();
 		session.beginTransaction();
 		
-		Query query = session.createQuery("FROM Survey ORDER BY compoundSurveyKey DESC");
+		Query query = session.createQuery("FROM Survey");
 		List<Survey> survey = query.list();
-		Survey laatsteVraag = survey.get(0);
+		int last= survey.size();
+		
+		session.getTransaction().commit();
+		
+		
+		
+		return last;
+	}
+	public void setQuestion1(String question) {
+		this.question = question;
+	}
+	
+	//DEZE NOG CHECKEN
+	public static void addSurvey(String question) throws Exception {
+		Session session = Main.factory.getCurrentSession();
+		session.beginTransaction();
+		
+		Query query = session.createQuery("FROM Survey");
+		List<Survey> survey = query.list();
+		int last= survey.size();
+		
+		CompoundSurvey comp= new CompoundSurvey(last,1);
+		Survey surveyy= new Survey(comp,question);
+		
+	
+		session.save(surveyy);
+		
+		
+		
+		session.getTransaction().commit();
+		System.out.println("statement works");
+		Logfile log= new Logfile();
+		LoginController currentUserr= new LoginController();
+		int current= currentUserr.getCurrentUser().getUser_ID();
+		log.addLogs(current, "User: "+currentUserr.getCurrentUser().getUsername()+"added survey "+surveyy.compoundSurveyKey.getSurvey_ID());
+		
+		
+		
+		
+	}
+	
+	public static List<Survey> getAllSurveys() {
+		Session session = Main.factory.getCurrentSession();
+		session.beginTransaction();
+		
+		Query query = session.createQuery("FROM Survey ORDER BY survey_ID");
+		List<Survey> surveys = query.list();
+		
 		
 		session.getTransaction().commit();
 		System.out.println("Statement Worked!");
-		session.close();
-		sessionFactory.close();
+	
 		
-		return laatsteVraag;
+		
+		return surveys;
+	}
+	public static List<Integer> getAllSurveysIDS() {
+		Session session = Main.factory.getCurrentSession();
+		session.beginTransaction();
+		
+		
+		
+		Criteria criteria = session.createCriteria( Survey.class );
+		criteria.setProjection( Projections.distinct( Projections.property( "compoundSurveyKey.survey_ID" ) ) );
+		List<Integer> surveys = criteria.list();
+		
+		session.getTransaction().commit();
+		System.out.println("Statement Worked!");
+	
+		
+		
+		return surveys;
 	}
 	
 	public static List<Survey> getQuestionsFromSurveyID(int surveyID){
-		SessionFactory sessionFactory = new Configuration().configure().addAnnotatedClass(Survey.class).buildSessionFactory();
-		Session session = sessionFactory.openSession();
+		Session session = Main.factory.getCurrentSession();
 		session.beginTransaction();
 		//CHECK DIT???
 		Query query = session.createQuery("FROM Survey WHERE survey_ID = "+ surveyID);
@@ -92,15 +156,14 @@ public class Survey {
 		}
 		session.getTransaction().commit();
 		System.out.println("Statement Worked!");
-		session.close();
-		sessionFactory.close();
+		
+		
 		
 		return survey;
 	}
 
 	public static List<Survey> getSpecificQuestionFromSurveyID(int surveyID, int questionID){
-		SessionFactory sessionFactory = new Configuration().addAnnotatedClass(Survey.class).configure().buildSessionFactory();
-		Session session = sessionFactory.openSession();
+		Session session = Main.factory.getCurrentSession();
 		session.beginTransaction();
 
 		Query query = session.createQuery("FROM Survey WHERE survey_ID = "+surveyID +" AND question_ID = "+  questionID);
@@ -108,46 +171,44 @@ public class Survey {
 		
 		session.getTransaction().commit();
 		System.out.println("Statement Worked!");
-		session.close();
-		sessionFactory.close();
+		
+		
 		
 		return survey;
 	}
 	
-	public static void main(String[] args) {
-		Survey test= new Survey();
-		
-		
-		
-	}
 	
-	public static Boolean addQuestion(int surveyID, String question) {
-		SessionFactory sessionFactory = new Configuration().addAnnotatedClass(Survey.class).configure().buildSessionFactory();
-		Session session = sessionFactory.openSession();
+	public static Boolean addQuestion(int surveyID, String question) throws Exception {
+		Session session = Main.factory.getCurrentSession();
 		session.beginTransaction();
 		
-		List<Survey> vragen = getQuestionsFromSurveyID(surveyID);
-		int lengte = vragen.size()+1;
-		System.out.println(lengte);
+		Query query = session.createQuery("FROM Survey WHERE survey_ID = "+ surveyID);
+		List<Survey> survey = query.list();
+		
+		int lengte = survey.size()+1;
+		
 		
 		
 		CompoundSurvey compkey= new CompoundSurvey(surveyID,lengte);
 		Survey test= new Survey(compkey,question);
-		System.out.println("1");
+		
 		session.save(test);
-		System.out.println("2");
+		
 		
 		session.getTransaction().commit();
-		System.out.println("Statement Worked!");
-		session.close();
-		sessionFactory.close();
+		Logfile log= new Logfile();
+		LoginController currentUserr= new LoginController();
+		int current= currentUserr.getCurrentUser().getUser_ID();
+		log.addLogs(current, "User: "+currentUserr.getCurrentUser().getUsername()+" added question "+question+" to survey"+surveyID);
+	
+		
+		
 		
 		return true;
 	}
 
-	public static Boolean changeQuestion(int surveyID, int questionID, String newQuestion) {
-		SessionFactory sessionFactory = new Configuration().addAnnotatedClass(Survey.class).configure().buildSessionFactory();
-		Session session = sessionFactory.openSession();
+	public static Boolean changeQuestion(int surveyID, int questionID, String newQuestion) throws Exception {
+		Session session = Main.factory.getCurrentSession();
 		session.beginTransaction();
 		
 		List<Survey> vragen = getSpecificQuestionFromSurveyID(surveyID, questionID);
@@ -157,10 +218,48 @@ public class Survey {
 		
 		session.getTransaction().commit();
 		System.out.println("Statement Worked!");
-		session.close();
-		sessionFactory.close();
+		Logfile log= new Logfile();
+		LoginController currentUserr= new LoginController();
+		int current= currentUserr.getCurrentUser().getUser_ID();
+		log.addLogs(current, "User: "+currentUserr.getCurrentUser().getUsername()+" changed question "+questionID+"from survey "+surveyID);
+		
+		
 		
 		return true;
+	}
+	public static void updateQuestion(Survey survey) throws Exception {
+		Session session = Main.factory.getCurrentSession();
+		session.beginTransaction();
+		
+		session.update(survey);
+		
+		session.getTransaction().commit();
+		System.out.println("Statement Worked!");
+		Logfile log= new Logfile();
+		LoginController currentUserr= new LoginController();
+		int current= currentUserr.getCurrentUser().getUser_ID();
+		log.addLogs(current, "User: "+currentUserr.getCurrentUser().getUsername()+" updated question "+survey.getQuestion());
+		
+		
+		
+	}
+	public static void deleteQuestion(Survey survey) throws Exception {
+		Session session = Main.factory.getCurrentSession();
+		session.beginTransaction();
+		
+		session.delete(survey);
+		
+		session.getTransaction().commit();
+		
+		
+		System.out.println("Statement Worked!");
+		Logfile log= new Logfile();
+		LoginController currentUserr= new LoginController();
+		int current= currentUserr.getCurrentUser().getUser_ID();
+		log.addLogs(current, "User: "+currentUserr.getCurrentUser().getUsername()+" deleted question "+survey.getQuestion());
+		
+		
+		
 	}
 
 

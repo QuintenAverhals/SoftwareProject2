@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="color" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="367.0" prefWidth="340.0" style="-fx-background-color: #2d3440;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="base.LocationPopUpAddTrainingController">
+   <children>
+      <Label layoutX="95.0" layoutY="9.0" text="New Location" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Label>
+      <TextField fx:id="streetName" onKeyReleased="#clearBestaandeAdres" layoutX="14.0" layoutY="72.0" />
+      <Text fill="WHITE" layoutX="18.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Street name: " wrappingWidth="117.33334350585938" />
+      <Text fill="WHITE" layoutX="250.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bus:" wrappingWidth="117.33334350585938" />
+      <TextField fx:id="streetNr" onKeyReleased="#clearBestaandeAdres" layoutX="183.0" layoutY="72.0" prefHeight="25.0" prefWidth="39.0" />
+      <TextField fx:id="bus" onKeyReleased="#clearBestaandeAdres" layoutX="248.0" layoutY="72.0" prefHeight="25.0" prefWidth="60.0" />
+      <TextField fx:id="city" onKeyReleased="#clearBestaandeAdres" layoutX="14.0" layoutY="117.0" />
+      <TextField fx:id="zip" onKeyReleased="#clearBestaandeAdres" layoutX="180.0" layoutY="117.0" prefHeight="25.0" prefWidth="60.0" />
+      <Text fill="WHITE" layoutX="184.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nr:" wrappingWidth="39.00000195764005" />
+      <Text fill="WHITE" layoutX="15.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Country:" wrappingWidth="72.33337598107755" />
+      <Text fill="WHITE" layoutX="184.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zip:" wrappingWidth="39.00000195764005" />
+      <TextField fx:id="country" onKeyReleased="#clearBestaandeAdres" layoutX="15.0" layoutY="160.0" />
+      <Text fill="WHITE" layoutX="18.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="City" />
+      <ComboBox fx:id="existingDrop" onAction="#clearNieuweAdres" layoutX="91.0" layoutY="238.0" prefWidth="150.0" />
+      <Label layoutX="79.0" layoutY="196.0" text="Existing Location" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="submit" layoutX="113.0" onAction="#handleSubmit" layoutY="292.0" prefHeight="25.0" prefWidth="106.0" style="-fx-background-color: grey;" text="Submit" textFill="WHITE" />
+   </children>
+</AnchorPane>

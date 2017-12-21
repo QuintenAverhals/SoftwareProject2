@@ -1,205 +1,232 @@
 package dao;
-import base.Location;
-import java.util.List;
 
+import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+
+import base.LoginController;
 import base.Location;
+import base.Logfile;
+import base.Main;
+
+//auteur: chaimae
 
 public class LocationDAO {
 
-public LocationDAO(){
-	
-	
-
-}
-public void updateBus(int id, String bus) {
-//update
-SessionFactory sessionfactory= new Configuration().configure().addAnnotatedClass(Location.class).buildSessionFactory();
-Session session = sessionfactory.openSession();
-session.beginTransaction();
-
-
-Location location= new Location();
-
-location = (Location) session.get(Location.class, id);
-location.setBus(bus); //
-
-
-
-session.update(location);
-
-session.getTransaction().commit();
-session.close();
-sessionfactory.close();
-
-
-}
-
-
-public void updateCountry(int id, String country) {
-	//update
-	SessionFactory sessionfactory= new Configuration().configure().addAnnotatedClass(Location.class).buildSessionFactory();
-	Session session = sessionfactory.openSession();
-	session.beginTransaction();
-
-
-	Location location= new Location();
-
-	location = (Location) session.get(Location.class, id);
-	location.setCountry(country); //
-
-
-
-	session.update(location);
-
-	session.getTransaction().commit();
-	session.close();
-	sessionfactory.close();
-
+	public LocationDAO() {
 
 	}
 
-public void updateCity(int id, String city) {
-	//update
-	SessionFactory sessionfactory= new Configuration().configure().addAnnotatedClass(Location.class).buildSessionFactory();
-	Session session = sessionfactory.openSession();
-	session.beginTransaction();
+	public void updateBus(int id, String bus) throws Exception {
+		// update
+		Session session = Main.factory.getCurrentSession();
+		session.beginTransaction();
 
+		Location location = new Location();
 
-	Location location= new Location();
+		location = (Location) session.get(Location.class, id);
+		location.setBus(bus); //
 
-	location = (Location) session.get(Location.class, id);
-	location.setCity(city); //
+		session.update(location);
 
-
-
-	session.update(location);
-
-	session.getTransaction().commit();
-	session.close();
-	sessionfactory.close();
-
-
-	}
-public void updateZipcode(int id, String zipcode) {
-	//update
-	SessionFactory sessionfactory= new Configuration().configure().addAnnotatedClass(Location.class).buildSessionFactory();
-	Session session = sessionfactory.openSession();
-	session.beginTransaction();
-
-
-	Location location= new Location();
-
-	location = (Location) session.get(Location.class, id);
-	location.setZip_code(zipcode); //
-
-
-
-	session.update(location);
-
-	session.getTransaction().commit();
-	session.close();
-	sessionfactory.close();
-
+		session.getTransaction().commit();
+		Logfile log = new Logfile();
+		LoginController currentUserr = new LoginController();
+		int current = currentUserr.getCurrentUser().getUser_ID();
+		log.addLogs(current,
+				"User: " + currentUserr.getCurrentUser().getUsername() + " updated bus for location " + id);
 
 	}
 
-public void updateStreetname(int id, String streetname) {
-	//update
-	SessionFactory sessionfactory= new Configuration().configure().addAnnotatedClass(Location.class).buildSessionFactory();
-	Session session = sessionfactory.openSession();
-	session.beginTransaction();
+	public void updateCountry(int id, String country) throws Exception {
+		// update
+		Session session = Main.factory.getCurrentSession();
 
+		session.beginTransaction();
 
-	Location location= new Location();
+		Location location = new Location();
 
-	location = (Location) session.get(Location.class, id);
-	location.setStreetname(streetname);
+		location = (Location) session.get(Location.class, id);
+		location.setCountry(country); //
 
+		session.update(location);
 
+		session.getTransaction().commit();
+		Logfile log = new Logfile();
+		LoginController currentUserr = new LoginController();
+		int current = currentUserr.getCurrentUser().getUser_ID();
+		log.addLogs(current,
+				"User: " + currentUserr.getCurrentUser().getUsername() + " updated country for location " + id);
 
-	session.update(location);
+	}
 
-	session.getTransaction().commit();
-	session.close();
-	sessionfactory.close();
+	public void updateCity(int id, String city) throws Exception {
+		// update
+		Session session = Main.factory.getCurrentSession();
+		session.beginTransaction();
 
+		Location location = new Location();
+
+		location = (Location) session.get(Location.class, id);
+		location.setCity(city); //
+
+		session.update(location);
+
+		session.getTransaction().commit();
+		Logfile log = new Logfile();
+		LoginController currentUserr = new LoginController();
+		int current = currentUserr.getCurrentUser().getUser_ID();
+		log.addLogs(current,
+				"User: " + currentUserr.getCurrentUser().getUsername() + " updated city for location " + id);
 
 	}
 
-public void updateStreetnumber(int id, int streetnumber) {
-	//update
-	SessionFactory sessionfactory= new Configuration().configure().addAnnotatedClass(Location.class).buildSessionFactory();
-	Session session = sessionfactory.openSession();
-	session.beginTransaction();
+	public void updateZipcode(int id, String zipcode) throws Exception {
+		// update
 
+		Session session = Main.factory.getCurrentSession();
+		session.beginTransaction();
 
-	Location location= new Location();
+		Location location = new Location();
 
-	location = (Location) session.get(Location.class, id);
-	location.setStreetnumber(streetnumber);
+		location = (Location) session.get(Location.class, id);
+		location.setZip_code(zipcode); //
 
+		session.update(location);
 
-
-	session.update(location);
-
-	session.getTransaction().commit();
-	session.close();
-	sessionfactory.close();
-
+		session.getTransaction().commit();
+		Logfile log = new Logfile();
+		LoginController currentUserr = new LoginController();
+		int current = currentUserr.getCurrentUser().getUser_ID();
+		log.addLogs(current,
+				"User: " + currentUserr.getCurrentUser().getUsername() + " updated zipcode for location " + id);
 
 	}
-public void createNewLocation(String city,String country, String zipcode, String bus,String streetname,int streetNumber) {
-	
-	SessionFactory sessionfactory= new Configuration().configure().addAnnotatedClass(Location.class).buildSessionFactory();
-	Session session = sessionfactory.openSession();
-	session.beginTransaction();
-	
 
-Location location= new Location(city,country,zipcode,bus,streetname,streetNumber);//remplir
+	public void updateStreetname(int id, String streetname) throws Exception {
+		// update
+		Session session = Main.factory.getCurrentSession();
+		session.beginTransaction();
 
-session.save(location);
+		Location location = new Location();
 
-session.getTransaction().commit();
-session.close();
-sessionfactory.close();
-	
-}
+		location = (Location) session.get(Location.class, id);
+		location.setStreetname(streetname);
 
-public List<Location> getAll() {
-	SessionFactory sessionfactory= new Configuration().configure().addAnnotatedClass(Location.class).buildSessionFactory();
-	Session session = sessionfactory.openSession();
-	session.beginTransaction();
-	
-	Location location=new Location();
-	Query query = session.createQuery("from Location");
-	List<Location> locations= query.list();
+		session.update(location);
 
-	session.getTransaction().commit();
-	session.close();
-	sessionfactory.close();
-	return locations;
-	
-}
+		session.getTransaction().commit();
+		Logfile log = new Logfile();
+		LoginController currentUserr = new LoginController();
+		int current = currentUserr.getCurrentUser().getUser_ID();
+		log.addLogs(current,
+				"User: " + currentUserr.getCurrentUser().getUsername() + " updated streetname for location " + id);
 
-public List<Location> getByID(int id) {
-	SessionFactory sessionfactory= new Configuration().configure().addAnnotatedClass(Location.class).buildSessionFactory();
-	Session session = sessionfactory.openSession();
-	session.beginTransaction();
-	
-	Location location=new Location();
-	Query query = session.createQuery("from Location where location_ID="+ id);
-	List<Location> locations= query.list();
-	
-	session.getTransaction().commit();
-	session.close();
-	sessionfactory.close();
-	return locations;	
-}
+	}
 
+	public void updateStreetnumber(int id, int streetnumber) throws Exception {
+		// update
+		Session session = Main.factory.getCurrentSession();
+		session.beginTransaction();
+
+		Location location = new Location();
+
+		location = (Location) session.get(Location.class, id);
+		location.setStreetnumber(streetnumber);
+
+		session.update(location);
+
+		session.getTransaction().commit();
+		Logfile log = new Logfile();
+		LoginController currentUserr = new LoginController();
+		int current = currentUserr.getCurrentUser().getUser_ID();
+		log.addLogs(current,
+				"User: " + currentUserr.getCurrentUser().getUsername() + " updated streetnumber for location  " + id);
+
+	}
+
+	public void createNewLocation(String city, String country, String zipcode, String bus, String streetname,
+			int streetNumber) throws Exception {
+
+		Session session = Main.factory.getCurrentSession();
+		session.beginTransaction();
+
+		Location location = new Location(city, country, zipcode, bus, streetname, streetNumber);// remplir
+
+		session.save(location);
+
+		session.getTransaction().commit();
+
+		Logfile log = new Logfile();
+		LoginController currentUserr = new LoginController();
+		int current = currentUserr.getCurrentUser().getUser_ID();
+		log.addLogs(current, "User: " + currentUserr.getCurrentUser().getUsername() + " created location  " + streetname
+				+ " " + streetNumber);
+
+	}
+
+	public static int createNewLocation(Location l) throws Exception {
+
+		Session session = Main.factory.getCurrentSession();
+		session.beginTransaction();
+
+		int id = (int) session.save(l);
+
+		session.getTransaction().commit();
+
+		Logfile log = new Logfile();
+		LoginController currentUserr = new LoginController();
+		int current = currentUserr.getCurrentUser().getUser_ID();
+		log.addLogs(current, "User: " + currentUserr.getCurrentUser().getUsername() + " created location  "
+				+ l.getStreetname() + " " + l.getStreetnumber());
+
+		return id;
+
+	}
+
+	public static List<Location> getAll() {
+		Session session = Main.factory.getCurrentSession();
+		session.beginTransaction();
+
+		Location location = new Location();
+		Query query = session.createQuery("from Location");
+		List<Location> locations = query.list();
+
+		session.getTransaction().commit();
+
+		return locations;
+
+	}
+
+	public static List<Location> getByID(int id) {
+		Session session = Main.factory.getCurrentSession();
+		session.beginTransaction();
+
+		Location location = new Location();
+		Query query = session.createQuery("from Location where location_ID=" + id);
+		List<Location> locations = query.list();
+
+		session.getTransaction().commit();
+
+		return locations;
+	}
+
+	public static int getID(Location l) {
+
+		Session session = Main.factory.getCurrentSession();
+		session.beginTransaction();
+
+		Query query = session.createQuery("from Location where bus='" + l.getBus() + "' and city= '" + l.getCity()
+				+ "' and country='" + l.getCountry() + "' and streetname='" + l.getStreetname() + "' and streetnumber="
+				+ l.getStreetnumber() + " and zipcode='" + l.getZip_code() + "'");
+		List<Location> locations = query.list();
+
+		session.getTransaction().commit();
+
+		return locations.get(0).getLocation_ID();
+	}
 
 }

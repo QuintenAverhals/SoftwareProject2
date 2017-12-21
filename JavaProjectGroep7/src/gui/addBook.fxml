@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-<?import javafx.scene.image.Image?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2d3440;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="base.AddBookController">
+<GridPane fx:id="color" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2d3440;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="base.AddBookController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -20,14 +24,24 @@
   </columnConstraints>
   <rowConstraints>
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="254.0" minHeight="10.0" prefHeight="254.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="128.0" minHeight="10.0" prefHeight="12.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
+      <AnchorPane prefHeight="200.0" prefWidth="600.0" GridPane.columnSpan="3" GridPane.rowIndex="1">
+         <children>
+            <TableView fx:id="tableBooks" layoutX="14.0" layoutY="14.0" prefHeight="230.0" prefWidth="564.0">
+              <columns>
+                <TableColumn fx:id="isbnCol" prefWidth="195.00003051757812" text="ISBN" />
+                <TableColumn fx:id="titleCol" minWidth="0.0" prefWidth="204.99996948242188" text="Title" />
+                <TableColumn fx:id="authorCol" prefWidth="163.0" text="Author" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <Text fill="WHITE" layoutX="106.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ISBN:" />
-            <Button fx:id="mainMenuBtn" onAction="#mainMenu" layoutX="17.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-text-fill: transparent; -fx-border-fill: transparent;" text="Button">
+            <Button fx:id="mainMenuBtn" layoutX="17.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainMenu" style="-fx-background-color: transparent; -fx-text-fill: transparent; -fx-border-fill: transparent;" text="Button">
                <graphic>
                   <ImageView fx:id="logoIMG" fitHeight="48.0" fitWidth="116.0" focusTraversable="true" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -38,54 +52,25 @@
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
-         <children>
-            <Text fill="WHITE" layoutX="34.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add book">
-               <font>
-                  <Font size="35.0" />
-               </font>
-            </Text>
-            <TextField fx:id="txtFieldISBN" layoutX="7.0" layoutY="105.0" />
-         </children>
-      </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
          <children>
-            <Button fx:id="logoutBtn" layoutX="121.0" layoutY="14.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: grey;" text="logout" />
+            <Button fx:id="logoutBtn" layoutX="83.0" layoutY="14.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: grey;" text="Logout" textFill="WHITE" />
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
-         <children>
-            <Text fill="WHITE" layoutX="106.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:" />
-            <Text fill="WHITE" layoutX="94.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Uitgever:" />
-            <Text fill="WHITE" layoutX="108.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title:" />
-         </children>
-      </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-         <children>
-            <TextField fx:id="txtFieldPrice" layoutX="7.0" layoutY="6.0" />
-            <TextField fx:id="txtFieldUitgever" layoutX="7.0" layoutY="44.0" />
-            <TextField fx:id="txtFieldTitle" layoutX="7.0" layoutY="88.0" />
-         </children>
-      </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
          <children>
-            <Text fill="WHITE" layoutX="96.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Author" />
-            <Text fill="WHITE" layoutX="105.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type:" />
-            <Text fill="WHITE" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Software Project 2" />
-         </children>
-      </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-         <children>
-            <TextField fx:id="txtFieldAuthor" layoutX="7.0" layoutY="-1.0" />
-            <ComboBox fx:id="txtFieldType" layoutX="8.0" layoutY="51.0" prefHeight="31.0" prefWidth="187.0" promptText="Online" />
+            <JFXTextField fx:id="searchBookTextField" focusColor="WHITE" layoutX="14.0" layoutY="-1.0" promptText="Title or ISBN" style="-fx-text-fill: white;" unFocusColor="WHITE" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
          <children>
-            <Text fill="WHITE" layoutX="137.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Groep 7" />
-            <Button fx:id="addBookBtn" layoutX="129.0" layoutY="51.0" mnemonicParsing="false" style="-fx-background-color: grey;" text="Add" />
-            <Button fx:id="goBackBtn" layoutX="41.0" layoutY="51.0" mnemonicParsing="false" onAction="#goBack" style="-fx-background-color: grey;" text="Go Back" />
+            <AnchorPane layoutX="-29.0" layoutY="-68.0" prefHeight="200.0" prefWidth="200.0" />
+         </children></AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <children>
+            <Button fx:id="goBackBtn" layoutX="44.0" layoutY="2.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="106.0" style="-fx-background-color: grey;" text="Back" textFill="WHITE" />
+            <Button fx:id="addBtn" layoutX="171.0" layoutY="2.0" mnemonicParsing="false" onAction="#addBookToTraining" prefHeight="25.0" prefWidth="106.0" style="-fx-background-color: grey;" text="Add" textFill="WHITE" />
+            <Button fx:id="SearchBtn" layoutX="-82.0" layoutY="2.0" mnemonicParsing="false" onAction="#searchForBook" prefHeight="25.0" prefWidth="106.0" style="-fx-background-color: grey;" text="Search" textFill="WHITE" />
          </children>
       </AnchorPane>
    </children>

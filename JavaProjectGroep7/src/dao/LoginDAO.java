@@ -1,7 +1,9 @@
 package dao;
 
 import java.util.ArrayList;
+import dao.LogfileDAO;
 import java.util.List;
+import java.util.Random;
 
 import javax.persistence.Column;
 
@@ -10,54 +12,56 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import base.Logfile;
 import base.Login;
 import base.Main;
+import base.Main;
 import base.SHA512;
+import base.LoginController;
 public class LoginDAO {
 	
-
+	private Logfile log= new Logfile();
 
 	public boolean check(Login currentUser) {
-		
-		boolean result = false;
 		Session session = Main.factory.getCurrentSession();
 		session.beginTransaction(); 
-		Query query= session.createQuery("from Login where Username ='"+currentUser.getUsername()+ "' and password='"+currentUser.getPassword()+"'"+"and Visibility=1");
+		Query query= session.createQuery("from Login where Username = :u and password= :p and Visibility=1");
+		query.setParameter("u", currentUser.getUsername());
+		query.setParameter("p", currentUser.getPassword());
+		
 		List<Login> user= query.list();
-		
-		for(Login u: user)                       
-		{
-			if(currentUser.getUsername().equals(u.getUsername())&& (currentUser.getPassword().equals(u.getPassword())))
-			{
-				result= true;
-			}
-			
-		}
-		
-		
-		
 		session.getTransaction().commit();
 		
-		 
-		return result;
+		if(user.size() > 0)
+			return true;
+		else
+			return false;
 	}
-	
-	public void createNewUser(String userName, String wachtwoord, boolean isAdmin, String email) throws Exception
+	public static void createNewUser(String userName, String wachtwoord, boolean isAdmin, String email) throws Exception
 	{
 		
 		Session session = Main.factory.getCurrentSession();
 		session.beginTransaction(); 
 		//These lines will call the sha function which will encrypt the password
 		SHA512 hasher = new SHA512();
-		String password=hasher.hashString(wachtwoord);
-		
-		Login newLogin= new Login(userName,password,isAdmin,email);
+	
+		Random r= new Random();
+		int salt = r.nextInt(50);
+		String password=hasher.hashString(wachtwoord+salt);
+		System.out.println(password);
+		 
+		Login newLogin= new Login(userName,password,isAdmin,email,salt);
 		
 		session.save(newLogin);
 		
 		
 		
 		session.getTransaction().commit();
+		
+		Logfile log= new Logfile();
+		LoginController currentUserr= new LoginController();
+		int current= currentUserr.getCurrentUser().getUser_ID();
+		log.addLogs(current, "User: "+currentUserr.getCurrentUser().getUsername()+" created user "+userName);
 		
 		
 	}
@@ -69,7 +73,10 @@ public class LoginDAO {
 		
 		//sha hashes the string right before checking password
 		SHA512 hasher = new SHA512();
-		String password=hasher.hashString(passWord);
+		
+		int salt=LoginDAO.getSaltByUserName(userName);
+		
+		String password=hasher.hashString(passWord+salt);
 		Login currentUser= new Login(userName,password);
 		boolean result= currentUser.check(currentUser);
 		
@@ -82,6 +89,25 @@ public class LoginDAO {
 		}
 		
 		
+	}
+	public static int getSaltByUserName(String Username)
+	{
+		Session session = Main.factory.getCurrentSession();
+		session.beginTransaction(); 
+		
+		
+		
+		
+		Query query= session.createQuery("from Login where Username='"+Username+"'");
+		
+		
+		Login l = (Login) query.uniqueResult();
+		int salt= l.getSalt();
+		
+		
+		session.getTransaction().commit();
+		
+		return salt;
 	}
 	void updatePassword(int id, String password, String newPassword) throws Exception
 	{
@@ -113,10 +139,13 @@ public class LoginDAO {
 			
 		session.getTransaction().commit();
 		
-		
+		Logfile log= new Logfile();
+		LoginController currentUserr= new LoginController();
+		int current= currentUserr.getCurrentUser().getUser_ID();
+		log.addLogs(current, "User: "+currentUserr.getCurrentUser().getUsername()+" updated password for userid "+id);
 		
 	}
-	public void updateUserName(int id, String userName)
+	public void updateUserName(int id, String userName) throws Exception
 	{
 		
 		
@@ -130,11 +159,16 @@ public class LoginDAO {
 		
 		session.getTransaction().commit();
 		
+		Logfile log= new Logfile();
+		LoginController currentUserr= new LoginController();
+		int current= currentUserr.getCurrentUser().getUser_ID();
+		log.addLogs(current, "User: "+currentUserr.getCurrentUser().getUsername()+" updated username for userid "+id);
+		
 	
 	
 		
 	}
-	public void updateIsAdmin(int id, boolean isAdmin)
+	public void updateIsAdmin(int id, boolean isAdmin) throws Exception
 	{
 		
 		
@@ -148,11 +182,16 @@ public class LoginDAO {
 		
 		session.getTransaction().commit();
 		
+		Logfile log= new Logfile();
+		LoginController currentUserr= new LoginController();
+		int current= currentUserr.getCurrentUser().getUser_ID();
+		log.addLogs(current, "User: "+currentUserr.getCurrentUser().getUsername()+" updated admin rights for userid "+id);
+		
 		
 	
 		
 	}
-	public void updateAll(int id,String email, String username, String password, boolean isAdmin )
+	public void updateAll(int id,String email, String username, String password, boolean isAdmin ) throws Exception
 	{
 		
 		
@@ -169,6 +208,10 @@ public class LoginDAO {
 		
 		session.getTransaction().commit();
 		
+		Logfile log= new Logfile();
+		LoginController currentUserr= new LoginController();
+		int current= currentUserr.getCurrentUser().getUser_ID();
+		log.addLogs(current, "User: "+currentUserr.getCurrentUser().getUsername()+" updated userid "+id);
 	
 		
 	}
@@ -190,7 +233,7 @@ public class LoginDAO {
 		
 		
 	}
-	public static void deleteLogin(int id)
+	public static void deleteLogin(int id) throws Exception
 	{
 		
 		
@@ -205,6 +248,10 @@ public class LoginDAO {
 	
 			
 		session.getTransaction().commit();
+		Logfile log= new Logfile();
+		LoginController currentUserr= new LoginController();
+		int current= currentUserr.getCurrentUser().getUser_ID();
+		log.addLogs(current, "User: "+currentUserr.getCurrentUser().getUsername()+" deleted userid "+id);
 	
 		
 		
@@ -295,15 +342,35 @@ public boolean checkUsernameUnique(String name) {
 			return true; 
 		}
 	}
-	
-	
-	
-	session.getTransaction().commit();
-	
-
-	 
+		
+	session.getTransaction().commit(); 
 	return result;
 }
+
+public static boolean checkEmailUnique(String email) {
+	
+	boolean result= false;
+	
+	Session session = Main.factory.getCurrentSession();
+	session.beginTransaction(); 
+	
+	
+	Query query= session.createQuery("from Login where email='" + email+"'"+"and Visibility=1");
+	List<Login> users= query.list();
+	
+	for(int i=0;i<users.size();i++)
+	{
+		if(users.get(i).getEmail().equals(email))
+		{
+			session.getTransaction().commit();
+			return true; 
+		}
+	}
+		
+	session.getTransaction().commit(); 
+	return result;
+}
+
 
 }
 
