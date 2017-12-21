@@ -39,6 +39,7 @@ public class UserOverviewController {
 	public CheckBox isAdmin;
 	public List<Login> users;
 	public GridPane color;
+	private String currentName;
 	
 	private Pattern mailChecker = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 	
@@ -95,10 +96,11 @@ public class UserOverviewController {
 		String selected = (String) viewList.getSelectionModel().getSelectedItem();
 		selected = selected.replaceAll("[a-zA-Z]", "");
 		selected = selected.replaceAll(":", "");
+		Login selLogin= new Login();
+		currentName= selLogin.getUsername();
 	
 		
 	
-		Login selLogin= new Login();
 		selLogin = selLogin.getUsersByID(selected);
 		Password.setText("******");
 		email.setText(selLogin.getEmail());
@@ -175,14 +177,12 @@ public class UserOverviewController {
 		{
 			passwordNotSame("ERROR","all fields need to be filled in");
 			
-		}else {
-			if(checkName==false) {
+		}else { 
 				//CAREFULL!! EMAIL CHECKER DOESNT work 100% if you give letters with accents it will fail!
 				Matcher emailChecker= mailChecker.matcher(mail);
 				if(emailChecker.find()){
-
 					Login nieweLogin= new Login();
-					check.updateAll(id, mail, username, password, admin);
+					check.updateAll(id, email.getText(), username, password, admin);
 					passwordNotSame("SUCCESS", "User has been successfully Updated");
 				}else {
 					passwordNotSame("EMAIL ERROR", "THIS IS NOT A VALID EMAIL! TRY AGAIN");
@@ -203,10 +203,8 @@ public class UserOverviewController {
 		
 		}
 		
-		}else {
-			
 		}
-	}
+	
 	
 	public void deleteBtn(ActionEvent event) throws Exception 
 	{

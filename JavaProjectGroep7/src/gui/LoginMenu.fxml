@@ -8,15 +8,12 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-
-
-<AnchorPane fx:id="color" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #2D3440;" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="base.LoginController" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="color" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #2D3440;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="base.LoginController">
    <children>
       <AnchorPane layoutX="11.0" layoutY="57.0" prefHeight="256.0" prefWidth="395.0">
          <children>
-            <JFXTextField fx:id="usernameLogin" onAction="#handleButtonClick" focusColor="WHITE" layoutX="47.0" layoutY="67.0" prefHeight="25.0" prefWidth="162.0" promptText="username" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" unFocusColor="WHITE" />
-            <JFXPasswordField fx:id="passwordLogin" onAction="#handleButtonClick" focusColor="WHITE" layoutX="47.0" layoutY="122.0" prefWidth="162.0" promptText="password" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" unFocusColor="WHITE" />
+            <JFXTextField fx:id="usernameLogin" focusColor="WHITE" layoutX="47.0" layoutY="67.0" onAction="#handleButtonClick" prefHeight="25.0" prefWidth="162.0" promptText="username" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" unFocusColor="WHITE" />
+            <JFXPasswordField fx:id="passwordLogin" focusColor="WHITE" layoutX="47.0" layoutY="122.0" onAction="#handleButtonClick" prefWidth="162.0" promptText="password" style="-fx-text-fill: white; -fx-prompt-text-fill: white;" unFocusColor="WHITE" />
             <ImageView fitHeight="19.0" fitWidth="18.0" layoutX="25.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/password.png" />
@@ -27,9 +24,9 @@
                   <Image url="@../img/login.png" />
                </image>
             </ImageView>
-            <JFXButton fx:id="loginBtn" onAction="#handleButtonClick" buttonType="RAISED" layoutX="172.0" layoutY="163.0" style="-fx-background-color: grey;" text="LOGIN" textFill="WHITE" />
+            <JFXButton fx:id="loginBtn" buttonType="RAISED" layoutX="172.0" layoutY="163.0" onAction="#handleButtonClick" style="-fx-background-color: grey;" text="LOGIN" textFill="WHITE" />
             <JFXCheckBox fx:id="rememberMeLogin" checkedColor="WHITE" layoutX="34.0" layoutY="166.0" style="-fx-text-fill: white;" text="Remember me" />
-            <ImageView fitHeight="79.0" fitWidth="173.0" layoutX="56.0" layoutY="-14.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="79.0" fitWidth="173.0" layoutX="73.0" layoutY="-29.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/logo.png" />
                </image>
@@ -41,6 +38,6 @@
             <Image url="@../img/training-icon-2.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="forgotPswBtn" onAction="#resetPassword" layoutX="19.0" layoutY="356.0" style="-fx-background-color: #2D3440;" text="Forgot password" textAlignment="CENTER" textFill="WHITE" />
+      <JFXButton fx:id="forgotPswBtn" layoutX="19.0" layoutY="356.0" onAction="#resetPassword" style="-fx-background-color: #2D3440;" text="Forgot password" textAlignment="CENTER" textFill="WHITE" />
    </children>
 </AnchorPane>

@@ -234,7 +234,6 @@ public class Certificate {
             String secondRemoteFile = ("Seppe/SW2/Logo/" + selectedFile.getName());
             InputStream inputStream = new FileInputStream(selectedFile);
  
-            System.out.println("Start uploading first file");
             OutputStream outputStream = ftpClient.storeFileStream(secondRemoteFile);
             byte[] bytesIn = new byte[4096];
             int read = 0;
@@ -247,11 +246,9 @@ public class Certificate {
  
             boolean completed = ftpClient.completePendingCommand();
             if (completed) {
-                System.out.println("The first file is uploaded successfully.");
             }
  
         } catch (IOException ex) {
-            System.out.println("Error: " + ex.getMessage());
             ex.printStackTrace();
         } finally {
             try {
@@ -285,7 +282,6 @@ public class Certificate {
            // APPROACH #1: using retrieveFile(String, OutputStream)
             String remoteFile1 = ("Seppe/SW2/" + docName);
             File downloadFile1 = new File(Certificate.class.getProtectionDomain().getCodeSource().getLocation().getPath() +"../Certificaten/" + docName);
-            System.out.println(Certificate.class.getProtectionDomain().getCodeSource().getLocation().getPath() +"../Certificaten/" + docName);
             OutputStream outputStream1 = new BufferedOutputStream(new FileOutputStream(downloadFile1));
             boolean success = ftpClient.retrieveFile(remoteFile1, outputStream1);
             outputStream1.close();
@@ -348,7 +344,6 @@ public class Certificate {
            // APPROACH #1: using retrieveFile(String, OutputStream)
             String remoteFile1 = ("Seppe/SW2/" + docName);
             File downloadFile1 = new File(Certificate.class.getProtectionDomain().getCodeSource().getLocation().getPath() +"../src/img/" + docName);
-            System.out.println(Certificate.class.getProtectionDomain().getCodeSource().getLocation().getPath() +"../src/img/" + docName);
             OutputStream outputStream1 = new BufferedOutputStream(new FileOutputStream(downloadFile1));
             boolean success = ftpClient.retrieveFile(remoteFile1, outputStream1);
             outputStream1.close();
@@ -416,12 +411,7 @@ public class Certificate {
 		session.getTransaction().commit();
 		Certificate certificate = certificates.get(0);
 		
-		for(int i=0;i<certificates.size();i++)
-		{
-			System.out.println(certificates.get(i).toString());
-		}		
 		
-		System.out.println("Statement Worked!");
 		
 			
 		
@@ -439,7 +429,6 @@ public class Certificate {
 		
 		Certificate certificate = certificates.get(0);
 		
-		System.out.println("Statement Worked!");
 		
 		
 		
@@ -458,7 +447,6 @@ public class Certificate {
 		session.update(certificate);
 		
 		session.getTransaction().commit();
-		System.out.println("Statement Worked!");
 		
 		
 		return true;

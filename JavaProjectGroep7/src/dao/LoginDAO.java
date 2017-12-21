@@ -37,6 +37,7 @@ public class LoginDAO {
 		else
 			return false;
 	}
+	
 	public static void createNewUser(String userName, String wachtwoord, boolean isAdmin, String email) throws Exception
 	{
 		
@@ -99,15 +100,20 @@ public class LoginDAO {
 		
 		
 		Query query= session.createQuery("from Login where Username='"+Username+"'");
-		
-		
 		Login l = (Login) query.uniqueResult();
-		int salt= l.getSalt();
 		
+		try {
+			int salt= l.getSalt();
+			session.getTransaction().commit();
+			
+			return salt;
+			
+			
+		}catch(Exception e) {
 		
 		session.getTransaction().commit();
-		
-		return salt;
+		return 0;
+		}
 	}
 	void updatePassword(int id, String password, String newPassword) throws Exception
 	{

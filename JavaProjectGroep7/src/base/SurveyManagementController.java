@@ -1,5 +1,9 @@
 package base;
 
+import org.hibernate.exception.ConstraintViolationException;
+
+import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
+
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -192,10 +196,11 @@ public class SurveyManagementController {
 			ObservableList<Survey> list = FXCollections.observableArrayList(Survey.getAllSurveys());
 			
 			questionTable.setItems(list);
-		}catch(IllegalArgumentException e)
+		}catch(NullPointerException e)
 		{
 			ErrorMsg("Error", "you must select something before deleting");
 		}
+		
 	}
 	
 	public void addSurvey(ActionEvent event) throws Exception

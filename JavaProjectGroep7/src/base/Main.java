@@ -37,7 +37,7 @@ public class Main extends Application {
 	 * public static void setRoot(Parent root) { stage.getScene().setRoot(root); }
 	 */
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		try {
 			factory = new Configuration().configure().addAnnotatedClass(TrainingWerknemer.class)
 					.addAnnotatedClass(Certificate.class).addAnnotatedClass(Logfile.class).addAnnotatedClass(Options.class)

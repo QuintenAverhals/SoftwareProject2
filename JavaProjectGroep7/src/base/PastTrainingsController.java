@@ -74,6 +74,7 @@ public class PastTrainingsController{
 	}
 	public void initialize()
 	{
+		
 		viewList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 		Training training= new Training();
 		List<Training> trainings;
@@ -113,13 +114,25 @@ public class PastTrainingsController{
 		
 		String selectedWerknemerName = (String) viewListUsersInTraining.getSelectionModel().getSelectedItem();
 		selectedWerknemerName = selectedWerknemerName.substring(selectedWerknemerName.lastIndexOf(":")+2);
-		
+		String fileName = null;
 		File c= Certificate.chooseFile();
-		String fileName = Certificate.getFileName(c);
-		Certificate.uploadToServer(c);
+		try {
+			
+			fileName = Certificate.getFileName(c);
+		}catch(NullPointerException e) {
+			
+		}
+		try {
+			Certificate.uploadToServer(c);
+			Certificate.addtoDatabase(TrainingID,LoginController.currentUser.getUser_ID(), selectedWerknemerName, fileName);
+			passwordNotSame("", "Your file has successfully been uploaded");
+			
+		}catch(NullPointerException e)
+		{
+			passwordNotSame("", "This user already has a certificate");
+
+		}
 		
-		Certificate.addtoDatabase(TrainingID,LoginController.currentUser.getUser_ID(), selectedWerknemerName, fileName);
-		passwordNotSame("", "Your file has successfully been uploaded");
 		
 		
 		}
@@ -127,7 +140,7 @@ public class PastTrainingsController{
 	}
 	public void fillBlanks(MouseEvent event) throws Exception 
 	{
-    
+		
         viewList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         String selected = (String) viewList.getSelectionModel().getSelectedItem();
         selected = selected.split(":")[0];
@@ -208,9 +221,9 @@ public class PastTrainingsController{
 		
   	
  
- 
+ 	viewListUsersInTraining.getItems().clear();
 
- viewListUsersInTraining.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+ 	viewListUsersInTraining.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 	Training training1 = new Training();
 	List<Training> trainings;
 

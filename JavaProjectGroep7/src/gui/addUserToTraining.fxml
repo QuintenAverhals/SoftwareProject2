@@ -48,9 +48,9 @@
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <ImageView fx:id="logoIMG" fitHeight="48.0" fitWidth="116.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="logoIMG" fitHeight="48.0" fitWidth="116.0" layoutX="8.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/cisco.png" />
+                  <Image url="@..\img\logo.png" />
                </image>
             </ImageView>
          </children>

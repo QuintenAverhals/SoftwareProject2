@@ -30,7 +30,7 @@
                <graphic>
                   <ImageView fitHeight="44.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/cisco.png" />
+                       	<Image url="@../img/logo.png" />
                      </image>
                   </ImageView>
                </graphic>

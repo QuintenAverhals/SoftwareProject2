@@ -136,7 +136,6 @@ public class AddUserToTrainingController {
 				selected = selected.split(":")[0];
 				int id = Integer.parseInt(selected);
 				
-				System.out.println(id);
 				
 				
 				//to get TrainingID (compound)
@@ -145,7 +144,6 @@ public class AddUserToTrainingController {
 				String selectedTraining = (String) viewList.getSelectionModel().getSelectedItem();
 				selectedTraining = selectedTraining.split(":")[0];
 				int idselectedTraining = Integer.parseInt(selectedTraining);
-				System.out.println(idselectedTraining);
 				
 				CompoundKeyTrainingWerknermer c= new CompoundKeyTrainingWerknermer();
 				c.setLoginID(id);
@@ -200,7 +198,6 @@ public class AddUserToTrainingController {
 		selected = selected.split(":")[0];
 		int id = Integer.parseInt(selected);
 		
-		System.out.println(id);
 		
 		
 		//to get TrainingID (compound)
@@ -209,7 +206,6 @@ public class AddUserToTrainingController {
 		String selectedTraining = (String) viewList.getSelectionModel().getSelectedItem();
 		selectedTraining = selectedTraining.split(":")[0];
 		int idselectedTraining = Integer.parseInt(selectedTraining);
-		System.out.println(idselectedTraining);
 		
 		CompoundKeyTrainingWerknermer c= new CompoundKeyTrainingWerknermer();
 		c.setLoginID(id);

@@ -33,8 +33,14 @@ public class addQuestionController {
 
 	public void submit(ActionEvent event) throws Exception
 	{
-		Survey.addQuestion(nieuweQuestion.getCompoundSurveyKey().getSurvey_ID(), newQuestion.getText());
-		submit.setDisable(true);
+		try {
+			
+			Survey.addQuestion(nieuweQuestion.getCompoundSurveyKey().getSurvey_ID(), newQuestion.getText());
+			submit.setDisable(true);
+		}catch(NullPointerException e)
+		{
+			
+		}
 	}
 	
 }

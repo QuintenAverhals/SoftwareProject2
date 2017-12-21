@@ -7,6 +7,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import dao.LoginDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -70,7 +71,7 @@ public class OptionsController {
 	}
 
 	public void logoutBtn(ActionEvent event) throws Exception {
-		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/LoginMenu.fxml"));
+		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/loginMenu.fxml"));
 		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
 
 		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -114,7 +115,7 @@ public class OptionsController {
 			
 			Boolean download = Certificate.downloadFromServerLogo("logo.png");
 			veiligeInvoer("","You're file has successfully been downloaded");
-			
+			Logfile.addLogs(LoginController.currentUser.getUser_ID(), "Logo has been changed by user:" +LoginController.currentUser.getUsername());
 		}catch(NullPointerException e)
 		{
 			
@@ -130,16 +131,12 @@ public class OptionsController {
 		session.beginTransaction();
 		Query query = session.createQuery("from Options");
 		Options op = (Options) query.uniqueResult();
-		// List<Options> o= query.list();
-
-		/*
-		 * for (Options options : o) { System.out.println(o.toString()); }
-		 */
+		
 		session.getTransaction().commit();
 
-		System.out.println(op.getBackground_Color());
+		
 
-		// color =java.awt.Color.decode(o.get(0).getBackground_Color());
+		
 
 		return op.getBackground_Color();
 	}
@@ -185,6 +182,8 @@ public class OptionsController {
 
 			kleur = colorPicker.getValue();
 		}
+		Logfile.addLogs(LoginController.currentUser.getUser_ID(), "Options has been changed by user: " +LoginController.currentUser.getUsername());
+
 
 	}
 

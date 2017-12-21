@@ -127,7 +127,7 @@ public class AddTrainingController {
 		} else {
 			if(!startHour.getText().matches("[0-9]+")||!startMinute.getText().matches("[0-9]+")||!endHour.getText().matches("[0-9]+")||!endMinute.getText().matches("[0-9]+"))
 			{
-				veiligeInvoer("Error", "Zbeubzbeub");
+				veiligeInvoer("Error", "Must be a valid time");
 
 			}else {
 				

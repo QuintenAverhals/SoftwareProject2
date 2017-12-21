@@ -1,5 +1,7 @@
 package base;
 
+import org.hibernate.NonUniqueObjectException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -27,9 +29,14 @@ public class addSurveyController {
 	public void submitQuestion(ActionEvent event) throws Exception
 	{
 		
-			
-			Survey.addSurvey(newSurvey.getText());
+			try {
+				Survey.addSurvey(newSurvey.getText());
+				submit.setDisable(true);
+				
+			}catch(NonUniqueObjectException e)
+			{
+				
+			}
 	
-		submit.setDisable(true);
 	}
 }

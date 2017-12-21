@@ -30,6 +30,9 @@ public class Survey {
 	@Column(name="Question")
 	private String question;
 	
+	@Column(name="visibility")
+	private boolean visibility;
+	
 	
 	
 	public Survey() {
@@ -40,6 +43,16 @@ public class Survey {
 		super();
 		this.compoundSurveyKey = compoundSurveyKey;
 		this.question = question;
+		this.visibility=true;
+	}
+	
+
+	public boolean isVisibility() {
+		return visibility;
+	}
+
+	public void setVisibility(boolean visibility) {
+		this.visibility = visibility;
 	}
 
 	@Override
@@ -91,7 +104,7 @@ public class Survey {
 		List<Survey> survey = query.list();
 		int last= survey.size();
 		
-		CompoundSurvey comp= new CompoundSurvey(last,1);
+		CompoundSurvey comp= new CompoundSurvey(last+1,1);
 		Survey surveyy= new Survey(comp,question);
 		
 	
@@ -100,7 +113,7 @@ public class Survey {
 		
 		
 		session.getTransaction().commit();
-		System.out.println("statement works");
+		
 		Logfile log= new Logfile();
 		LoginController currentUserr= new LoginController();
 		int current= currentUserr.getCurrentUser().getUser_ID();
@@ -115,7 +128,7 @@ public class Survey {
 		Session session = Main.factory.getCurrentSession();
 		session.beginTransaction();
 		
-		Query query = session.createQuery("FROM Survey ORDER BY survey_ID");
+		Query query = session.createQuery("FROM Survey where visibility=1 ORDER BY survey_ID");
 		List<Survey> surveys = query.list();
 		
 		
@@ -244,20 +257,30 @@ public class Survey {
 		
 	}
 	public static void deleteQuestion(Survey survey) throws Exception {
+		
+		if(survey!=null)
+		{
+			
 		Session session = Main.factory.getCurrentSession();
 		session.beginTransaction();
 		
-		session.delete(survey);
+		Survey s= (Survey) session.get(Survey.class, survey.getCompoundSurveyKey());
+		s.setVisibility(false);
+		
+		session.update(s);
+		
 		
 		session.getTransaction().commit();
 		
 		
-		System.out.println("Statement Worked!");
 		Logfile log= new Logfile();
 		LoginController currentUserr= new LoginController();
 		int current= currentUserr.getCurrentUser().getUser_ID();
 		log.addLogs(current, "User: "+currentUserr.getCurrentUser().getUsername()+" deleted question "+survey.getQuestion());
 		
+		}else {
+			
+		}
 		
 		
 	}
