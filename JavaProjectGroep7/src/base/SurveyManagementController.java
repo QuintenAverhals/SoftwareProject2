@@ -1,5 +1,9 @@
 package base;
 
+import org.hibernate.exception.ConstraintViolationException;
+
+import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
+
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -17,6 +21,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -34,35 +39,36 @@ public class SurveyManagementController {
 	private TableColumn<Survey,Integer> QuestionID;
 	@FXML
 	private TableColumn<Survey,String> Questions;
-	
-	
+	public GridPane color;
+
+
 	/**
-	 * 
+	 *
 	 */
 	public void mainMenu(ActionEvent event) throws Exception
 	{
 		LoginController current= new LoginController();
 		Login currentUser= current.getCurrentUser();
-		
-		
+
+
 		if(currentUser.isAdmin()==true)
 		{
 			Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/mainMenu.fxml"));
 			Scene passwordForgottenScene = new Scene(passwordForgottenParent);
-			
+
 			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 			window.setScene(passwordForgottenScene);
-			
+
 			window.show();
 		}else {
 			Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/mainMenuNormaleUser.fxml"));
 			Scene passwordForgottenScene = new Scene(passwordForgottenParent);
-			
+
 			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 			window.setScene(passwordForgottenScene);
-			
+
 			window.show();
-			
+
 		}
 	}
 	@FXML
@@ -89,42 +95,45 @@ public class SurveyManagementController {
 		questionTable.setPlaceholder(new Label("No entry found."));
 		ObservableList<Survey> list = FXCollections.observableArrayList(Survey.getAllSurveys());
 		questionTable.setItems(list);
-		
+		String kleure= OptionsController.getColor();
+
+		color.setStyle("-fx-background-color: #" + kleure);
+
 	}
 	public void logoutBtn(ActionEvent event) throws Exception
 	{
 		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/loginGui.fxml"));
 		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
-		
+
 		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		window.setScene(passwordForgottenScene);
-		
+
 		window.show();
 	}
 	public void goBack(ActionEvent event) throws Exception
 	{
 		LoginController current= new LoginController();
 		Login currentUser= current.getCurrentUser();
-		
-		
+
+
 		if(currentUser.isAdmin()==true)
 		{
 			Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/mainMenu.fxml"));
 			Scene passwordForgottenScene = new Scene(passwordForgottenParent);
-			
+
 			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 			window.setScene(passwordForgottenScene);
-			
+
 			window.show();
 		}else {
 			Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/mainMenuNormaleUser.fxml"));
 			Scene passwordForgottenScene = new Scene(passwordForgottenParent);
-			
+
 			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 			window.setScene(passwordForgottenScene);
-			
+
 			window.show();
-			
+
 		}
 	}
 	public void updateQuestion(ActionEvent event) throws Exception
@@ -147,7 +156,7 @@ public class SurveyManagementController {
 		try {
 			c.setQuestion(questionTable.getSelectionModel().getSelectedItem());
 			popup.show();
-			
+
 		}catch(NullPointerException e)
 		{
 			ErrorMsg("Error", "you must select an item before updating 	");
@@ -176,23 +185,24 @@ public class SurveyManagementController {
 	}
 	public void deleteQuestion(ActionEvent event) throws Exception
 	{
-		
+
 		try {
-			
+
 			Survey c= new Survey();
 			c=questionTable.getSelectionModel().getSelectedItem();
 			Survey.deleteQuestion(c);
-		
+
 			questionTable.setPlaceholder(new Label("No entry found."));
 			ObservableList<Survey> list = FXCollections.observableArrayList(Survey.getAllSurveys());
-			
+
 			questionTable.setItems(list);
-		}catch(IllegalArgumentException e)
+		}catch(NullPointerException e)
 		{
 			ErrorMsg("Error", "you must select something before deleting");
 		}
+
 	}
-	
+
 	public void addSurvey(ActionEvent event) throws Exception
 	{
 		Stage popup = new Stage();
@@ -214,24 +224,24 @@ public class SurveyManagementController {
 	public static void ErrorMsg(String title, String msg)
 	{
 		Stage window= new Stage();
-		
+
 		window.initModality(Modality.APPLICATION_MODAL);
 		window.setTitle(title);
 		window.setMinWidth(250);
 		Label label= new Label();
-		
+
 		label.setText(msg);
 		Button closeButton= new Button("Close the window");
 		closeButton.setOnAction(e -> window.close());
-		
+
 		VBox layout= new VBox(10);
 		layout.getChildren().add(label);
 		layout.getChildren().add(closeButton);
 		layout.setAlignment(Pos.CENTER);
-		
+
 		Scene scene = new Scene(layout);
 		window.setScene(scene);
 		window.showAndWait();
-		
+
 	}
 }

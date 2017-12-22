@@ -16,6 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -44,8 +45,7 @@ public class AddTrainingController {
 	public TextField startMinute;
 	public TextField endHour;
 	public TextField endMinute;
-	public ComboBox statusCombo;
-	public Status status;
+	public CheckBox cancel;
 	public Button locationID;
 	public ComboBox<Integer> surveyID;
 	public Button mainMenuBtn;
@@ -68,7 +68,7 @@ public class AddTrainingController {
 		surveyID.setCellFactory(call);
 		surveyID.setButtonCell(call.call(null));
 		String kleure= OptionsController.getColor();
-		
+
 		color.setStyle("-fx-background-color: #" + kleure);
 
 	}
@@ -127,10 +127,10 @@ public class AddTrainingController {
 		} else {
 			if(!startHour.getText().matches("[0-9]+")||!startMinute.getText().matches("[0-9]+")||!endHour.getText().matches("[0-9]+")||!endMinute.getText().matches("[0-9]+"))
 			{
-				veiligeInvoer("Error", "Zbeubzbeub");
+				veiligeInvoer("Error", "Must be a valid time");
 
 			}else {
-				
+
 			String trainingnaam = TrainingName.getText();
 
 			Training training = new Training();
@@ -158,8 +158,8 @@ public class AddTrainingController {
 			int h = Integer.parseInt(endHour.getText());
 			int m = Integer.parseInt(endMinute.getText());
 			Date et = endTime.setTime(h, m, 0);
-			
-			
+
+
 			String BeginUur = startHour.getText();
 			int BeginUurp = Integer.parseInt(BeginUur);
 

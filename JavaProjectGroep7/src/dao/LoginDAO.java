@@ -37,6 +37,10 @@ public class LoginDAO {
 		else
 			return false;
 	}
+<<<<<<< HEAD
+=======
+	
+>>>>>>> dev_Bilal
 	public static void createNewUser(String userName, String wachtwoord, boolean isAdmin, String email) throws Exception
 	{
 		
@@ -99,6 +103,7 @@ public class LoginDAO {
 		
 		
 		Query query= session.createQuery("from Login where Username='"+Username+"'");
+<<<<<<< HEAD
 		
 		
 		Login l = (Login) query.uniqueResult();
@@ -108,6 +113,22 @@ public class LoginDAO {
 		session.getTransaction().commit();
 		
 		return salt;
+=======
+		Login l = (Login) query.uniqueResult();
+		
+		try {
+			int salt= l.getSalt();
+			session.getTransaction().commit();
+			
+			return salt;
+			
+			
+		}catch(Exception e) {
+		
+		session.getTransaction().commit();
+		return 0;
+		}
+>>>>>>> dev_Bilal
 	}
 	void updatePassword(int id, String password, String newPassword) throws Exception
 	{
@@ -348,16 +369,30 @@ public boolean checkUsernameUnique(String name) {
 }
 
 public static boolean checkEmailUnique(String email) {
+<<<<<<< HEAD
+	
+	boolean result= false;
+=======
 	
 	boolean result= false;
 	
 	Session session = Main.factory.getCurrentSession();
 	session.beginTransaction(); 
+>>>>>>> dev_Bilal
 	
+	Session session = Main.factory.getCurrentSession();
+	session.beginTransaction(); 
+	
+<<<<<<< HEAD
 	
 	Query query= session.createQuery("from Login where email='" + email+"'"+"and Visibility=1");
 	List<Login> users= query.list();
 	
+=======
+	Query query= session.createQuery("from Login where email='" + email+"'"+"and Visibility=1");
+	List<Login> users= query.list();
+	
+>>>>>>> dev_Bilal
 	for(int i=0;i<users.size();i++)
 	{
 		if(users.get(i).getEmail().equals(email))

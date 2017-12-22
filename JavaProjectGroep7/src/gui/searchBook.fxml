@@ -25,11 +25,19 @@
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="600.0" GridPane.columnSpan="3" GridPane.rowIndex="1">
          <children>
+<<<<<<< HEAD
             <TableView fx:id="tableBooks" layoutX="14.0" layoutY="14.0" prefHeight="230.0" prefWidth="564.0">
               <columns>
                 <TableColumn fx:id="isbnCol" prefWidth="195.00003051757812" text="ISBN" />
                 <TableColumn fx:id="titleCol" minWidth="0.0" prefWidth="204.99996948242188" text="Title" />
                 <TableColumn fx:id="authorCol" prefWidth="163.0" text="Author" />
+=======
+            <TableView layoutX="14.0" layoutY="14.0" prefHeight="230.0" prefWidth="564.0">
+              <columns>
+                <TableColumn prefWidth="195.00003051757812" text="ISBN" />
+                <TableColumn minWidth="0.0" prefWidth="204.99996948242188" text="Title" />
+                  <TableColumn prefWidth="163.0" text="Author" />
+>>>>>>> dev_Bilal
               </columns>
             </TableView>
          </children>
@@ -40,7 +48,11 @@
                <graphic>
                   <ImageView fx:id="logoIMG" fitHeight="48.0" fitWidth="116.0" focusTraversable="true" pickOnBounds="true" preserveRatio="true">
                      <image>
+<<<<<<< HEAD
                        	<Image url="@../img/cisco.png" />
+=======
+                       	<Image url="@../img/logo.png" />
+>>>>>>> dev_Bilal
                      </image>
                   </ImageView>
                </graphic>
@@ -54,8 +66,13 @@
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
          <children>
+<<<<<<< HEAD
             <JFXTextField fx:id="searchBookTextField" focusColor="WHITE" layoutX="14.0" layoutY="-1.0" promptText="Title or ISBN" style="-fx-text-fill: white;" unFocusColor="WHITE" />
             <Button fx:id="SearchBtn" layoutX="159.0" layoutY="2.0" mnemonicParsing="false" onAction="#searchForBook" prefHeight="25.0" prefWidth="106.0" style="-fx-background-color: grey;" text="Search" textFill="WHITE" />
+=======
+            <JFXTextField fx:id="searchBookTextField" focusColor="WHITE" layoutX="14.0" layoutY="-1.0" promptText="Search book by title" style="-fx-text-fill: white;" unFocusColor="WHITE" />
+            <Button fx:id="SearchBtn" layoutX="159.0" layoutY="2.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="106.0" style="-fx-background-color: grey;" text="Search" textFill="WHITE" />
+>>>>>>> dev_Bilal
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">

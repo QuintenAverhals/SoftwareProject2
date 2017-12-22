@@ -25,7 +25,6 @@ public class BookMenuController extends LoginController {
 	Button ManagementBtn;
 	Button backBtn;
 	Button mainMenuBtn;
-
 	
 	public void mainMenu(ActionEvent event) throws Exception
 	{

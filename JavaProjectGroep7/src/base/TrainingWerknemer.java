@@ -19,6 +19,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 @Entity
@@ -26,10 +27,10 @@ import javafx.stage.Stage;
 public class TrainingWerknemer {
 	@Id
 	CompoundKeyTrainingWerknermer compound;
-	
 
-	
-	
+
+
+
 	public CompoundKeyTrainingWerknermer getCompound() {
 		return compound;
 	}
@@ -41,52 +42,51 @@ public class TrainingWerknemer {
 	public TrainingWerknemer() {
 		super();
 	}
-	
 
 	public void mainMenu(ActionEvent event) throws Exception
 	{
 		LoginController current= new LoginController();
 		Login currentUser= current.getCurrentUser();
-		
-		
+
+
 		if(currentUser.isAdmin()==true)
 		{
 			Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/mainMenu.fxml"));
 			Scene passwordForgottenScene = new Scene(passwordForgottenParent);
-			
+
 			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 			window.setScene(passwordForgottenScene);
-			
+
 			window.show();
 		}else {
 			Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/mainMenuNormaleUser.fxml"));
 			Scene passwordForgottenScene = new Scene(passwordForgottenParent);
-			
+
 			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 			window.setScene(passwordForgottenScene);
-			
+
 			window.show();
-			
+
 		}
 	}
-	
+
 	/*
 	public static Boolean addTrainingForEmployee(int loginID, int trainingID) {
 		Session session = Main.factory.getCurrentSession();
 		session.beginTransaction();
-		
+
 		TrainingWerknemer trainingWerknemer = new TrainingWerknemer(loginID, trainingID);
 		session.save(trainingWerknemer);
-		
+
 		session.getTransaction().commit();
 		System.out.println("Statement Worked!");
-		
-		
+
+
 		return true;
 	}
 	*/
-	
-	
+
+
 
 	@Override
 	public String toString() {
@@ -96,42 +96,42 @@ public class TrainingWerknemer {
 
 	public static TrainingWerknemer getTrainingWerknemer(int loginID, int trainingID) {
 		Session session = Main.factory.getCurrentSession();
-		session.beginTransaction();		
-				
+		session.beginTransaction();
+
 		Query query = session.createQuery("FROM TrainingWerknemer WHERE loginID = "+loginID + " AND trainingID = "+trainingID);
 		List<TrainingWerknemer> trainingen = query.list();
 		TrainingWerknemer training = trainingen.get(0);
-		
+
 		for(int i=0;i<trainingen.size();i++)
 		{
 			System.out.println(trainingen.get(i).toString());
-		}		
-		
+		}
+
 		session.getTransaction().commit();
-			
-		
+
+
 		return training;
 	}
 	public static List<TrainingWerknemer> getALL() {
 		Session session = Main.factory.getCurrentSession();
-		session.beginTransaction();		
-				
+		session.beginTransaction();
+
 		Query query = session.createQuery("FROM TrainingWerknemer");
 		List<TrainingWerknemer> trainingen = query.list();
 
-		
-		
+
+
 		session.getTransaction().commit();
-		
-		
+
+
 		return trainingen;
 	}
-	
-	
+
+
 	public static void DeleteFromTraining(CompoundKeyTrainingWerknermer id) throws Exception {
-		Session session = Main.factory.getCurrentSession();	
-		session.beginTransaction();		
-		
+		Session session = Main.factory.getCurrentSession();
+		session.beginTransaction();
+
 		Query query = session.createSQLQuery("Delete from TRAININGPERWERKNEMER where LoginID="+id.getLoginID()+" and TrainingID="+id.getTrainingID());
 		query.executeUpdate();
 		session.getTransaction().commit();
@@ -143,14 +143,14 @@ public class TrainingWerknemer {
 
 	}
 	public static void addToTraining(CompoundKeyTrainingWerknermer id) throws Exception {
-		Session session = Main.factory.getCurrentSession();	
-		session.beginTransaction();				
-			
-			
+		Session session = Main.factory.getCurrentSession();
+		session.beginTransaction();
+
+
 			Query query = session.createSQLQuery("Insert into TRAININGPERWERKNEMER (LoginID,TrainingID) values ("+id.getLoginID()+","+id.getTrainingID()+")");
 			int a = query.executeUpdate();
 			System.out.println(a);
-			
+
 			System.out.println(id.toString());
 
 		session.getTransaction().commit();
@@ -160,9 +160,9 @@ public class TrainingWerknemer {
 		int current= currentUserr.getCurrentUser().getUser_ID();
 		log.addLogs(current, "User: "+currentUserr.getCurrentUser().getUsername()+" Added user: "+id.getLoginID()+" to training "+id.getTrainingID());
 	}
-	
-	
+
+
 	public static void main(String[] args) {
-			
-	}	
+
+	}
 }

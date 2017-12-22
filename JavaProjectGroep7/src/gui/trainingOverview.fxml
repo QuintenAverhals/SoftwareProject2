@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -15,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2d3440;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="base.TrainingOverviewController">
+<GridPane fx:id="color" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2d3440;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="base.TrainingOverviewController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -38,9 +39,15 @@
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
+<<<<<<< HEAD
             <ImageView fx:id="logoIMG" fitHeight="48.0" fitWidth="116.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@soft%20proj%20final/SoftwareProject2/JavaProjectGroep7/img/cisco.png" />
+=======
+            <ImageView fx:id="logoIMG" fitHeight="48.0" fitWidth="116.0" layoutX="6.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                       	<Image url="@../img/logo.png" />
+>>>>>>> dev_Bilal
                </image>
             </ImageView>
          </children>
@@ -62,7 +69,11 @@
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
          <children>
+<<<<<<< HEAD
             <JFXListView fx:id="viewList" layoutX="14.0" layoutY="14.0" onMouseClicked="#fillBlanks" prefHeight="170.0" prefWidth="108.0" style="-fx-text-fill: white; -fx-background-color: #2d3440;" />
+=======
+            <JFXListView fx:id="viewList" layoutX="18.0" layoutY="27.0" onMouseClicked="#fillBlanks" prefHeight="170.0" prefWidth="108.0" style="-fx-text-fill: white; -fx-background-color: #2d3440;" />
+>>>>>>> dev_Bilal
             <Label layoutX="126.0" layoutY="47.0" text="Training ID:" textFill="WHITE" />
             <Label layoutX="124.0" layoutY="93.0" text="Start Date:" textFill="WHITE" />
             <Label layoutX="133.0" layoutY="153.0" text="surveyID: " textFill="WHITE" />
@@ -124,8 +135,13 @@
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="7">
          <children>
+<<<<<<< HEAD
             <JFXTextField fx:id="filterView" focusColor="WHITE" layoutX="21.0" layoutY="-1.0" onAction="#filterView" prefHeight="25.0" prefWidth="97.0" style="-fx-text-fill: white;" unFocusColor="WHITE" />
             <JFXButton fx:id="filerView" layoutX="15.0" layoutY="36.0" prefHeight="25.0" prefWidth="111.0" style="-fx-background-color: grey;" text="Filter" textFill="WHITE" />
+=======
+            <JFXTextField fx:id="filterView" focusColor="WHITE" layoutX="21.0" layoutY="7.0" onAction="#filterView" prefHeight="25.0" prefWidth="97.0" style="-fx-text-fill: white;" unFocusColor="WHITE" />
+            <JFXButton fx:id="filerView" layoutX="15.0" layoutY="46.0" prefHeight="25.0" prefWidth="111.0" style="-fx-background-color: grey;" text="Filter" textFill="WHITE" />
+>>>>>>> dev_Bilal
          </children></AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-text-fill: white;" GridPane.columnIndex="2" GridPane.rowIndex="6">
          <children>
@@ -158,14 +174,24 @@
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="9" />
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="10">
          <children>
+<<<<<<< HEAD
             <JFXButton fx:id="locationOnMapBtn" onAction="#locationOnMap" layoutX="219.0" layoutY="-7.0" prefHeight="25.0" prefWidth="141.0" style="-fx-background-color: grey;" text="Check Location on map" textFill="WHITE" />
             <JFXButton fx:id="addBooksBtn" onAction="#addBooks" layoutX="4.0" layoutY="-7.0" prefHeight="25.0" prefWidth="141.0" style="-fx-background-color: grey;" text="Add books" textFill="WHITE" />
+=======
+            <JFXButton fx:id="img" layoutX="219.0" layoutY="-7.0" prefHeight="25.0" prefWidth="141.0" style="-fx-background-color: grey;" text="Check Location on map" textFill="WHITE" />
+            <JFXButton fx:id="addBooks" layoutX="4.0" layoutY="-7.0" prefHeight="25.0" prefWidth="141.0" style="-fx-background-color: grey;" text="Add books" textFill="WHITE" />
+>>>>>>> dev_Bilal
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
          <children>
+<<<<<<< HEAD
             <ComboBox fx:id="statusCombo" layoutX="62.0" layoutY="10.0" prefHeight="25.0" prefWidth="111.0" />
             <Label layoutX="10.0" layoutY="16.0" text="Status" textFill="WHITE" />
+=======
+            <Label layoutX="10.0" layoutY="16.0" text="Cancel: " textFill="WHITE" />
+            <CheckBox fx:id="cancel" layoutX="57.0" layoutY="16.0" mnemonicParsing="false" textFill="WHITE" />
+>>>>>>> dev_Bilal
          </children>
       </AnchorPane>
    </children>

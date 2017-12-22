@@ -12,16 +12,16 @@ import javax.persistence.Table;
 
 import dao.TrainingDAO;
 
-@Entity 
+@Entity
 @Table(name="TRAINING")
 
 
 
 
 public class Training extends TrainingDAO {
-	
- 
-	
+
+
+
 	@Id
 	@Column(name="TrainingID")
 	private int training_ID;
@@ -33,8 +33,8 @@ public class Training extends TrainingDAO {
 	private Date start_time;
 	@Column(name="end_time")
 	private Date end_time;
-	//@Column(name="status")
-	private Status status;
+	@Column(name="cancel")
+	private boolean cancel;
 	@Column(name="survey_id")
 	private int SurveyID;
 	@Column(name="location_id")
@@ -43,10 +43,10 @@ public class Training extends TrainingDAO {
 	private boolean visibility;
     @Column(name="Training_Name")
     private String TrainingNaam;
-	
 
 
- 
+
+
 
 
 	public String getTrainingNaam() {
@@ -66,9 +66,9 @@ public class Training extends TrainingDAO {
 	public Training() {
 		super();
 	}
-	
-	
-	
+
+
+
 
 
 
@@ -81,7 +81,6 @@ public class Training extends TrainingDAO {
 		this.end_date = end_date;
 		this.start_time = start_time;
 		this.end_time = end_time;
-		this.status = Status.ONGOING;
 		SurveyID = surveyID;
 		this.locationID = locationID;
 		this.visibility = true;
@@ -91,14 +90,14 @@ public class Training extends TrainingDAO {
 
 
 
-	public Status getStatus() {
-		return status;
+	public boolean getcancel() {
+		return cancel;
 	}
-	public void setStatus(Status status) {
-		this.status = status;
+	public void setcancel(boolean cancel) {
+		this.cancel = cancel;
 	}
 
-	
+
 	public int getTraining_ID() {
 		return training_ID;
 	}
@@ -165,47 +164,47 @@ public class Training extends TrainingDAO {
 
 	public String toString() {
 		return "Training [training_ID=" + training_ID + ", start_date=" + start_date + ", end_date=" + end_date
-				+ ", start_time=" + start_time + ", end_time=" + end_time + ", status=" + status + ", locationID="
+				+ ", start_time=" + start_time + ", end_time=" + end_time + ", cancel=" + cancel + ", locationID="
 				+ locationID + ", visibility=" + visibility + "]";
 	}
-	
-	
+
+
 	public Date setDate( int date, int month,int year) {
 		Date myDate;
 
         Calendar cal = Calendar.getInstance();
-     
-        cal.set(Calendar.DATE, date);  
+
+        cal.set(Calendar.DATE, date);
         cal.set(Calendar.MONTH,month-1);
         cal.set(Calendar.YEAR, year);
-        
+
         cal.clear(Calendar.HOUR);
         cal.clear(Calendar.MINUTE);
         cal.clear(Calendar.SECOND);
         myDate = cal.getTime();
-        
-        
-       
-        return myDate;  
-	
+
+
+
+        return myDate;
+
 	}
 	public Date setTime(int hour, int min, int sec) {
 		Date myTime;
 		Calendar cal = Calendar.getInstance();
-	
-		cal.clear(Calendar.DATE);  
+
+		cal.clear(Calendar.DATE);
         cal.clear(Calendar.MONTH);
         cal.clear(Calendar.YEAR);
-        
- 
+
+
 		cal.set(Calendar.HOUR_OF_DAY, hour);
 	     cal.set(Calendar.MINUTE, min);
 	     cal.set(Calendar.SECOND, sec);
 	     cal.clear(Calendar.MILLISECOND);
 	        myTime = cal.getTime();
 	        return myTime;
-	      
-	      
+
+
 	}
 
 
@@ -222,7 +221,7 @@ public class Training extends TrainingDAO {
 		result = prime * result + locationID;
 		result = prime * result + ((start_date == null) ? 0 : start_date.hashCode());
 		result = prime * result + ((start_time == null) ? 0 : start_time.hashCode());
-		result = prime * result + ((status == null) ? 0 : status.hashCode());
+
 		result = prime * result + training_ID;
 		result = prime * result + (visibility ? 1231 : 1237);
 		return result;
@@ -269,7 +268,7 @@ public class Training extends TrainingDAO {
 				return false;
 		} else if (!start_time.equals(other.start_time))
 			return false;
-		if (status != other.status)
+		if (cancel != other.cancel)
 			return false;
 		if (training_ID != other.training_ID)
 			return false;
@@ -286,19 +285,19 @@ public class Training extends TrainingDAO {
 
 
 
-	
-
-
-
-
-	
 
 
 
 
 
 
-	
-	
-	
+
+
+
+
+
+
+
+
+
 }

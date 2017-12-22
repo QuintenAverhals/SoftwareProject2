@@ -7,6 +7,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import dao.LoginDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -33,8 +34,17 @@ public class OptionsController {
 	public GridPane color;
 	public ColorPicker colorPicker;
 	public static Color kleur;
+	public GridPane colorr;
 
 	private static List<String> item;
+
+	public void initialize() {
+
+		String kleure= OptionsController.getColor();
+
+		colorr.setStyle("-fx-background-color: #" + kleure);
+
+	}
 
 	public void mainMenu(ActionEvent event) throws Exception {
 		LoginController current = new LoginController();
@@ -61,7 +71,7 @@ public class OptionsController {
 	}
 
 	public void logoutBtn(ActionEvent event) throws Exception {
-		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/LoginMenu.fxml"));
+		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/loginMenu.fxml"));
 		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
 
 		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -97,16 +107,22 @@ public class OptionsController {
 
 	public void chooseImage(ActionEvent event) throws Exception
 	{
-		
+
 		File logo= Certificate.chooseFile();
 		String fileName = "logo.png";
-		Certificate.uploadToServer(logo);
-		
-		
-		Boolean download = Certificate.downloadFromServerLogo("logo.png");
-		veiligeInvoer("","You're file has successfully been downloaded");
-		
-		
+		try {
+			Certificate.uploadToServer(logo);
+
+			Boolean download = Certificate.downloadFromServerLogo("logo.png");
+			veiligeInvoer("","You're file has successfully been downloaded");
+			Logfile.addLogs(LoginController.currentUser.getUser_ID(), "Logo has been changed by user:" +LoginController.currentUser.getUsername());
+		}catch(NullPointerException e)
+		{
+
+		}
+
+
+
 	}
 
 	public static String getColor() {
@@ -115,23 +131,18 @@ public class OptionsController {
 		session.beginTransaction();
 		Query query = session.createQuery("from Options");
 		Options op = (Options) query.uniqueResult();
-		// List<Options> o= query.list();
 
-		/*
-		 * for (Options options : o) { System.out.println(o.toString()); }
-		 */
 		session.getTransaction().commit();
 
-		System.out.println(op.getBackground_Color());
 
-		// color =java.awt.Color.decode(o.get(0).getBackground_Color());
+
+
 
 		return op.getBackground_Color();
 	}
 
 	public void submit(ActionEvent event) throws Exception {
-		color.setBackground(
-				new Background(new BackgroundFill(colorPicker.getValue(), CornerRadii.EMPTY, Insets.EMPTY)));
+		colorr.setBackground(new Background(new BackgroundFill(colorPicker.getValue(), CornerRadii.EMPTY, Insets.EMPTY)));
 
 		if (maxTraining.getText().equals("")) {
 			Session session = Main.factory.getCurrentSession();
@@ -171,6 +182,8 @@ public class OptionsController {
 
 			kleur = colorPicker.getValue();
 		}
+		Logfile.addLogs(LoginController.currentUser.getUser_ID(), "Options has been changed by user: " +LoginController.currentUser.getUsername());
+
 
 	}
 

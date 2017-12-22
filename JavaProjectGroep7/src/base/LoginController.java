@@ -4,6 +4,10 @@ import javafx.scene.Node;
 import java.awt.Desktop;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -23,6 +27,8 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import java.util.Calendar;
 import java.util.List;
 
 import dao.LoginDAO;
@@ -42,23 +48,23 @@ public class LoginController {
 	public static Login currentUser;
 	public AnchorPane color;
 	public java.awt.Color kleur;
-	
-	
-	
-		
+
+
+
+
 
 	public void initialize() {
-	
+
 			String kleure= OptionsController.getColor();
-			System.out.println(kleure);			
-			//color.setStyle("-fx-background-color: #" + kleure);
+			System.out.println(kleure);
+			color.setStyle("-fx-background-color: #" + kleure);
 
 		}
-	
-	
-	
-	
-	
+
+
+
+
+
 
 
 
@@ -91,84 +97,92 @@ public class LoginController {
 		{
 			if(currentUser.isAdmin()==true)
 			{
-				
+
 				Logfile log= new Logfile();
 				LoginController currentUserr= new LoginController();
 				int current= currentUserr.getCurrentUser().getUser_ID();
 				log.addLogs(current, "User: "+currentUserr.getCurrentUser().getUsername()+" logged in.");
-				
+
 			Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/mainMenu.fxml"));
 			Scene passwordForgottenScene = new Scene(passwordForgottenParent);
-			
+
 			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 			window.setScene(passwordForgottenScene);
-			
+
 			 Text l = (Text)passwordForgottenScene.lookup("#helloMSG");
-	         l.setText("good morning "+currentUser.getUsername());
-			
-			
+
+			 Calendar c = Calendar.getInstance();
+			 int Day = c.get(Calendar.HOUR_OF_DAY);
+			 if(Day >= 0 && Day < 12) {
+	         l.setText("good morning "+currentUser.getUsername());}
+			 else if(Day>= 12 && Day < 16) {
+				 l.setText("good afternoon "+currentUser.getUsername());}
+			 else if(Day>= 16 && Day < 21) {
+				 l.setText("good evening "+currentUser.getUsername());}
+			 else if(Day >= 21 && Day < 24) {
+				 l.setText("good night "+currentUser.getUsername());}
 			window.show();
 			}else {
-				
+
 				Logfile log= new Logfile();
 				LoginController currentUserr= new LoginController();
 				int current= currentUserr.getCurrentUser().getUser_ID();
 				log.addLogs(current, "User: "+currentUserr.getCurrentUser().getUsername()+" logged in.");
 				Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/mainMenuNormaleUser.fxml"));
 				Scene passwordForgottenScene = new Scene(passwordForgottenParent);
-				
+
 				Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 				window.setScene(passwordForgottenScene);
-				
+
 				 Text l = (Text)passwordForgottenScene.lookup("#helloMSG");
 		         l.setText("good morning "+currentUser.getUsername());
-				
-				
+
+
 				window.show();
 			}
-			
-				
+
+
 			/*FXMLLoader f = new FXMLLoader(getClass().getResource("mainMenu.fxml"));
 			LoginGui.setRoot(f.load());
 			mainMenuController c = f.<mainMenuController>getController();
 			c.setHelloMSG("");*/
-			
-			
+
+
 		}else {
-			
+
 			badLogin("Login Error","Bad username or password, try again");
 		}
 	}
 	public void resetPassword(ActionEvent event) throws IOException, URISyntaxException {
-		
+
 		Desktop d= Desktop.getDesktop();
 		d.browse(new URI("https://l.facebook.com/l.php?u=http%3A%2F%2Fwww.kaaimannen.be%2FSeppe%2Fwachtwoord_vergeten_applicatie.php&h=ATMDlcGeO0Zf_Lt6hjW2ytwPWmEYkLoIhzVzRRiz3-I8xruezwHvq4A5HqGpxIg2btf3n3Z3mzY3jOHh3UgROcVmiVWPcfGr3zvv2wAWhPnhh7m2pRTJrM4ohghmGg81z2s8GkXSsooyCA"));
 	}
 	public static void badLogin(String title, String msg)
 	{
 		Stage window= new Stage();
-		
+
 		window.initModality(Modality.APPLICATION_MODAL);
 		window.setTitle(title);
 		window.setMinWidth(250);
 		Label label= new Label();
-		
+
 		label.setText(msg);
 		Button closeButton= new Button("Close the window");
 		closeButton.setOnAction(e -> window.close());
-		
+
 		VBox layout= new VBox(10);
 		layout.getChildren().add(label);
 		layout.getChildren().add(closeButton);
 		layout.setAlignment(Pos.CENTER);
-		
+
 		Scene scene = new Scene(layout);
 		window.setScene(scene);
 		window.showAndWait();
-		
+
 	}
 
-	
+
 
 
 }
