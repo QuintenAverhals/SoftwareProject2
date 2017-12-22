@@ -57,7 +57,7 @@ public class AddBookController {
 	public void initialize() {
 
 		String kleur = OptionsController.getColor();
-		System.out.println(kleur);			
+		System.out.println(kleur);
 		color.setStyle("-fx-background-color: #" + kleur);
 
 	}

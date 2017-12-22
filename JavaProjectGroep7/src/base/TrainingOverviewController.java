@@ -40,6 +40,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -49,7 +50,7 @@ import javafx.util.StringConverter;
 import dao.TrainingDAO;
 
 public class TrainingOverviewController {
-	
+
 //***********auteur:Chaimae**********
 	public ListView viewList;
 	public TextField trainingID;
@@ -61,16 +62,12 @@ public class TrainingOverviewController {
 	public TextField bMinute;
 	public TextField eHour;
 	public TextField eMinute;
-
+    public CheckBox cancel;
 	public DatePicker startDate;
 	public DatePicker endDate;
-	public ComboBox statusCombo;
-	public Status statuss;
 	public Button locationID;
 	public ComboBox<Integer> surveyID;
-	
-	public static int TRAINING_LOCATION_ID;
-	public static int TRAINING_ID;
+	public GridPane color;
 
 	@FXML
 	public void initialize() {
@@ -84,10 +81,9 @@ public class TrainingOverviewController {
 
 			viewList.getItems().addAll(trainings.get(i).getTraining_ID() + ": " + trainings.get(i).getTrainingNaam());
 
+
 		}
-		statusCombo.getItems().removeAll(statusCombo.getItems());
-		statusCombo.getItems().addAll("ongoing", "completed", "cancelled");
-		statusCombo.getSelectionModel().select(0);
+
 
 		surveyID.setItems(FXCollections.observableArrayList(Survey.getAllSurveysIDS()));
 
@@ -102,6 +98,10 @@ public class TrainingOverviewController {
 		};
 		surveyID.setCellFactory(call);
 		surveyID.setButtonCell(call.call(null));
+		String kleure= OptionsController.getColor();
+
+		color.setStyle("-fx-background-color: #" + kleure);
+
 
 	}
 
@@ -143,26 +143,21 @@ public class TrainingOverviewController {
 
 			String trainingnaam = trainingName.getText();
 
-			if (statusCombo.getSelectionModel().getSelectedItem().toString().equals("ongoing")) {
-				statuss = Status.ONGOING;
-			}
 
-			if (statusCombo.getSelectionModel().getSelectedItem().toString().equals("completed")) {
-				statuss = Status.COMPLETE;
-			}
-
-			if (statusCombo.getSelectionModel().getSelectedItem().toString().equals("cancelled")) {
-				statuss = Status.CANCELLED;
-			}
 
 			Training training = new Training();
 			java.util.Date sd1;
 			sd1 = Date.valueOf(startDate.getValue());
 			/*
 			 * if(startDate.getValue()==null) {
-			 * 
+			 *
 			 * sd1= training.getStart_date();
-			 * 
+			 * if(isSelected ){
+			  cancel.setSelected(true);
+			} else {
+			   cancel.setSelected(false);
+			}
+
 			 * }else { sy=(sYear.getValue()); sm=(sMonth.getValue()); sd=(sDay.getValue());
 			 * sd1=training.setDate(sy.getYear(),sm.getMonthValue(),sd.getDayOfMonth()); }
 			 */
@@ -171,33 +166,40 @@ public class TrainingOverviewController {
 
 			ed1 = Date.valueOf(endDate.getValue());
 
+
+			boolean s;
+			if(cancel.isSelected()){
+			s=true;
+				} else {
+			s=false;
+				}
+				System.out.println(s);
 			/*
 			 * if(endDate.getValue()==null) { ed1= test.getEnd_date(); }else {
 			 * ey=(eYear.getValue()); em=(eMonth.getValue()); ed=(eDay.getValue()); ed1
 			 * =eindDate.setDate(ey.getYear(), em.getMonthValue(), ed.getDayOfYear()); }
-			 * 
-			 * 
-			 * 
+			 *
+			 *
+			 *
 			 * if(sd1.equals(null)|| ed1.equals(null)) {
-			 * 
+			 *
 			 * training= training.startDatumByName(trainingnaam); sd1=
 			 * training.getStart_date(); ed1= training.getEnd_date(); }
-			 * 
+			 *
 			 */
-
+			Training endTime = new Training();
+			int h = Integer.parseInt(eHour.getText());
+			int m = Integer.parseInt(eMinute.getText());
+			java.util.Date et = endTime.setTime(h, m, 0);
 			Training startTime = new Training();
 			int hour = Integer.parseInt(bHour.getText());
 			int minute = Integer.parseInt(bMinute.getText());
 			java.util.Date st = startTime.setTime(hour, minute, 0);
 
-			Training endTime = new Training();
-			int h = Integer.parseInt(eHour.getText());
-			int m = Integer.parseInt(eMinute.getText());
-			java.util.Date et = endTime.setTime(h, m, 0);
 
 			Training training2 = new Training();
 
-			int idp = Integer.parseInt(trainingID.getText());
+			int idp = Integer.parseInt(TrainingID.getText());
 
 			java.util.Date today = new java.util.Date();
 			if (sd1.before(today)) {
@@ -229,9 +231,9 @@ public class TrainingOverviewController {
 
 										} else {
 
-											training2.updateALLTraining(idp, sd1, ed1, st, et, statuss,
-													surveyID.getValue(), Integer.parseInt(locationID.getText()), true,
-													trainingnaam);
+											training2.updateALLTraining(idp, sd1, ed1, st, et,surveyID.getValue(),Integer.parseInt(locationID.getText()),
+												true	,trainingnaam, s
+													);
 										}
 
 									}
@@ -297,7 +299,7 @@ public class TrainingOverviewController {
 
 	public void logoutBtn(ActionEvent event) throws Exception {
 
-		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/loginMenu.fxml"));
+		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/LoginMenu.fxml"));
 		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
 
 		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -307,27 +309,16 @@ public class TrainingOverviewController {
 
 	}
 
-	/*
-	 * public void locationOnMap(ActionEvent event) throws Exception { LoginController
-	 * current= new LoginController(); Login currentUser= current.getCurrentUser();
-	 * Parent passwordForgottenParent =
-	 * FXMLLoader.load(getClass().getResource("../gui/.fxml")); Scene
-	 * passwordForgottenScene = new Scene(passwordForgottenParent);
-	 * 
-	 * Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-	 * window.setScene(passwordForgottenScene);
-	 * 
-	 * window.show(); }
-	 * 
-	 */
-	public void goBack(ActionEvent event) throws Exception {
-		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/trainingMenu.fxml"));
+	public void locationOnMap(ActionEvent event) throws Exception {
+
+		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/LoginMenu.fxml"));
 		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
 
 		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		window.setScene(passwordForgottenScene);
 
 		window.show();
+
 	}
 
 	public void fillBlanks(MouseEvent arg0) throws Exception {
@@ -443,14 +434,14 @@ public class TrainingOverviewController {
 
 		} else {
 
-			
+
 
 			for (int i = 0; i < trainings.size(); i++) {
 				if(trainings.get(i).getTrainingNaam().contains(searchTraining))
 				{
 					viewList.getItems().addAll(trainings.get(i).getTraining_ID() + ": " + trainings.get(i).getTrainingNaam());
 				}
-				
+
 
 			}
 		}
@@ -479,11 +470,11 @@ public class TrainingOverviewController {
 		window.showAndWait();
 
 	}
-	
+
 	public void locationOnMap(ActionEvent event) throws IOException {
 		if (!locationID.getText().equals("Choose Location")) {
 			TRAINING_LOCATION_ID = Integer.parseInt(locationID.getText());
-			
+
 			Parent locationOnMapParent = FXMLLoader.load(getClass().getResource("../gui/LocationOnMap.fxml"));
 			Scene locationOnMapScene = new Scene(locationOnMapParent);
 
@@ -493,17 +484,17 @@ public class TrainingOverviewController {
 			window.show();
 		}
 	}
-	
+
 	public void addBooks(ActionEvent event) throws IOException {
 		if (!trainingID.getText().equals("")) {
 			TRAINING_ID = Integer.parseInt(trainingID.getText());
-			
+
 			Parent addBooksParent = FXMLLoader.load(getClass().getResource("../gui/addBook.fxml"));
 			Scene addBooksScene = new Scene(addBooksParent);
-			
+
 			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			window.setScene(addBooksScene);
-			
+
 			window.show();
 		}
 	}

@@ -23,6 +23,7 @@
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
          <children>
+<<<<<<< HEAD
             <JFXButton fx:id="TrainingBtn" layoutY="112.0" onAction="#training" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Training" textFill="WHITE" />
             <Text fx:id="helloMSG" fill="WHITE" layoutX="48.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="137.13671875" />
          </children>
@@ -30,13 +31,23 @@
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <children>
             <JFXButton fx:id="surveyBtn" layoutY="-10.0" onAction="#surveyManagement" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Survey" textFill="WHITE" />
+=======
+            <Text fx:id="helloMSG" fill="WHITE" layoutX="13.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="200.0000019595027" />
+>>>>>>> dev_Bilal
          </children>
       </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
+<<<<<<< HEAD
             <JFXButton fx:id="bookBtn" layoutY="16.0" onAction="#book" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Book" textFill="WHITE" />
             <JFXButton fx:id="employeeBtn" layoutY="54.0" onAction="#employee" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Employees" textFill="WHITE" />
             <JFXButton fx:id="StatisticsBTN" layoutX="-1.0" layoutY="89.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Statistics" textFill="WHITE" />
+=======
+            <JFXButton fx:id="StatisticsBTN" layoutX="-1.0" layoutY="56.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Statistics" textFill="WHITE" />
+            <JFXButton fx:id="TrainingBtn" layoutX="-1.0" layoutY="16.0" onAction="#training" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Training" textFill="WHITE" />
+            <JFXButton fx:id="surveyBtn" layoutX="-1.0" layoutY="94.0" onAction="#surveyManagement" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Survey" textFill="WHITE" />
+>>>>>>> dev_Bilal
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
@@ -58,7 +69,11 @@
          <children>
             <ImageView fx:id="logoIMG" fitHeight="48.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">
                <image>
+<<<<<<< HEAD
                   <Image url="@../../Downloads/soft%20proj%20final/SoftwareProject2/JavaProjectGroep7/src/img/cisco.png" />
+=======
+                       	<Image url="@../img/logo.png" />
+>>>>>>> dev_Bilal
                </image>
             </ImageView>
          </children>

@@ -26,7 +26,7 @@
                <graphic>
                   <ImageView fx:id="logoIMG" fitHeight="48.0" fitWidth="116.0" focusTraversable="true" pickOnBounds="true" preserveRatio="true">
                      <image>
-                       	<Image url="@../img/cisco.png" />
+                       	<Image url="@../img/logo.png" />
                      </image>
                   </ImageView>
                </graphic>

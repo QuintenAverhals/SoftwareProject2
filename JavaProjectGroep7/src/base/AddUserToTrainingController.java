@@ -12,6 +12,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class AddUserToTrainingController {
@@ -20,7 +21,8 @@ public class AddUserToTrainingController {
 	public ListView viewListUsersNotInTraining;
 	public TextField TrainingenFilter;
 	public TextField filterInTraining;
-	
+	public GridPane color;
+
 	public void initialize() {
 		viewListUsersNotInTraining.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
@@ -35,11 +37,14 @@ public class AddUserToTrainingController {
 			viewList.getItems().addAll(trainings.get(i).getTraining_ID() + ": " + trainings.get(i).getTrainingNaam());
 
 		}
+		String kleure= OptionsController.getColor();
+
+		color.setStyle("-fx-background-color: #" + kleure);
 
 	}
 
 	public void fillBlanksUsersInTraining(MouseEvent arg0) throws Exception {
-		viewListUsersInTraining.getItems().clear(); 	
+		viewListUsersInTraining.getItems().clear();
 		viewList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
 		String selected = (String) viewList.getSelectionModel().getSelectedItem();
@@ -68,16 +73,16 @@ public class AddUserToTrainingController {
 			}
 		}
 		List<LoginWebsite> notIn= LoginWebsite.getAllNotInTraining(id);
-		viewListUsersNotInTraining.getItems().clear(); 	
+		viewListUsersNotInTraining.getItems().clear();
 
 		for (LoginWebsite l : notIn) {
-			
+
 
 				viewListUsersNotInTraining.getItems().addAll(l.getLoginID() + ": " + l.getUserName());
 			}
 		}
-	
-	
+
+
 	public void filterTraining(ActionEvent event) throws Exception {
 
 		viewList.getItems().clear();
@@ -100,14 +105,14 @@ public class AddUserToTrainingController {
 
 		} else {
 
-			
+
 
 			for (int i = 0; i < trainings.size(); i++) {
 				if(trainings.get(i).getTrainingNaam().contains(searchTraining))
 				{
 					viewList.getItems().addAll(trainings.get(i).getTraining_ID() + ": " + trainings.get(i).getTrainingNaam());
 				}
-				
+
 
 			}
 		}
@@ -130,29 +135,27 @@ public class AddUserToTrainingController {
 				String selected = (String) viewListUsersNotInTraining.getSelectionModel().getSelectedItem();
 				selected = selected.split(":")[0];
 				int id = Integer.parseInt(selected);
-				
-				System.out.println(id);
-				
-				
+
+
+
 				//to get TrainingID (compound)
-				
-				
+
+
 				String selectedTraining = (String) viewList.getSelectionModel().getSelectedItem();
 				selectedTraining = selectedTraining.split(":")[0];
 				int idselectedTraining = Integer.parseInt(selectedTraining);
-				System.out.println(idselectedTraining);
-				
+
 				CompoundKeyTrainingWerknermer c= new CompoundKeyTrainingWerknermer();
 				c.setLoginID(id);
 				c.setTrainingID(idselectedTraining);
-				
-				
-				
+
+
+
 				TrainingWerknemer.addToTraining(c);
 
-				
-				
-				viewListUsersInTraining.getItems().clear(); 	
+
+
+				viewListUsersInTraining.getItems().clear();
 				viewList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
 				String selected1 = (String) viewList.getSelectionModel().getSelectedItem();
@@ -181,10 +184,10 @@ public class AddUserToTrainingController {
 					}
 				}
 				List<LoginWebsite> notIn= LoginWebsite.getAllNotInTraining(id1);
-				viewListUsersNotInTraining.getItems().clear(); 	
+				viewListUsersNotInTraining.getItems().clear();
 
 				for (LoginWebsite l : notIn) {
-					
+
 
 						viewListUsersNotInTraining.getItems().addAll(l.getLoginID() + ": " + l.getUserName());
 					}
@@ -194,31 +197,29 @@ public class AddUserToTrainingController {
 		String selected = (String) viewListUsersInTraining.getSelectionModel().getSelectedItem();
 		selected = selected.split(":")[0];
 		int id = Integer.parseInt(selected);
-		
-		System.out.println(id);
-		
-		
+
+
+
 		//to get TrainingID (compound)
-		
-		
+
+
 		String selectedTraining = (String) viewList.getSelectionModel().getSelectedItem();
 		selectedTraining = selectedTraining.split(":")[0];
 		int idselectedTraining = Integer.parseInt(selectedTraining);
-		System.out.println(idselectedTraining);
-		
+
 		CompoundKeyTrainingWerknermer c= new CompoundKeyTrainingWerknermer();
 		c.setLoginID(id);
 		c.setTrainingID(idselectedTraining);
-		
-		
-		
-		TrainingWerknemer.DeleteFromTraining(c);
-		
 
-		
-		
-		
-		viewListUsersInTraining.getItems().clear(); 	
+
+
+		TrainingWerknemer.DeleteFromTraining(c);
+
+
+
+
+
+		viewListUsersInTraining.getItems().clear();
 		viewList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
 		String selected1 = (String) viewList.getSelectionModel().getSelectedItem();
@@ -247,17 +248,17 @@ public class AddUserToTrainingController {
 			}
 		}
 		List<LoginWebsite> notIn= LoginWebsite.getAllNotInTraining(id1);
-		viewListUsersNotInTraining.getItems().clear(); 	
+		viewListUsersNotInTraining.getItems().clear();
 
 		for (LoginWebsite l : notIn) {
-			
+
 
 				viewListUsersNotInTraining.getItems().addAll(l.getLoginID() + ": " + l.getUserName());
 			}
 		}
-		
 
-	
+
+
 
 	public void goBack(ActionEvent event) throws Exception {
 		LoginController current = new LoginController();

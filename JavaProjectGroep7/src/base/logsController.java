@@ -16,13 +16,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import dao.LogfileDAO;
 
 public class logsController {
-	
+
 	@FXML
 	private TableView<Logfile> logTable;
 	@FXML
@@ -33,11 +34,12 @@ public class logsController {
 	private TableColumn<Logfile,String> action;
 	@FXML
 	private TableColumn<Logfile,String> date;
-	
-	
+	public GridPane color;
+
+
 	/**
-	 * @throws Exception 
-	 * 
+	 * @throws Exception
+	 *
 	 */
 	@FXML
 	public void initialize() throws Exception
@@ -66,82 +68,85 @@ public class logsController {
 				return new SimpleStringProperty(data.getValue().getDate());
 			}
 		});
-		
+
 		logTable.setPlaceholder(new Label("No entry found."));
 		ObservableList<Logfile> list = FXCollections.observableArrayList(Logfile.getALL());
 		logTable.setItems(list);
-		
+		String kleure= OptionsController.getColor();
+
+		color.setStyle("-fx-background-color: #" + kleure);
+
 	}
-	
+
 	public void mainMenu(ActionEvent event) throws Exception
 	{
 		LoginController current= new LoginController();
 		Login currentUser= current.getCurrentUser();
-		
-		
+
+
 		if(currentUser.isAdmin()==true)
 		{
 			Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/mainMenu.fxml"));
 			Scene passwordForgottenScene = new Scene(passwordForgottenParent);
-			
+
 			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 			window.setScene(passwordForgottenScene);
-			
+
 			window.show();
 		}else {
 			Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/mainMenuNormaleUser.fxml"));
 			Scene passwordForgottenScene = new Scene(passwordForgottenParent);
-			
+
 			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 			window.setScene(passwordForgottenScene);
-			
+
 			window.show();
-			
+
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
 	public void logoutBtn(ActionEvent event) throws Exception
 	{
 		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/LoginMenu.fxml"));
 		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
-		
+
 		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		window.setScene(passwordForgottenScene);
-		
+
 		window.show();
 	}
 	public void goBack(ActionEvent event) throws Exception
 	{
 		LoginController current= new LoginController();
 		Login currentUser= current.getCurrentUser();
-		
-		
+
+
 		if(currentUser.isAdmin()==true)
 		{
 			Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/mainMenu.fxml"));
 			Scene passwordForgottenScene = new Scene(passwordForgottenParent);
-			
+
 			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 			window.setScene(passwordForgottenScene);
-			
+
 			window.show();
 		}else {
 			Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/mainMenuNormaleUser.fxml"));
 			Scene passwordForgottenScene = new Scene(passwordForgottenParent);
-			
+
 			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 			window.setScene(passwordForgottenScene);
-			
+
 			window.show();
-			
+
 		}
 	}
 }

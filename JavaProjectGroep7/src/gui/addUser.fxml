@@ -44,7 +44,7 @@
          <children>
             <ImageView fx:id="logoIMG" fitHeight="48.0" fitWidth="116.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/cisco.png" />
+                  <Image url="@..\img\logo.png" />
                </image>
             </ImageView>
             <Label layoutX="40.0" layoutY="87.0" text="Username:" textFill="WHITE">

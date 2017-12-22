@@ -38,12 +38,12 @@ public class MainMenuController extends Main {
 	private Text helloMSG;
 	@FXML
 	public GridPane color;
-	
+
 
 	public void initialize() {
 		try {
 			String kleure= OptionsController.getColor();
-			System.out.println(kleure);			
+			System.out.println(kleure);
 			color.setStyle("-fx-background-color: #" + kleure);
 
 		}catch(NullPointerException e)
@@ -51,35 +51,35 @@ public class MainMenuController extends Main {
 			System.out.println("heyhey");
 		}
 	}
-	
+
 	public void logoutBtn(ActionEvent event) throws Exception
 	{
-		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/loginMenu.fxml"));
+		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/LoginMenu.fxml"));
 		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
-		
+
 		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		window.setScene(passwordForgottenScene);
-		
+
 		window.show();
 	}
 	public void management(ActionEvent event) throws Exception
 	{
 		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/userMenu.fxml"));
 		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
-		
+
 		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		window.setScene(passwordForgottenScene);
-		
+
 		window.show();
 	}
 	public void training(ActionEvent event) throws Exception
 	{
 		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/trainingMenu.fxml"));
 		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
-		
+
 		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		window.setScene(passwordForgottenScene);
-		
+
 		window.show();
 	}
 
@@ -88,23 +88,23 @@ public class MainMenuController extends Main {
 	{
 		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/surveyManagement.fxml"));
 		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
-		
+
 		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		window.setScene(passwordForgottenScene);
-		
+
 		window.show();
 	}
 	public void logsController(ActionEvent event) throws Exception
 	{
 		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/Logs.fxml"));
 		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
-		
+
 		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		window.setScene(passwordForgottenScene);
-		
+
 		window.show();
 	}
-	
+
 	public void setHelloMSG(String text) {
 		helloMSG.setText(text);
 	}
@@ -112,41 +112,31 @@ public class MainMenuController extends Main {
 	{
 		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/options.fxml"));
 		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
-		
+
 		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		window.setScene(passwordForgottenScene);
-		
+
 		window.show();
 	}
 	public void book(ActionEvent event) throws Exception
 	{
 		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/searchBook.fxml"));
 		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
-		
+
 		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		window.setScene(passwordForgottenScene);
-		
+
 		window.show();
 	}
-	
+
 	public void employee(ActionEvent event) throws Exception
 	{
 		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/employeesOverview.fxml"));
 		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
-		
+
 		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		window.setScene(passwordForgottenScene);
-		
-		window.show();
-	}
-	
-	public void statistics(ActionEvent event) throws Exception{
-		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/statistics.fxml"));
-		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
-		
-		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		window.setScene(passwordForgottenScene);
-		
+
 		window.show();
 	}
 }

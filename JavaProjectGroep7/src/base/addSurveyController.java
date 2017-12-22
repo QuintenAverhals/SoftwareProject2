@@ -1,5 +1,7 @@
 package base;
 
+import org.hibernate.NonUniqueObjectException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,13 +14,13 @@ public class addSurveyController {
 	@FXML
 	public Button submit;
 	public AnchorPane color;
-	
-	
-	
+
+
+
 	public void initialize() {
-		
+
 		String kleure= OptionsController.getColor();
-					
+
 		color.setStyle("-fx-background-color: #" + kleure);
 
 	}
@@ -26,10 +28,15 @@ public class addSurveyController {
 	@FXML
 	public void submitQuestion(ActionEvent event) throws Exception
 	{
-		
-			
-			Survey.addSurvey(newSurvey.getText());
-	
-		submit.setDisable(true);
+
+			try {
+				Survey.addSurvey(newSurvey.getText());
+				submit.setDisable(true);
+
+			}catch(NonUniqueObjectException e)
+			{
+
+			}
+
 	}
 }

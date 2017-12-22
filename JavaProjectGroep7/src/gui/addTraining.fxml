@@ -50,7 +50,7 @@
          <children>
             <ImageView fx:id="logoIMG" fitHeight="48.0" fitWidth="116.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@soft%20proj%20final/SoftwareProject2/JavaProjectGroep7/img/cisco.png" />
+                  <Image url="@..\img\logo.png" />
                </image>
             </ImageView>
             <Label layoutX="11.0" layoutY="88.0" text="Training name:" textFill="WHITE">

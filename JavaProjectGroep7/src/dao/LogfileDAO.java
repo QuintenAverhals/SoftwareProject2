@@ -14,7 +14,11 @@ import base.Logfile;
 public class LogfileDAO {
 
 	
+<<<<<<< HEAD
 	public void addLogs(int userID, String action) throws Exception
+=======
+	public static void addLogs(int userID, String action) throws Exception
+>>>>>>> dev_Bilal
 	{
 		
 		Session session = Main.factory.getCurrentSession();

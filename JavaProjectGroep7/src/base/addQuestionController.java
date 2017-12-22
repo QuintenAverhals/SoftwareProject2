@@ -8,11 +8,11 @@ import javafx.scene.layout.AnchorPane;
 public class addQuestionController {
 	public Button submit;
 	private Survey nieuweQuestion;
-	
+
 	public TextField newQuestion;
 	public AnchorPane color;
-	
-	
+
+
 	public Survey getNieuweQuestion() {
 		return nieuweQuestion;
 	}
@@ -24,8 +24,8 @@ public class addQuestionController {
 	}
 
 	public void initialize() {
-		
-		String kleure= OptionsController.getColor();		
+
+		String kleure= OptionsController.getColor();
 		color.setStyle("-fx-background-color: #" + kleure);
 
 	}
@@ -33,8 +33,14 @@ public class addQuestionController {
 
 	public void submit(ActionEvent event) throws Exception
 	{
-		Survey.addQuestion(nieuweQuestion.getCompoundSurveyKey().getSurvey_ID(), newQuestion.getText());
-		submit.setDisable(true);
+		try {
+
+			Survey.addQuestion(nieuweQuestion.getCompoundSurveyKey().getSurvey_ID(), newQuestion.getText());
+			submit.setDisable(true);
+		}catch(NullPointerException e)
+		{
+
+		}
 	}
-	
+
 }
