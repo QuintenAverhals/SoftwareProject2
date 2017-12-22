@@ -9,7 +9,7 @@ import dao.LoginDAO;
 @Entity
 @Table(name="LOGIN")
 
-public class Login extends LoginDAO {
+public class Login extends LoginDAO{
 
 	@Id
 	@Column(name="UserID")
@@ -30,6 +30,8 @@ public class Login extends LoginDAO {
 	@Column(name="Visibility")
 	private int visibility;
 	
+	@Column(name="salt")
+	private int salt;
 	
 	public Login()
 	{
@@ -41,6 +43,24 @@ public class Login extends LoginDAO {
 
 
 	
+	public int getSalt() {
+		return salt;
+	}
+
+
+
+
+
+
+	public void setSalt(int salt) {
+		this.salt = salt;
+	}
+
+
+
+
+
+
 	public Login(String username, String password, boolean admin, String email) {
 		super();
 		this.username = username;
@@ -48,6 +68,17 @@ public class Login extends LoginDAO {
 		Admin = admin;
 		this.email = email;
 		this.visibility=1;
+	}
+
+
+	public Login(String username, String password, boolean admin, String email, int salt) {
+		super();
+		this.username = username;
+		this.password = password;
+		Admin = admin;
+		this.email = email;
+		this.visibility = 1;
+		this.salt = salt;
 	}
 
 

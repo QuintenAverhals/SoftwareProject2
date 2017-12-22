@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2d3440;" xmlns="http://javafx.com/javafx/8" fx:controller="base.MainMenuController" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane fx:id="color" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2d3440;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="base.MainMenuController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -21,26 +21,28 @@
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
          <children>
-            <JFXButton fx:id="TrainingBtn" onAction="#training" layoutY="108.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Training" textFill="WHITE" />
-            <Text fx:id="helloMSG" fill="WHITE" layoutX="48.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="137.13671875" />
+            <JFXButton fx:id="TrainingBtn" layoutY="109.0" onAction="#training" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Training" textFill="WHITE" />
+            <Text fx:id="helloMSG" fill="WHITE" layoutX="32.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="137.13671875" />
+            <JFXButton fx:id="LogsBtn" layoutY="72.0" onAction="#logsController" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Logs" textFill="WHITE" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <children>
-            <JFXButton fx:id="StatisticsBTN" layoutY="2.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Statistics" textFill="WHITE" />
-            <JFXButton fx:id="optionBtn" layoutY="42.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Options" textFill="WHITE" />
+            <JFXButton fx:id="statisticsBtn" onAction="#statistics" layoutY="-3.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Statistics" textFill="WHITE" />
+            <JFXButton fx:id="optionBtn" onAction="#optionBtn" layoutY="69.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Options" textFill="WHITE" />
+            <JFXButton fx:id="surveyBtn" onAction="#surveyManagement" layoutY="33.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Survey" textFill="WHITE" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
-            <JFXButton fx:id="ManagementBtn" onAction="#management" layoutY="14.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Management" textFill="WHITE" />
-            <JFXButton fx:id="bookBtn" layoutY="54.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Book" textFill="WHITE" />
-            <JFXButton fx:id="employeeBtn" layoutY="94.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Employees" textFill="WHITE" />
+            <JFXButton fx:id="ManagementBtn" layoutY="14.0" onAction="#management" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Management" textFill="WHITE" />
+            <JFXButton fx:id="bookBtn" onAction="#book" layoutY="54.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Book" textFill="WHITE" />
+            <JFXButton fx:id="employeeBtn" onAction="#employee" layoutY="93.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Employees" textFill="WHITE" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
          <children>
-            <JFXButton fx:id="logoutBtn" onAction="#logoutBtn" layoutX="107.0" layoutY="8.0" prefHeight="25.0" prefWidth="87.0" text="LOGOUT" textFill="#757575" />
+            <JFXButton fx:id="logoutBtn" layoutX="107.0" layoutY="8.0" onAction="#logoutBtn" prefHeight="25.0" prefWidth="87.0" text="LOGOUT" textFill="#757575" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
@@ -57,7 +59,7 @@
          <children>
             <ImageView fx:id="logoIMG" fitHeight="48.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/cisco.png" />
+                  <Image url="@..\img\cisco.png" />
                </image>
             </ImageView>
          </children>

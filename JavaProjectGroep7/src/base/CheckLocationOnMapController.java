@@ -1,5 +1,7 @@
 package base;
 
+import java.util.List;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,15 +18,11 @@ public class CheckLocationOnMapController {
 	
 	@FXML
 	public void initialize() {
-		Location place = new Location();
 		
-		place.setStreetname("Oudstrijdersstraat");
-		place.setStreetnumber(101);
-		place.setZip_code("1880");
-		place.setCity("Kapelle-op-den-Bos");
-		place.setCountry("Belgium");
+		List<Location> places = new Location().getByID(TrainingOverviewController.TRAINING_LOCATION_ID);
+		Location place = places.get(0);
 		
-		String parsedAddress = place.getStreetname() + "+" + place.getStreetnumber() + "," + place.getZip_code() + "," + place.getCity() + "," + place.getCountry();
+		String parsedAddress = place.getStreetname().replaceAll("\\s+", "+") + "+" + place.getStreetnumber() + "," + place.getZip_code() + "," + place.getCity() + "," + place.getCountry();
 		
 		int width =(int) locationImgView.getFitWidth();
 		int height =(int) locationImgView.getFitHeight();
@@ -33,7 +31,7 @@ public class CheckLocationOnMapController {
 				+ "&center=" + parsedAddress
 				+ "&size=" + width + "x" + height
 				+ "&markers=color:red%7Clabel:A%7C" + parsedAddress
-				+ "&key=AIzaSyBOCvkt8LgYBWuH602oYK1cm6D4ltj54_0");
+				+ "&key=" + Credentials.API_KEY_MAPS);
 	
 		locationImgView.setImage(map);
 	}
