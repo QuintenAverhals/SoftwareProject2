@@ -201,11 +201,7 @@ public class LocationDAO {
 
 	}
 
-<<<<<<< HEAD
 	public static List<Location> getByID(int id) {
-=======
-	public List<Location> getByID(int id) {
->>>>>>> dev_Bilal
 		Session session = Main.factory.getCurrentSession();
 		session.beginTransaction();
 

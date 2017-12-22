@@ -135,12 +135,9 @@ public class TrainingDAO {
 		}
 
 
-	
-<<<<<<< HEAD
-	public Status updateStatus(int id, Status s) throws Exception {
-=======
+
 	public void updateCancel(int id) throws Exception {
->>>>>>> dev_Bilal
+
 		//update
 		Session session = Main.factory.getCurrentSession();
 		session.beginTransaction();
@@ -159,15 +156,8 @@ public class TrainingDAO {
 		Logfile log= new Logfile();
 		LoginController currentUserr= new LoginController();
 		int current= currentUserr.getCurrentUser().getUser_ID();
-<<<<<<< HEAD
-		log.addLogs(current, "User: "+currentUserr.getCurrentUser().getUsername()+" updated status for training "+id);
-		
-		return s;
-=======
+
 		log.addLogs(current, "User: "+currentUserr.getCurrentUser().getUsername()+" updated cancel for training "+id);
-		
-		
->>>>>>> dev_Bilal
 		}
 public void createNewTraining(Date start_date,Date end_date,Date start_time,Date end_time,int surveyID,int locationID,boolean visibility,String name) throws Exception {
 			
@@ -190,11 +180,9 @@ public void createNewTraining(Date start_date,Date end_date,Date start_time,Date
 		}
 
 	
-<<<<<<< HEAD
-public void updateALLTraining(int id, Date start_date,Date end_date,Date start_time,Date end_time,Status status,int surveyID,int locationID,boolean visibility, String trainingNaam) throws Exception {
-=======
+
 public void updateALLTraining(int id, Date start_date,Date end_date,Date start_time,Date end_time,int surveyID,int locationID,boolean visibility, String trainingNaam,boolean cancel) throws Exception {
->>>>>>> dev_Bilal
+
 	
 	Session session = Main.factory.getCurrentSession();
 	session.beginTransaction();
@@ -203,21 +191,17 @@ public void updateALLTraining(int id, Date start_date,Date end_date,Date start_t
 Training training= new Training();
 
 training = (Training) session.get(Training.class, id);
-<<<<<<< HEAD
-training.setEnd_time(end_date);
-=======
+
 training.setEnd_time(end_time);
->>>>>>> dev_Bilal
+
 training.setEnd_date(end_date);
 training.setLocationID(locationID);
 training.setStart_date(start_date);
 training.setStart_time(start_time);
-<<<<<<< HEAD
-training.setStatus(status);
-=======
+
 training.setcancel(cancel);
 System.out.println(cancel);
->>>>>>> dev_Bilal
+
 training.setSurveyID(surveyID);
 training.setTrainingNaam(trainingNaam);
 
@@ -257,7 +241,7 @@ public List<Training> getPastTrainings(){
 		public List<Training> getAll() {
 
 			Session session = Main.factory.getCurrentSession();
-<<<<<<< HEAD
+
 			session.beginTransaction();
 			
 			Training training=new Training();
@@ -268,31 +252,9 @@ public List<Training> getPastTrainings(){
 			
 			return trainings;
 			
-		}
+		} 
 		public List<Training> getAllPastTrainings() {
 
-			Session session = Main.factory.getCurrentSession();
-			session.beginTransaction();
-			
-			Training training=new Training();
-			Query query = session.createQuery("from Training where visibility = 1 and end_date> current_date()");
-=======
-			session.beginTransaction();
-			
-			Training training=new Training();
-			Query query = session.createQuery("from Training where visibility = 1");
->>>>>>> dev_Bilal
-			List<Training> trainings= query.list();
-
-			session.getTransaction().commit();
-			
-			return trainings;
-			
-		}
-		public List<Training> getAllPastTrainings() {
-
-<<<<<<< HEAD
-=======
 			Session session = Main.factory.getCurrentSession();
 			session.beginTransaction();
 			
@@ -306,7 +268,6 @@ public List<Training> getPastTrainings(){
 			
 		}
 
->>>>>>> dev_Bilal
 		public Training getByID(int id) {
 			Session session = Main.factory.getCurrentSession();
 			session.beginTransaction();
@@ -330,14 +291,7 @@ Training st=new Training();
 			Date end=tr.setDate(9, 10,2024);
 			Date endTime= tr.setTime(19, 44, 00);
 			Date startTime=tr.setTime(18,43, 00);
-<<<<<<< HEAD
-			Status ta=Status.CANCELLED;
-			tr.createNewTraining(s, end, startTime, endTime, 4, 9, true,"ELLLOsdfdsfO");
 
-			
-=======
-	
->>>>>>> dev_Bilal
 			
 			/*Training x=new Training();
 			Date st=x.setDate(01, 05, 2015);
@@ -382,9 +336,6 @@ Training st=new Training();
 			session.getTransaction().commit();
 			
 			return trainings.get(0);
-			
-<<<<<<< HEAD
-=======
 		}
 		
 		
@@ -409,32 +360,6 @@ Training st=new Training();
 			
 			session.getTransaction().commit();
 			
-			return trainings;	
->>>>>>> dev_Bilal
-		}
-		
-		
-		public Training getByNaamDao(String naam) {
-			Session session = Main.factory.getCurrentSession();
-			session.beginTransaction();
-			
-			Training training=new Training();
-			Query query = session.createQuery("from Training where TrainingNaam='"+ naam+"'");
-			training= (Training) query.list();
-			
-			session.getTransaction().commit();
-			return training;
-		}
-		public List<Training> getTrainingsNaamDao(String naam) {
-			Session session = Main.factory.getCurrentSession();
-			session.beginTransaction();
-			
-			Training training=new Training();
-			Query query = session.createQuery("from Training where TrainingNaam='"+ naam+"'");
-			List<Training> trainings= query.list();
-			
-			session.getTransaction().commit();
-			
-			return trainings;	
+			return trainings;
 		}
 }

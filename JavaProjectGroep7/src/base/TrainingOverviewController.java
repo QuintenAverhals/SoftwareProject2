@@ -15,6 +15,8 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
+import com.jfoenix.controls.JFXTextField;
+
 import dao.LocationDAO;
 import dao.LoginDAO;
 import javafx.beans.value.ChangeListener;
@@ -55,7 +57,6 @@ public class TrainingOverviewController {
 	public ListView viewList;
 	public TextField trainingID;
 	public TextField trainingName;
-
 	public TextField filterView;
 
 	public TextField bHour;
@@ -68,6 +69,9 @@ public class TrainingOverviewController {
 	public Button locationID;
 	public ComboBox<Integer> surveyID;
 	public GridPane color;
+	
+	public static int TRAINING_LOCATION_ID;
+	public static int TRAINING_ID;
 
 	@FXML
 	public void initialize() {
@@ -199,7 +203,7 @@ public class TrainingOverviewController {
 
 			Training training2 = new Training();
 
-			int idp = Integer.parseInt(TrainingID.getText());
+			int idp = Integer.parseInt(trainingID.getText());
 
 			java.util.Date today = new java.util.Date();
 			if (sd1.before(today)) {
@@ -298,18 +302,6 @@ public class TrainingOverviewController {
 	}
 
 	public void logoutBtn(ActionEvent event) throws Exception {
-
-		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/LoginMenu.fxml"));
-		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
-
-		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		window.setScene(passwordForgottenScene);
-
-		window.show();
-
-	}
-
-	public void locationOnMap(ActionEvent event) throws Exception {
 
 		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/LoginMenu.fxml"));
 		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
