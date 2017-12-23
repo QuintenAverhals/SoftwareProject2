@@ -31,12 +31,15 @@ public class CertificateController {
 		Training training = new Training();
 		List<Training> trainings;
 
-		trainings = training.getAllPastTrainings();
-
-		for (int i = 0; i < trainings.size(); i++) {
-
-			viewList.getItems().addAll(trainings.get(i).getTraining_ID() + ": " + trainings.get(i).getTrainingNaam());
-
+		
+		trainings= training.getPastTrainings();
+	
+		
+		for(int i=0;i<trainings.size();i++)
+		{
+			
+			viewList.getItems().addAll(trainings.get(i).getTraining_ID()+": "+trainings.get(i).getTrainingNaam());
+			
 		}
 
 		String kleure= OptionsController.getColor();

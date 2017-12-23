@@ -38,6 +38,7 @@ public class Main extends Application {
 	 */
 
 	public static void main(String[] args) {
+		Boolean download = Certificate.downloadFromServerLogo("logo.png");
 		try {
 			factory = new Configuration().configure()
 					.addAnnotatedClass(TrainingWerknemer.class)

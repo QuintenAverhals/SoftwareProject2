@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import base.LoginController;
@@ -135,9 +136,8 @@ public class TrainingDAO {
 		}
 
 
-
+	
 	public void updateCancel(int id) throws Exception {
-
 		//update
 		Session session = Main.factory.getCurrentSession();
 		session.beginTransaction();
@@ -156,8 +156,9 @@ public class TrainingDAO {
 		Logfile log= new Logfile();
 		LoginController currentUserr= new LoginController();
 		int current= currentUserr.getCurrentUser().getUser_ID();
-
 		log.addLogs(current, "User: "+currentUserr.getCurrentUser().getUsername()+" updated cancel for training "+id);
+		
+		
 		}
 public void createNewTraining(Date start_date,Date end_date,Date start_time,Date end_time,int surveyID,int locationID,boolean visibility,String name) throws Exception {
 			
@@ -180,9 +181,7 @@ public void createNewTraining(Date start_date,Date end_date,Date start_time,Date
 		}
 
 	
-
 public void updateALLTraining(int id, Date start_date,Date end_date,Date start_time,Date end_time,int surveyID,int locationID,boolean visibility, String trainingNaam,boolean cancel) throws Exception {
-
 	
 	Session session = Main.factory.getCurrentSession();
 	session.beginTransaction();
@@ -191,17 +190,13 @@ public void updateALLTraining(int id, Date start_date,Date end_date,Date start_t
 Training training= new Training();
 
 training = (Training) session.get(Training.class, id);
-
 training.setEnd_time(end_time);
-
 training.setEnd_date(end_date);
 training.setLocationID(locationID);
 training.setStart_date(start_date);
 training.setStart_time(start_time);
-
 training.setcancel(cancel);
 System.out.println(cancel);
-
 training.setSurveyID(surveyID);
 training.setTrainingNaam(trainingNaam);
 
@@ -221,13 +216,14 @@ log.addLogs(current, "User: "+currentUserr.getCurrentUser().getUsername()+" upda
 }
 
 
-public List<Training> getPastTrainings(){
+public static List<Training> getPastTrainings(){
 	
 	Session session = Main.factory.getCurrentSession();
 	session.beginTransaction();
 	
+	
 	Training training=new Training();
-	Query query = session.createQuery("from Training where end_date < sysdate");
+	Query query = session.createQuery("from Training where end_date < current_date()");
 	List<Training> trainings= query.list();
 	
 	session.getTransaction().commit();
@@ -241,7 +237,6 @@ public List<Training> getPastTrainings(){
 		public List<Training> getAll() {
 
 			Session session = Main.factory.getCurrentSession();
-
 			session.beginTransaction();
 			
 			Training training=new Training();
@@ -252,7 +247,7 @@ public List<Training> getPastTrainings(){
 			
 			return trainings;
 			
-		} 
+		}
 		public List<Training> getAllPastTrainings() {
 
 			Session session = Main.factory.getCurrentSession();
@@ -291,7 +286,7 @@ Training st=new Training();
 			Date end=tr.setDate(9, 10,2024);
 			Date endTime= tr.setTime(19, 44, 00);
 			Date startTime=tr.setTime(18,43, 00);
-
+	
 			
 			/*Training x=new Training();
 			Date st=x.setDate(01, 05, 2015);
@@ -336,6 +331,7 @@ Training st=new Training();
 			session.getTransaction().commit();
 			
 			return trainings.get(0);
+			
 		}
 		
 		
@@ -360,6 +356,7 @@ Training st=new Training();
 			
 			session.getTransaction().commit();
 			
-			return trainings;
+			return trainings;	
 		}
+		
 }

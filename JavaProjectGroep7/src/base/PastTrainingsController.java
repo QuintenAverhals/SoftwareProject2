@@ -28,9 +28,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 public class PastTrainingsController{
-
+	
 	//auteur: chaimae
-
+	
 	public TextField filterTrainingsSearchBar;
 	public ListView viewList;
 	public ListView viewListUsersInTraining;
@@ -42,131 +42,131 @@ public class PastTrainingsController{
     public CheckBox cancel;
     public Label SurveyID;
     public GridPane color;
+  
 
-
-
-
+ 
+   
   public void mainMenu(ActionEvent event) throws Exception
 	{
 		LoginController current= new LoginController();
 		Login currentUser= current.getCurrentUser();
-
-
+		
+		
 		if(currentUser.isAdmin()==true)
 		{
 			Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/mainMenu.fxml"));
 			Scene passwordForgottenScene = new Scene(passwordForgottenParent);
-
+			
 			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 			window.setScene(passwordForgottenScene);
-
+			
 			window.show();
 		}else {
 			Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/mainMenuNormaleUser.fxml"));
 			Scene passwordForgottenScene = new Scene(passwordForgottenParent);
-
+			
 			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 			window.setScene(passwordForgottenScene);
-
+			
 			window.show();
-
+			
 		}
 	}
 	public void initialize()
 	{
-
+		
 		viewList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 		Training training= new Training();
 		List<Training> trainings;
-
-		trainings= training.getAllPastTrainings();
-
-
+		
+		trainings= training.getPastTrainings();
+	
+		
 		for(int i=0;i<trainings.size();i++)
 		{
-
+			
 			viewList.getItems().addAll(trainings.get(i).getTraining_ID()+": "+trainings.get(i).getTrainingNaam());
-
+			
 		}
 		String kleure= OptionsController.getColor();
-
+		
 		color.setStyle("-fx-background-color: #" + kleure);
 
-
+		
 		}
 	public void upLoadCertificate(ActionEvent event) throws Exception
 	{
 		String selected = (String) viewList.getSelectionModel().getSelectedItem();
 		int TrainingID=0;
-
+		
 		try {
 			selected = selected.split(":")[0];
 			TrainingID = Integer.parseInt(selected);
-
+			
 		}catch(NullPointerException e)
 		{
 			passwordNotSame("Error", "Must select an item before uploading");
 		}
-
+		
 		if(TrainingID!=0)
 		{
-
-
+			
+		
 		String selectedWerknemerName = (String) viewListUsersInTraining.getSelectionModel().getSelectedItem();
 		selectedWerknemerName = selectedWerknemerName.substring(selectedWerknemerName.lastIndexOf(":")+2);
 		String fileName = null;
 		File c= Certificate.chooseFile();
 		try {
-
+			
 			fileName = Certificate.getFileName(c);
 		}catch(NullPointerException e) {
-
+			
 		}
 		try {
 			Certificate.uploadToServer(c);
 			Certificate.addtoDatabase(TrainingID,LoginController.currentUser.getUser_ID(), selectedWerknemerName, fileName);
 			passwordNotSame("", "Your file has successfully been uploaded");
-
+			
 		}catch(NullPointerException e)
 		{
 			passwordNotSame("", "This user already has a certificate");
 
 		}
-
-
-
+		
+		
+		
 		}
-
+		
 	}
-	public void fillBlanks(MouseEvent event) throws Exception
+	public void fillBlanks(MouseEvent event) throws Exception 
 	{
-
+		
         viewList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         String selected = (String) viewList.getSelectionModel().getSelectedItem();
         selected = selected.split(":")[0];
         int id= Integer.parseInt(selected);
         System.out.println(id);
-
+        
         Training training= new Training();
 		training= training.getByID(id);
-
+		
 		System.out.println(training.toString());
-
-
+		
+		
 		trainingID.setText(selected);
 		trainingName.setText(training.getTrainingNaam());
 
-
-
-     String loc= ""+training.getLocationID();
+		
+        
+     String loc= ""+training.getLocationID();	
      locationID.setText(loc);
-
+     
      String surv=""+training.getSurveyID();
      SurveyID.setText(surv);
     //***********************
      final String pattern = "dd/MM/YYYY";
      StringConverter converter = new StringConverter<LocalDate>() {
-         DateTimeFormatter dateFormatter =
+         DateTimeFormatter dateFormatter = 
              DateTimeFormatter.ofPattern(pattern);
          @Override
          public String toString(LocalDate date) {
@@ -184,10 +184,10 @@ public class PastTrainingsController{
                  return null;
              }
          }
-     };
+     };   
      Training train= new Training();
-
-
+     
+   
      Date end=training.getEnd_date();
      int endDay=end.getDay();
     int endM=end.getMonth();
@@ -202,25 +202,25 @@ public class PastTrainingsController{
    int startDay=st.getDay();
    int startMonth=st.getMonth();
    int startYear=st.getYear();
-
+   
  LocalDate start=LocalDate.of(startYear, startMonth, startDay);
  SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-
+ 
  String startstart= sdf.format(st);
  startDate.setPromptText(startstart);
-
+   
  SimpleDateFormat sv = new SimpleDateFormat("dd/MM/yyyy");
 
 
  String endend=sv.format(end);
  endDate.setPromptText(endend);
-
-
-
-
-
-
-
+ 
+   
+   
+ 
+		
+  	
+ 
  	viewListUsersInTraining.getItems().clear();
 
  	viewListUsersInTraining.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
@@ -248,29 +248,29 @@ public class PastTrainingsController{
 	}
 	public void logoutBtn(ActionEvent event) throws Exception
 	{
-
-
+	
+	
 
 		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/LoginMenu.fxml"));
 		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
-
+		
 		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		window.setScene(passwordForgottenScene);
-
+		
 		window.show();
-
+		
 	}
-
+	
 	public void goBack(ActionEvent event) throws Exception
 	{
 		LoginController current= new LoginController();
 		Login currentUser= current.getCurrentUser();
 		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/TrainingMenu.fxml"));
 		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
-
+		
 		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		window.setScene(passwordForgottenScene);
-
+		
 		window.show();
 	}
 	public void filterView(ActionEvent event) throws Exception {
@@ -307,24 +307,24 @@ public class PastTrainingsController{
 	public static void passwordNotSame(String title, String msg)
 	{
 		Stage window= new Stage();
-
+		
 		window.initModality(Modality.APPLICATION_MODAL);
 		window.setTitle(title);
 		window.setMinWidth(250);
 		Label label= new Label();
-
+		
 		label.setText(msg);
 		Button closeButton= new Button("Close the window");
 		closeButton.setOnAction(e -> window.close());
-
+		
 		VBox layout= new VBox(10);
 		layout.getChildren().add(label);
 		layout.getChildren().add(closeButton);
 		layout.setAlignment(Pos.CENTER);
-
+		
 		Scene scene = new Scene(layout);
 		window.setScene(scene);
 		window.showAndWait();
-
+		
 	}
 }

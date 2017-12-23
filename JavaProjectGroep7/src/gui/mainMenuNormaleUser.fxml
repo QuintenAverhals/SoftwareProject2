@@ -44,7 +44,7 @@
 			<children>
 				<JFXButton fx:id="StatisticsBTN" layoutX="-1.0" layoutY="56.0"
 					prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;"
-					text="Statistics" textFill="WHITE" />
+					text="Statistics" onAction="#statistics" textFill="WHITE" />
 				<JFXButton fx:id="TrainingBtn" layoutX="-1.0" layoutY="16.0"
 					onAction="#training" prefHeight="25.0" prefWidth="200.0"
 					style="-fx-background-color: grey;" text="Training" textFill="WHITE" />

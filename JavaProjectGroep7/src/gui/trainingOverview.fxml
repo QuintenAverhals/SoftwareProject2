@@ -74,7 +74,7 @@
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <children>
             <Label layoutX="146.0" layoutY="14.0" text="Training Name:" textFill="WHITE" />
-            <JFXTextField fx:id="TrainingID" editable="false" focusColor="WHITE" layoutX="-1.0" layoutY="5.0" prefHeight="25.0" prefWidth="39.0" style="-fx-text-fill: white;" unFocusColor="WHITE" />
+            <JFXTextField fx:id="trainingID" editable="false" focusColor="WHITE" layoutX="-1.0" layoutY="5.0" prefHeight="25.0" prefWidth="39.0" style="-fx-text-fill: white;" unFocusColor="WHITE" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="isAdmin1" prefHeight="200.0" prefWidth="200.0" style="-fx-text-fill: white;" GridPane.columnIndex="2" GridPane.rowIndex="2">
@@ -159,8 +159,8 @@
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="9" />
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="10">
          <children>
-            <JFXButton fx:id="img" layoutX="219.0" layoutY="-7.0" prefHeight="25.0" prefWidth="141.0" style="-fx-background-color: grey;" text="Check Location on map" textFill="WHITE" />
-            <JFXButton fx:id="addBooks" layoutX="4.0" layoutY="-7.0" prefHeight="25.0" prefWidth="141.0" style="-fx-background-color: grey;" text="Add books" textFill="WHITE" />
+            <JFXButton fx:id="img" onAction="#locationOnMap" layoutX="219.0" layoutY="-7.0" prefHeight="25.0" prefWidth="141.0" style="-fx-background-color: grey;" text="Check Location on map" textFill="WHITE" />
+            <JFXButton fx:id="addBooks" onAction="#addBooks" layoutX="4.0" layoutY="-7.0" prefHeight="25.0" prefWidth="141.0" style="-fx-background-color: grey;" text="Add books" textFill="WHITE" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="5">

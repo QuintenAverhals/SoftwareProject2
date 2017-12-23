@@ -53,6 +53,8 @@ public class AddBookController {
 	private TableColumn<Book, String> authorCol;
 	@FXML
 	private TextField searchBookTextField;
+	@FXML
+	
 
 	public void initialize() {
 

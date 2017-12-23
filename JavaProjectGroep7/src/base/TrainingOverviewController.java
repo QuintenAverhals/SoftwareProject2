@@ -344,6 +344,8 @@ public class TrainingOverviewController {
 		selected = selected.split(":")[0];
 		int id = Integer.parseInt(selected);
 		System.out.println(id);
+		System.out.println(selected);
+		trainingID.setText(selected);
 
 		cancel.setSelected(false);
 
@@ -357,8 +359,9 @@ public class TrainingOverviewController {
 			cancel.setSelected(false);
 		}
 		System.out.println(training.toString());
-
-		trainingID.setText(selected);
+		
+		
+		
 		trainingName.setText(training.getTrainingNaam());
 
 		for (Integer i : surveyID.getItems()) {

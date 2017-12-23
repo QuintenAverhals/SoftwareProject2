@@ -58,6 +58,7 @@ public class LoginController {
 			String kleure= OptionsController.getColor();
 			System.out.println(kleure);
 			color.setStyle("-fx-background-color: #" + kleure);
+			
 
 		}
 
