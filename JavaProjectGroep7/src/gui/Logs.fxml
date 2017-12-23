@@ -57,11 +57,7 @@
                <graphic>
                   <ImageView fx:id="logoIMG" fitHeight="48.0" fitWidth="116.0" focusTraversable="true" pickOnBounds="true" preserveRatio="true">
                      <image>
-<<<<<<< HEAD
-                       	<Image url="@../img/cisco.png" />
-=======
                        	<Image url="@../img/logo.png" />
->>>>>>> dev_Bilal
                      </image>
                   </ImageView>
                </graphic>

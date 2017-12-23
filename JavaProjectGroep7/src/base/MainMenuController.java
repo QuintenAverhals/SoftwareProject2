@@ -139,4 +139,12 @@ public class MainMenuController extends Main {
 
 		window.show();
 	}
+	
+	public void statistics(ActionEvent event) throws Exception {
+		Parent statParent = FXMLLoader.load(getClass().getResource("../gui/statistics.fxml"));
+		Scene statScene = new Scene(statParent);
+		
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		window.setScene(statScene);
+	}
 }

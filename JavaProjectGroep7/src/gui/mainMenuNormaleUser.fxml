@@ -9,74 +9,83 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<GridPane fx:id="color" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2d3440;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="base.MainMenuController">
-  <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-  </columnConstraints>
-  <rowConstraints>
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-  </rowConstraints>
-   <children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
-         <children>
-<<<<<<< HEAD
-            <JFXButton fx:id="TrainingBtn" layoutY="112.0" onAction="#training" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Training" textFill="WHITE" />
-            <Text fx:id="helloMSG" fill="WHITE" layoutX="48.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="137.13671875" />
-         </children>
-      </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-         <children>
-            <JFXButton fx:id="surveyBtn" layoutY="-10.0" onAction="#surveyManagement" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Survey" textFill="WHITE" />
-=======
-            <Text fx:id="helloMSG" fill="WHITE" layoutX="13.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="200.0000019595027" />
->>>>>>> dev_Bilal
-         </children>
-      </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-         <children>
-<<<<<<< HEAD
-            <JFXButton fx:id="bookBtn" layoutY="16.0" onAction="#book" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Book" textFill="WHITE" />
-            <JFXButton fx:id="employeeBtn" layoutY="54.0" onAction="#employee" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Employees" textFill="WHITE" />
-            <JFXButton fx:id="StatisticsBTN" layoutX="-1.0" layoutY="89.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Statistics" textFill="WHITE" />
-=======
-            <JFXButton fx:id="StatisticsBTN" layoutX="-1.0" layoutY="56.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Statistics" textFill="WHITE" />
-            <JFXButton fx:id="TrainingBtn" layoutX="-1.0" layoutY="16.0" onAction="#training" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Training" textFill="WHITE" />
-            <JFXButton fx:id="surveyBtn" layoutX="-1.0" layoutY="94.0" onAction="#surveyManagement" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;" text="Survey" textFill="WHITE" />
->>>>>>> dev_Bilal
-         </children>
-      </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
-         <children>
-            <JFXButton fx:id="logoutBtn" layoutX="107.0" layoutY="8.0" onAction="#logoutBtn" prefHeight="25.0" prefWidth="87.0" text="LOGOUT" textFill="#757575" />
-         </children>
-      </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
-         <children>
-            <Text fx:id="downLEFTmsgtext" fill="WHITE" layoutX="7.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Software Project 2" wrappingWidth="116.13671875" />
-         </children>
-      </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
-         <children>
-            <Text fx:id="downRighttxt" fill="WHITE" layoutX="142.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GROEP 7" wrappingWidth="116.13671875" />
-         </children>
-      </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
-         <children>
-            <ImageView fx:id="logoIMG" fitHeight="48.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-<<<<<<< HEAD
-                  <Image url="@../../Downloads/soft%20proj%20final/SoftwareProject2/JavaProjectGroep7/src/img/cisco.png" />
-=======
-                       	<Image url="@../img/logo.png" />
->>>>>>> dev_Bilal
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-   </children>
+<GridPane fx:id="color" maxHeight="-Infinity" maxWidth="-Infinity"
+	minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+	prefWidth="600.0" style="-fx-background-color: #2d3440;" xmlns="http://javafx.com/javafx/8.0.141"
+	xmlns:fx="http://javafx.com/fxml/1" fx:controller="base.MainMenuController">
+	<columnConstraints>
+		<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+			prefWidth="100.0" />
+		<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+			prefWidth="100.0" />
+		<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+			prefWidth="100.0" />
+	</columnConstraints>
+	<rowConstraints>
+		<RowConstraints minHeight="10.0" prefHeight="30.0"
+			vgrow="SOMETIMES" />
+		<RowConstraints minHeight="10.0" prefHeight="30.0"
+			vgrow="SOMETIMES" />
+		<RowConstraints minHeight="10.0" prefHeight="30.0"
+			vgrow="SOMETIMES" />
+	</rowConstraints>
+	<children>
+		<AnchorPane prefHeight="200.0" prefWidth="200.0"
+			GridPane.columnIndex="1">
+			<children>
+				<Text fx:id="helloMSG" fill="WHITE" layoutX="13.0" layoutY="100.0"
+					strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="200.0000019595027" />
+			</children>
+		</AnchorPane>
+		<AnchorPane prefHeight="200.0" prefWidth="200.0"
+			GridPane.columnIndex="1" GridPane.rowIndex="2" />
+		<AnchorPane prefHeight="200.0" prefWidth="200.0"
+			GridPane.columnIndex="1" GridPane.rowIndex="1">
+			<children>
+				<JFXButton fx:id="StatisticsBTN" layoutX="-1.0" layoutY="56.0"
+					prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: grey;"
+					text="Statistics" textFill="WHITE" />
+				<JFXButton fx:id="TrainingBtn" layoutX="-1.0" layoutY="16.0"
+					onAction="#training" prefHeight="25.0" prefWidth="200.0"
+					style="-fx-background-color: grey;" text="Training" textFill="WHITE" />
+				<JFXButton fx:id="surveyBtn" layoutX="-1.0" layoutY="94.0"
+					onAction="#surveyManagement" prefHeight="25.0" prefWidth="200.0"
+					style="-fx-background-color: grey;" text="Survey" textFill="WHITE" />
+			</children>
+		</AnchorPane>
+		<AnchorPane prefHeight="200.0" prefWidth="200.0"
+			GridPane.columnIndex="2">
+			<children>
+				<JFXButton fx:id="logoutBtn" layoutX="107.0" layoutY="8.0"
+					onAction="#logoutBtn" prefHeight="25.0" prefWidth="87.0" text="LOGOUT"
+					textFill="#757575" />
+			</children>
+		</AnchorPane>
+		<AnchorPane prefHeight="200.0" prefWidth="200.0"
+			GridPane.rowIndex="2">
+			<children>
+				<Text fx:id="downLEFTmsgtext" fill="WHITE" layoutX="7.0"
+					layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0"
+					text="Software Project 2" wrappingWidth="116.13671875" />
+			</children>
+		</AnchorPane>
+		<AnchorPane prefHeight="200.0" prefWidth="200.0"
+			GridPane.columnIndex="2" GridPane.rowIndex="2">
+			<children>
+				<Text fx:id="downRighttxt" fill="WHITE" layoutX="142.0"
+					layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GROEP 7"
+					wrappingWidth="116.13671875" />
+			</children>
+		</AnchorPane>
+		<AnchorPane prefHeight="200.0" prefWidth="200.0">
+			<children>
+				<ImageView fx:id="logoIMG" fitHeight="48.0" fitWidth="116.0"
+					pickOnBounds="true" preserveRatio="true">
+					<image>
+						<Image url="@../img/logo.png" />
+					</image>
+				</ImageView>
+			</children>
+		</AnchorPane>
+	</children>
 </GridPane>

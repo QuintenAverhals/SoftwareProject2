@@ -15,8 +15,6 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-import com.jfoenix.controls.JFXTextField;
-
 import dao.LocationDAO;
 import dao.LoginDAO;
 import javafx.beans.value.ChangeListener;
@@ -53,17 +51,18 @@ import dao.TrainingDAO;
 
 public class TrainingOverviewController {
 
-//***********auteur:Chaimae**********
+	//***********auteur:Chaimae**********
 	public ListView viewList;
 	public TextField trainingID;
 	public TextField trainingName;
+
 	public TextField filterView;
 
 	public TextField bHour;
 	public TextField bMinute;
 	public TextField eHour;
 	public TextField eMinute;
-    public CheckBox cancel;
+	public CheckBox cancel;
 	public DatePicker startDate;
 	public DatePicker endDate;
 	public Button locationID;
@@ -154,7 +153,7 @@ public class TrainingOverviewController {
 			sd1 = Date.valueOf(startDate.getValue());
 			/*
 			 * if(startDate.getValue()==null) {
-			 *
+			 * 
 			 * sd1= training.getStart_date();
 			 * if(isSelected ){
 			  cancel.setSelected(true);
@@ -173,23 +172,23 @@ public class TrainingOverviewController {
 
 			boolean s;
 			if(cancel.isSelected()){
-			s=true;
-				} else {
-			s=false;
-				}
-				System.out.println(s);
+				s=true;
+			} else {
+				s=false;
+			}
+			System.out.println(s);
 			/*
 			 * if(endDate.getValue()==null) { ed1= test.getEnd_date(); }else {
 			 * ey=(eYear.getValue()); em=(eMonth.getValue()); ed=(eDay.getValue()); ed1
 			 * =eindDate.setDate(ey.getYear(), em.getMonthValue(), ed.getDayOfYear()); }
-			 *
-			 *
-			 *
+			 * 
+			 * 
+			 * 
 			 * if(sd1.equals(null)|| ed1.equals(null)) {
-			 *
+			 * 
 			 * training= training.startDatumByName(trainingnaam); sd1=
 			 * training.getStart_date(); ed1= training.getEnd_date(); }
-			 *
+			 * 
 			 */
 			Training endTime = new Training();
 			int h = Integer.parseInt(eHour.getText());
@@ -236,7 +235,7 @@ public class TrainingOverviewController {
 										} else {
 
 											training2.updateALLTraining(idp, sd1, ed1, st, et,surveyID.getValue(),Integer.parseInt(locationID.getText()),
-												true	,trainingnaam, s
+													true	,trainingnaam, s
 													);
 										}
 
@@ -256,7 +255,7 @@ public class TrainingOverviewController {
 			for (int i = 0; i < trainings.size(); i++) {
 
 				viewList.getItems()
-						.addAll(trainings.get(i).getTraining_ID() + ": " + trainings.get(i).getTrainingNaam());
+				.addAll(trainings.get(i).getTraining_ID() + ": " + trainings.get(i).getTrainingNaam());
 
 			}
 
@@ -294,7 +293,7 @@ public class TrainingOverviewController {
 			for (int i = 0; i < trainings.size(); i++) {
 
 				viewList.getItems()
-						.addAll(trainings.get(i).getTraining_ID() + ": " + trainings.get(i).getTrainingNaam());
+				.addAll(trainings.get(i).getTraining_ID() + ": " + trainings.get(i).getTrainingNaam());
 
 			}
 
@@ -313,6 +312,31 @@ public class TrainingOverviewController {
 
 	}
 
+	/*
+	 * public void locationOnMap(ActionEvent event) throws Exception { LoginController
+	 * current= new LoginController(); Login currentUser= current.getCurrentUser();
+	 * Parent passwordForgottenParent =
+	 * FXMLLoader.load(getClass().getResource("../gui/.fxml")); Scene
+	 * passwordForgottenScene = new Scene(passwordForgottenParent);
+	 * 
+	 * Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+	 * window.setScene(passwordForgottenScene);
+	 * 
+	 * window.show(); }
+	 * 
+	 */
+	public void goBack(ActionEvent event) throws Exception {
+		LoginController current = new LoginController();
+		Login currentUser = current.getCurrentUser();
+		Parent passwordForgottenParent = FXMLLoader.load(getClass().getResource("../gui/TrainingMenu.fxml"));
+		Scene passwordForgottenScene = new Scene(passwordForgottenParent);
+
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		window.setScene(passwordForgottenScene);
+
+		window.show();
+	}
+
 	public void fillBlanks(MouseEvent arg0) throws Exception {
 
 		viewList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
@@ -321,9 +345,17 @@ public class TrainingOverviewController {
 		int id = Integer.parseInt(selected);
 		System.out.println(id);
 
+		cancel.setSelected(false);
+
 		Training training = new Training();
 		training = training.getByID(id);
+		boolean slc= training.getcancel();
 
+		if(slc==true ){
+			cancel.setSelected(true);
+		} else {
+			cancel.setSelected(false);
+		}
 		System.out.println(training.toString());
 
 		trainingID.setText(selected);
@@ -364,6 +396,7 @@ public class TrainingOverviewController {
 		java.util.Date endU = training.getEnd_time();
 		String eindUren = "" + endU.getHours();
 		eHour.setText(eindUren);
+
 
 	}
 

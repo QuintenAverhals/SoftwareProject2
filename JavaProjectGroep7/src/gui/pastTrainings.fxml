@@ -61,16 +61,9 @@
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
          <children>
-<<<<<<< HEAD
-            <JFXListView fx:id="viewList" layoutX="14.0" layoutY="14.0" onMouseClicked="#fillBlanks" prefHeight="170.0" prefWidth="108.0" style="-fx-text-fill: white; -fx-background-color: #2d3440;" />
-            <Label layoutX="128.0" layoutY="56.0" text="Training ID:" textFill="WHITE" />
-            <Label layoutX="123.0" layoutY="91.0" text="Start Date:" textFill="WHITE" />
-            <Label layoutX="133.0" layoutY="153.0" text="Status: " textFill="WHITE" />
-=======
             <JFXListView fx:id="viewList" layoutX="18.0" layoutY="42.0" onMouseClicked="#fillBlanks" prefHeight="170.0" prefWidth="108.0" style="-fx-text-fill: white; -fx-background-color: #2d3440;" />
             <Label layoutX="128.0" layoutY="56.0" text="Training ID:" textFill="WHITE" />
             <Label layoutX="130.0" layoutY="91.0" text="Start Date:" textFill="WHITE" />
->>>>>>> dev_Bilal
             <Label fx:id="startDatee" layoutX="198.0" layoutY="97.0" textFill="WHITE" />
             <Label fx:id="status" layoutX="172.0" layoutY="154.0" textFill="WHITE" />
          </children>
@@ -142,13 +135,8 @@
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="7">
          <children>
-<<<<<<< HEAD
-            <JFXTextField fx:id="filterTrainingsSearchBar" onAction="#filterView" focusColor="WHITE" layoutX="21.0" layoutY="-1.0" prefHeight="25.0" prefWidth="97.0" style="-fx-text-fill: white;" unFocusColor="WHITE" />
-            <JFXButton fx:id="filterTrainings" onAction="#filterView" layoutX="15.0" layoutY="36.0" prefHeight="25.0" prefWidth="111.0" style="-fx-background-color: grey;" text="Filter" />
-=======
             <JFXTextField fx:id="filterTrainingsSearchBar" focusColor="WHITE" layoutX="21.0" layoutY="4.0" onAction="#filterView" prefHeight="25.0" prefWidth="97.0" style="-fx-text-fill: white;" unFocusColor="WHITE" />
             <JFXButton fx:id="filterTrainings" layoutX="15.0" layoutY="42.0" onAction="#filterView" prefHeight="25.0" prefWidth="111.0" style="-fx-background-color: grey;" text="Filter" />
->>>>>>> dev_Bilal
          </children></AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-text-fill: white;" GridPane.columnIndex="2" GridPane.rowIndex="6" />
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="8" />

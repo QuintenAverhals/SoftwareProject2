@@ -49,11 +49,7 @@
          <children>
             <ImageView fx:id="logoIMG" fitHeight="48.0" fitWidth="116.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true">
                <image>
-<<<<<<< HEAD
-                  <Image url="@../../Downloads/soft%20proj%20final/SoftwareProject2/JavaProjectGroep7/src/img/cisco.png" />
-=======
                        	<Image url="@../img/logo.png" />
->>>>>>> dev_Bilal
                </image>
             </ImageView>
          </children>
