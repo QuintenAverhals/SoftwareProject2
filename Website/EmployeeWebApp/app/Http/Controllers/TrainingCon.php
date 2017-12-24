@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 //use DB;
 
 use App\Training;
+use App\Location;
 
 
 class TrainingCon extends Controller
@@ -19,7 +20,6 @@ class TrainingCon extends Controller
     {
         
          //   return '<centr><h1> De trainingen </h></centr>';
-
        //Training= DB::table('trainging')->get();
 
         //$training = Training::all();
@@ -49,34 +49,68 @@ class TrainingCon extends Controller
     {
         //storing the new created section to the db 
 
+
+       $this->validate(request(),[
+        'training_name'=> 'required|max:255|string',
+         'start_date' => 'required',
+          'eind_date' => 'required',
+          'start_time' => 'required',
+          'end_time' => 'required',
+          'city' => 'required|max:255|string',
+          'country' =>'required|max:255|string',
+          'zip_code' => 'required|regex:/\b\d{4}\b/',
+          'streetName'=> 'required|max:255|string',
+          'bus' =>'required|integer|min:0',
+          'streetnumber' => 'required|integer|min:0'
+
+       ]);
+
+
         $training_name = $request->input('training_name');
         $start_date = $request->input('start_date');
         $eind_date = $request-> input('eind_date');
         $start_time = $request-> input('start_time');
         $eind_time=$request->input('end_time');
-        $location = $request->input('location');
-        $status = $request->input('status');
-        $survy = $request->input('survy_id');
-        $visibility= $request->input('visibility');
+
+
+        $city= $request->input('city');
+        $country = $request->input('country');
+        $zipcode = $request->input('zip_code');
+        $streetName=$request->input('streetName');
+        $bus=$request->input('bus');
+        $streetnumber=$request->input('streetnumber');
+        //$loctionID =$request->LoctionID;
 
 
        // DB::table('TRAINING')->insert(['Training_name'=>$training_name,'start_date'=>$start_date,'end_date'=>$eind_date,'start_time'=>$start_time , 'end_time'=>$eind_time,'location_id'=>$location]);
 
         $new_training = new Training;
-        $new_training->Training_name=$training_name;
+        $new_training->Training_Name= $training_name;
         $new_training->start_date=$start_date;
         $new_training->end_date=$eind_date;
         $new_training->start_time=$start_time;
         $new_training->end_time=$eind_time;
-        $new_training->location_id=$location;
-        $new_training->status= $status;
-        $new_training->survey_id=$survy;
-        $new_training->visibility=$visibility;
+         $new_training->save();
 
-
-        $new_training->save();
-        return redirect('TrainingAanvragen');
-
+        //toevoegen van de nieuwe locatie aan de db 
+$Locatie = Location::where('city', '=' ,$city)->first();
+if ($Locatie === null) {
+     $new_Locatie = new Location;
+        $new_Locatie->City = $city;
+        $new_Locatie->country =$country;
+        $new_Locatie->zipcode =$zipcode;
+        $new_Locatie->streetName =$streetName;
+        $new_Locatie->bus=$bus;
+        $new_Locatie->streetnumber=$streetnumber; 
+        $new_Locatie->save();
+}else{
+    \Session::flash('errorLocation', 'روح لله يرضى عليك '); 
+}
+       
+            
+     
+        \Session::flash('message', 'write something here '); 
+        return redirect('/training');
 
     }
 

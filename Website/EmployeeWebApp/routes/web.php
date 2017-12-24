@@ -44,23 +44,55 @@ Route::get('user/{userName}',function($userName){
 })->where('userName','[A-Za-z]+');
 
 
-//Ophalen van tr('ainingen 
-//Route::resource('training','TrainingController');
+//Ophalen van trainingen 
 
-//Route::get('training/data', 'TrainingController@data');
-//Route::get( 'training/upload', 'TrainingController@upload');
-//Route::post('training/upload', 'TrainingController@do_upload');
-//Route::get('training/{training}/multipledelete', 'TrainingController@multipledelete');
 Route::resource('training', 'TrainingCon');
+//check of de data bestaat 
+Route::get('data','DataController@index');
+//test van het ophalen van de questions 
+Route::get('test','Survey_QuestionsController@questions');
+//het versturen van de token naar een nieuwe gebruiker 
+Route::get('/auth/passwordset/{token}', 'PasswordsetController@passwordset');
+//Route::get('mail','MailController@sendemail');
 
 
+
+//Login Logout
+
+//get('/auth/login','Auth\AuthController@getLogin');
+//post('/auth/login','Auth\AuthController@postLogin');
+//get('/auth/logout','Auth@AuthController@getLogout');
+
+//register
+
+//get('/auth/register','Auth\AuthController@getRegister');
+//post('/auth/register','Auth\AuthController@postRegister');
 
 
 
 
 
 //Ophalen van Survy 
+Route::resource('survey', 'Survey_AnswerController');
+//Route::post('survey', 'Survey_AnswerController@store');
+Route::get('survey','Survey_QuestionsController@questions');
+//redirect naar  home page 
+Route::get('/home', 'HomeController@index')->name('home');
+//ophalen van het register form 
+//Route::get('register', 'CustomRegController@showRegisterForm')->name('register');
+//create nieuwe users =FORM 
+Route::get('register', 'CustomRegController@create')->name('register');
+Route::get('register/Userdata','CustomRegController@Userdata')->name('reg');
+//als wij op de Register kliken worden wij verwijst naar de store. 
+Route::post('register','CustomRegController@store');
+//login nieuwe Users voor de website = FORM
+/*
+Route::get('login','SessionController@create')->name('login');
+Route::get('logout','SessionController@destroy');
+Route::post('login','SessionController@store'); */
 
 
 
+//ophalen van de login form 
+//Route::get('login', 'CustomRegController@showLoginForm')->name('login');
 

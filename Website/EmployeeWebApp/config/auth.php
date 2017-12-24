@@ -67,13 +67,18 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Login_Webiste::class,
         ],
 
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+        
+         'users' => [
+              'driver' => 'database',
+             'table' => 'Login_Webiste',
+        ],
     ],
 
     /*
@@ -94,7 +99,8 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
-            'table' => 'password_resets',
+           // 'table' => 'password_resets',
+            'table' => 'Login_Webiste',
             'expire' => 60,
         ],
     ],
