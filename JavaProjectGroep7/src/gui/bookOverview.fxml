@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2d3440;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="base.BookOverviewController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+         <children>
+            <Text fill="WHITE" layoutX="30.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book Overview" wrappingWidth="161.13671875">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+         <children>
+<!--             <JFXButton fx:id="logoutBtn" layoutX="107.0" layoutY="8.0" onAction="#logoutBtn" prefHeight="25.0" prefWidth="87.0" text="LOGOUT" textFill="#757575" /> -->
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="mainMenuBtn" onAction="#mainMenu" layoutX="17.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-text-fill: transparent; -fx-border-fill: transparent;" text="Button">
+               <graphic>
+                  <ImageView fx:id="logoIMG" fitHeight="48.0" fitWidth="116.0" focusTraversable="true" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                       	<Image url="@../img/cisco.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+         <children>
+            <Text fill="WHITE" layoutX="56.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SELECT" wrappingWidth="161.13671875">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="checkBox1" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+         <children>
+<!--             <JFXCheckBox layoutX="71.0" layoutY="16.0" text="CheckBox" textFill="#2d3440" /> -->
+            <CheckBox fx:id="checkbox1" layoutX="69.0" layoutY="11.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="13.0" text="CheckBox" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+         <children>
+<!--             <JFXCheckBox fx:id="checkBox2" layoutX="70.0" layoutY="17.0" text="CheckBox" textFill="#2d3440" /> -->
+            <CheckBox fx:id="checkbox2" layoutX="69.0" layoutY="11.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="11.0" text="CheckBox" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
+         <children>
+<!--             <JFXCheckBox fx:id="checkBox3" layoutX="69.0" layoutY="11.0" text="CheckBox" textFill="#2d3440" /> -->
+            <CheckBox fx:id="checkbox3" layoutX="69.0" layoutY="11.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="13.0" text="CheckBox" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
+         <children>
+<!--             <JFXCheckBox fx:id="checkBox4" layoutX="69.0" layoutY="11.0" text="CheckBox" textFill="#2d3440" /> -->
+            <CheckBox fx:id="checkbox4" layoutX="69.0" layoutY="11.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="21.0" text="CheckBox" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="6">
+         <children>
+<!--             <JFXCheckBox fx:id="checkBox5" layoutX="69.0" layoutY="11.0" text="CheckBox" textFill="#2d3440" /> -->
+            <CheckBox fx:id="checkbox5" layoutX="69.0" layoutY="11.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="28.0" text="CheckBox" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <children>
+            <Text fx:id="ISBN1" fill="WHITE" layoutX="64.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="123">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="title1" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+         <children>
+            <Text fx:id="title1" fill="WHITE" layoutX="55.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book 1">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <children>
+            <Text fill="WHITE" layoutX="65.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ISBN" wrappingWidth="161.13671875">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+         <children>
+            <Text fill="WHITE" layoutX="57.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title" wrappingWidth="35.03906428813934">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+         <children>
+            <Text fx:id="ISBN2" fill="WHITE" layoutX="61.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1234">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+         <children>
+            <Text fx:id="title2" fill="WHITE" layoutX="55.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book 2">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+         <children>
+            <Text fx:id="ISBN3" fill="WHITE" layoutX="57.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12345">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+         <children>
+            <Text fx:id="title3" fill="WHITE" layoutX="55.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book 3">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+         <children>
+            <Text fx:id="ISBN4" fill="WHITE" layoutX="54.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="123456">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
+         <children>
+            <Text fx:id="title4" fill="WHITE" layoutX="55.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book 4">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+         <children>
+            <Text fx:id="ISBN5" fill="WHITE" layoutX="50.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1234567">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="6">
+         <children>
+            <Text fx:id="title5" fill="WHITE" layoutX="55.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book 5">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+         <children>
+<!--             <JFXButton fx:id="updateBtn" layoutX="14.0" layoutY="10.0" prefHeight="25.0" prefWidth="161.0" style="-fx-background-color: grey;" text="Update" /> -->
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
+         <children>
+<!--             <JFXButton fx:id="deleteBtn" layoutX="20.0" layoutY="10.0" prefHeight="25.0" prefWidth="161.0" style="-fx-background-color: grey;" text="Delete" /> -->
+            <Button fx:id="updateBtn" layoutX="43.0" layoutY="-1.0" mnemonicParsing="false" style="-fx-background-color: grey;" text="UPDATE" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="8">
+         <children>
+<!--             <JFXButton fx:id="nextBtn" layoutX="20.0" layoutY="8.0" prefHeight="25.0" prefWidth="161.0" style="-fx-background-color: grey;" text="NEXT" /> -->
+            <Button fx:id="goBackBtn" layoutX="43.0" layoutY="5.0" mnemonicParsing="false" onAction="#goBack" style="-fx-background-color: grey;" text="GO BACK" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="9">
+         <children>
+            <Text fx:id="downLEFTmsgtext" fill="WHITE" layoutX="25.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Software Project 2" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="9">
+         <children>
+            <Text fx:id="downRighttxt" fill="WHITE" layoutX="123.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GROEP 7" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+         <children>
+<!--             <JFXButton fx:id="goBackBtn" layoutX="14.0" layoutY="8.0" onAction="#goBack" prefHeight="25.0" prefWidth="161.0" style="-fx-background-color: grey;" text="GO BACK" /> -->
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+         <children>
+            <Text fill="WHITE" layoutX="52.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Author" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+         <children>
+            <Text fx:id="author1" fill="WHITE" layoutX="46.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Author 1" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
+         <children>
+            <Text fx:id="author2" fill="WHITE" layoutX="46.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Author 2" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="4">
+         <children>
+            <Text fx:id="author3" fill="WHITE" layoutX="46.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Author 3" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="5">
+         <children>
+            <Text fx:id="author4" fill="WHITE" layoutX="46.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Author 4" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="6">
+         <children>
+            <Text fx:id="auhtor5" fill="WHITE" layoutX="46.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Author 5" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="7">
+         <children>
+            <Button fx:id="deleteBtn" layoutX="43.0" layoutY="-1.0" mnemonicParsing="false" style="-fx-background-color: grey;" text="DELETE" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="8">
+         <children>
+            <Button fx:id="nextBtn" layoutX="43.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="69.0" style="-fx-background-color: grey;" text="NEXT" />
+         </children>
+      </AnchorPane>
+   </children>
+</GridPane>
