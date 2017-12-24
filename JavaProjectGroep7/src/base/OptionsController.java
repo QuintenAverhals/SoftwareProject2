@@ -111,7 +111,7 @@ public class OptionsController {
 		File logo= Certificate.chooseFile();
 		String fileName = "logo.png";
 		try {
-			Certificate.uploadToServer(logo);
+			Certificate.uploadToServerLogo(logo);
 
 			Boolean download = Certificate.downloadFromServerLogo("logo.png");
 			veiligeInvoer("","You're file has successfully been downloaded");

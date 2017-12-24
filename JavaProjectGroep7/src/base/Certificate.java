@@ -131,10 +131,10 @@ public class Certificate {
 
 	public static Boolean uploadToServer(File selectedFile) throws Exception {
 
-		 	String server = "ftp.jijmaaktmechelen.be";
+		 	String server = "ftp.kaaimannen.be";
 	        int port = 21;
-	        String user = "jijmaaktmechelen.be";
-	        String pass = "JijMaaktMechelen";
+	        String user = "seppe.vriens@kaaimannen.be";
+	        String pass = "SoftwareProject2";
 
 	        FTPClient ftpClient = new FTPClient();
 	        try {
@@ -160,7 +160,7 @@ public class Certificate {
 
 	            // APPROACH #2: uploads second file using an OutputStream
 	           // File secondLocalFile = new File("E:/Test/Report.doc");
-	            String secondRemoteFile = ("Seppe/SW2/" + selectedFile.getName());
+	            String secondRemoteFile = ("uploads/" + selectedFile.getName());
 	            InputStream inputStream = new FileInputStream(selectedFile);
 
 	            System.out.println("Start uploading first file");
@@ -202,10 +202,10 @@ public class Certificate {
 
 	public static Boolean uploadToServerLogo(File selectedFile) {
 
-	 	String server = "ftp.jijmaaktmechelen.be";
+		String server = "ftp.kaaimannen.be";
         int port = 21;
-        String user = "jijmaaktmechelen.be";
-        String pass = "JijMaaktMechelen";
+        String user = "seppe.vriens@kaaimannen.be";
+        String pass = "SoftwareProject2";
 
         FTPClient ftpClient = new FTPClient();
         try {
@@ -231,7 +231,7 @@ public class Certificate {
 
             // APPROACH #2: uploads second file using an OutputStream
            // File secondLocalFile = new File("E:/Test/Report.doc");
-            String secondRemoteFile = ("Seppe/SW2/Logo/" + selectedFile.getName());
+            String secondRemoteFile = ("uploads/Logo/" + selectedFile.getName());
             InputStream inputStream = new FileInputStream(selectedFile);
 
             OutputStream outputStream = ftpClient.storeFileStream(secondRemoteFile);
@@ -266,10 +266,10 @@ public class Certificate {
 
 
 	public static Boolean downloadFromServer(String docName) {
-		String server = "ftp.jijmaaktmechelen.be";
+		String server = "ftp.kaaimannen.be";
         int port = 21;
-        String user = "jijmaaktmechelen.be";
-        String pass = "JijMaaktMechelen";
+        String user = "seppe.vriens@kaaimannen.be";
+        String pass = "SoftwareProject2";
 
         FTPClient ftpClient = new FTPClient();
         try {
@@ -280,12 +280,11 @@ public class Certificate {
             ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
 
            // APPROACH #1: using retrieveFile(String, OutputStream)
-            String remoteFile1 = ("Seppe/SW2/" + docName);
+            String remoteFile1 = ("uploads/" + docName);
             File downloadFile1 = new File(Certificate.class.getProtectionDomain().getCodeSource().getLocation().getPath() +"../Certificaten/" + docName);
             OutputStream outputStream1 = new BufferedOutputStream(new FileOutputStream(downloadFile1));
             boolean success = ftpClient.retrieveFile(remoteFile1, outputStream1);
             outputStream1.close();
-
             if (success) {
                 System.out.println("File "+ docName +"has been downloaded successful ly.");
                 return true;
@@ -328,10 +327,10 @@ public class Certificate {
 
 	//zbuebu
 	public static Boolean downloadFromServerLogo(String docName) {
-		String server = "ftp.jijmaaktmechelen.be";
+		String server = "ftp.kaaimannen.be";
         int port = 21;
-        String user = "jijmaaktmechelen.be";
-        String pass = "JijMaaktMechelen";
+        String user = "seppe.vriens@kaaimannen.be";
+        String pass = "SoftwareProject2";
 
         FTPClient ftpClient = new FTPClient();
         try {
@@ -342,7 +341,7 @@ public class Certificate {
             ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
 
            // APPROACH #1: using retrieveFile(String, OutputStream)
-            String remoteFile1 = ("Seppe/SW2/" + docName);
+            String remoteFile1 = ("uploads/Logo/" + docName);
             File downloadFile1 = new File(Certificate.class.getProtectionDomain().getCodeSource().getLocation().getPath() +"../src/img/" + docName);
             OutputStream outputStream1 = new BufferedOutputStream(new FileOutputStream(downloadFile1));
             boolean success = ftpClient.retrieveFile(remoteFile1, outputStream1);
@@ -453,10 +452,10 @@ public class Certificate {
 	}
 
 	public static Boolean lookForDuplicateOnServer(String fileName) throws IOException {
-		String server = "ftp.jijmaaktmechelen.be";
+		String server = "ftp.kaaimannen.be";
         int port = 21;
-        String user = "jijmaaktmechelen.be";
-        String pass = "JijMaaktMechelen";
+        String user = "seppe.vriens@kaaimannen.be";
+        String pass = "SoftwareProject2";
 
         FTPClient ftpClient = new FTPClient();
         try {
@@ -466,7 +465,7 @@ public class Certificate {
             ftpClient.enterLocalPassiveMode();
             ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
 
-            String remoteFile1 = ("Seppe/SW2/" + fileName);
+            String remoteFile1 = ("uploads/" + fileName);
             File downloadFile1 = new File(Certificate.class.getProtectionDomain().getCodeSource().getLocation().getPath() +"../Temporarily/" + fileName);
             OutputStream outputStream1 = new BufferedOutputStream(new FileOutputStream(downloadFile1));
             boolean success = ftpClient.retrieveFile(remoteFile1, outputStream1);
