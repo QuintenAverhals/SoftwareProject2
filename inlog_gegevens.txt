@@ -1,0 +1,7 @@
+WEBSITE: www.kaaimannen.be/Seppe/index.php
+Username: seppe
+Password: test12345
+
+APPLICATIE
+Username: bilalsuperadmin
+Password: bilal123
